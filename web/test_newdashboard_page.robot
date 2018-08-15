@@ -20,44 +20,44 @@ Check sidebar link Dashboard navigation is correct
     Check Topbar Link    综合看板
     No Operation
 
-# Check Search For Basic
-#     Set Browser Implicit Wait    10s
-#     @{days}  Set Variable  上月  昨日  本周  上周  本月  
-#     :FOR  ${day}  IN  @{days}
-#     \  Sleep  5s
-#     \  Click Element  //a[@class='active-bright']
-#     \  Quick Search botton    ${day}
-#     \  Verify Basic Table Is Active
-#     \  Verify Basic Information Table Is Active
-#     \  Verify SiteRank Value For Basic
-#     \  Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'游戏 ')]
-#     \  Capture Page Screenshot
-#     \  Reload Page
+Check Search For Basic
+    Set Browser Implicit Wait    10s
+    @{days}  Set Variable  上月  昨日  本周  上周  本月  
+    :FOR  ${day}  IN  @{days}
+    \  Sleep  5s
+    \  Click Element  //a[@class='active-bright']
+    \  Quick Search botton    ${day}
+    \  Verify Basic Table Is Active
+    \  Verify Basic Information Table Is Active
+    \  Verify SiteRank Value For Basic
+    \  Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'游戏 ')]
+    \  Capture Page Screenshot
+    \  Reload Page
 
-    # @{seasons}  Set Variable  本年  去年  本季  上季
-    # :FOR  ${season}  IN  @{seasons}
-    # \  Sleep  5s
-    # \  Click Element  //a[@class='active-bright']
-    # \  Quick Search In year and season    ${season}
-    # \  Verify Basic Table Is Active
-    # \  Verify Basic Information Table Is Active
-    # \  Verify SiteRank Value For Basic  
-    # \  Reload Page
+    @{seasons}  Set Variable  本年  去年  本季  上季
+    :FOR  ${season}  IN  @{seasons}
+    \  Sleep  5s
+    \  Click Element  //a[@class='active-bright']
+    \  Quick Search In year and season    ${season}
+    \  Verify Basic Table Is Active
+    \  Verify Basic Information Table Is Active
+    \  Verify SiteRank Value For Basic  
+    \  Reload Page
 
-# Check Save Search
-#     Set Browser Implicit Wait    10s
-#     @{days}  Set Variable  昨日  本周  上周  本月  上月  
-#     :FOR  ${day}  IN  @{days}
-#     \  Sleep  5s
-#     \  Quick Search botton  ${day}
-#     \  Verify Save Page Is Active
+Check Save Search
+    Set Browser Implicit Wait    10s
+    @{days}  Set Variable  昨日  本周  上周  本月  上月  
+    :FOR  ${day}  IN  @{days}
+    \  Sleep  5s
+    \  Quick Search botton  ${day}
+    \  Verify Save Page Is Active
 
-    # @{seasons}  Set Variable  本年  去年  本季  上季
-    # :FOR  ${season}  IN  @{seasons}
-    # \  Sleep  5s
-    # \  Click Element  //a[@class='active-bright']
-    # \  Quick Search In year and season    ${season}
-    # \  Verify Save Page Is Active
+    @{seasons}  Set Variable  本年  去年  本季  上季
+    :FOR  ${season}  IN  @{seasons}
+    \  Sleep  5s
+    \  Click Element  //a[@class='active-bright']
+    \  Quick Search In year and season    ${season}
+    \  Verify Save Page Is Active
 
 Search In Datetime For Basic
     Set Browser Implicit Wait    10s
