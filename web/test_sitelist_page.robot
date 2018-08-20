@@ -87,11 +87,11 @@ Search In Game Classification
     
     @{labels}    Set Variable    体育-1  视讯-2  机率-3  彩票-4  棋牌-44
     :FOR    ${label}  IN  @{labels}
-    \    Set Browser Implicit Wait    10s
+    \    Sleep    10s
     \    ${CheckValueA}=    Get Text    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     \    Wait Until Page Contains Element  //label[@for='${label}']  
     \    Click Element  //label[@for='${label}']
-    \    Set Browser Implicit Wait    5s
+    \    Sleep    5s
     \    Wait Until Page Contains Element  //tab[@id="category"]//button[contains(.,'套用')]
     \    Click Element  //tab[@id="category"]//button[contains(.,'套用')]
     \    Sleep  5s

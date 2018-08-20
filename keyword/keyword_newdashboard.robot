@@ -60,7 +60,59 @@ Verify Basic Information Table Is Active
     \  Page Should Contain Element  //div[@id="barChart"]/div[contains(.,'${element}')] 
     \  Capture Page Screenshot
 
-Verify Basic Information Table Is Active Not Have Active Member
+Verify SiteRank Value For Basic 
+# 待修改
+    Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'站台 ')]
+    Wait Until Page Contains Element  //div[@class="kanban-title"]/div/a/a
+    Click Element  //div[@class="kanban-title"]/div/a/a
+    @{number}  Set variable  3  4  5  6  7  8
+    :FOR  ${num}  IN  @{number}
+    \  ${Values}=  Get Text  //ng2-smart-table[@id="siteRank"]/table/tbody/tr[1]/td[${num}]
+    \  Should Not Be Empty  ${Values}
+
+    Capture Page Screenshot
+
+
+Verify Basic Table For Years
+    # 逐日列表 標題
+    ${titleB}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/thead/tr[1]/th[3]//span
+    Should Be True  '${titleB}'=='损益'
+
+    ${titleC}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/thead/tr[1]/th[4]//span
+    Should Be True  '${titleC}'=='有效投注'
+
+    ${titleD}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/thead/tr[1]/th[5]//span
+    Should Be True  '${titleD}'=='营收比'
+
+    ${titleE}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/thead/tr[1]/th[6]//span
+    Should Be True  '${titleE}'=='投注单量'
+
+     # 逐日列表 數值是否顯示正常
+    @{values}  Set Variable  2  3  4  6 
+    :FOR  ${value}  IN  @{values}
+    \  Wait Until Page Contains Element  //ng2-smart-table[@class='frozen_1']/table/tbody/tr[1]/td[${value}]//span
+    \  ${B}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/tbody/tr[1]/td[${value}]//span
+    \  Should Not Be Empty  ${B}
+
+    ${C}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/tbody/tr[1]/td[5]//span
+    Should Not Be Empty  ${C}
+
+Verify Basic Information Table For Years
+    Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'运营 ')]
+    Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'损益')]
+    Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'营收比')]
+    Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'有效投注')]
+    Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'投注单量')]
+    Page Should Contain Element  //div[@id='barChart']//echarts-ng2//canvas
+
+    @{elements}  Set Variable  活跃会员  损益  营收比  有效投注  投注单量
+    :FOR  ${element}  IN  @{elements}
+    \  Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'运营 ')]
+    \  Click Element  //div[@class="allData-item"]/span[contains(.,'${element}')]
+    \  Sleep  5s
+    \  Page Should Contain Element  //div[@id="barChart"]/div[contains(.,'${element}')] 
+    \  Capture Page Screenshot
+
     Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'运营 ')]
     Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'损益')]
     Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'营收比')]
@@ -75,7 +127,6 @@ Verify Basic Information Table Is Active Not Have Active Member
     \  Sleep  5s
     \  Page Should Contain Element  //div[@id="barChart"]/div[contains(.,'${element}')] 
     \  Capture Page Screenshot
-
 
 
 Verify Save Information Table Is Active
@@ -139,16 +190,7 @@ Verify Save Page Is Active
 
     Reload Page
 
-Verify SiteRank Value For Basic 
-    Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'站台 ')]
-    Wait Until Page Contains Element  //div[@class="kanban-title"]/div/a/a
-    Click Element  //div[@class="kanban-title"]/div/a/a
-    @{number}  Set variable  3  4  5  6  7  8
-    :FOR  ${num}  IN  @{number}
-    \  ${Values}=  Get Text  //ng2-smart-table[@id="siteRank"]/table/tbody/tr[1]/td[${num}]
-    \  Should Not Be Empty  ${Values}
 
-    Capture Page Screenshot
 
 Verify SiteRank Value For Save 
     Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'站台 ')]

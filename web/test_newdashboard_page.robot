@@ -39,8 +39,8 @@ Check Search For Basic
     \  Sleep  5s
     \  Click Element  //a[@class='active-bright']
     \  Quick Search In year and season    ${season}
-    \  Verify Basic Table Is Active
-    \  Verify Basic Information Table Is Active
+    \  Verify Basic Table For Years
+    \  Verify Basic Information Table For Years
     \  Verify SiteRank Value For Basic  
     \  Reload Page
 
