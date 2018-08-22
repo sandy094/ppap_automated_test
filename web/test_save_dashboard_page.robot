@@ -98,8 +98,9 @@ Search In Datetime
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
 
-Check Chart
-    Reload Page
+Check Chart  
+    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')]  
+    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')] 
     Execute JavaScript    window.scrollTo(200, document.body.scrollHeight)
     Execute JavaScript  window.scrollTo(100, document.body.scrollHeight)
     Wait Until Page Contains Element  //div[@id='deposit-chart']/div//canvas

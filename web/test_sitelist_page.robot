@@ -39,6 +39,7 @@ Click Search
     \  ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Check Values
+    
 Check Trend 
     # 趨勢
     @{trs}  Set Variable  1  2  3  4  5  6  7  8  9  10
