@@ -158,7 +158,6 @@ Search In Game Hall
     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
     Capture Page Screenshot
     
-
 Search In Game Name
     Reload Page
     Sleep  2s

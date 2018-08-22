@@ -43,12 +43,14 @@ trend
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+
     \  Click Element  //div[@class="modal-content"]//div/span[2]/a
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Wait Until Page Contains Element  //div[@class='col-12']//div/div[2]
     \  Capture Page Screenshot
+    
     \  Click Element  //div[@class="modal-content"]//div/span[3]/a
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
