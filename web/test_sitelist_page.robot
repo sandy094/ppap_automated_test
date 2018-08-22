@@ -21,7 +21,7 @@ Check sidebar link Operational navigation is correct
 # driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 Click Search
     # Click Element  //div[@class='loader-panel load-xs-go p-2']/i
-    Set Browser Implicit Wait    20s
+    Set Browser Implicit Wait    10s
     ${CheckValueA}  Set Variable  0
     @{days}  Set Variable  今日  昨日  本周  上周  本月  上月
     :FOR  ${day}  IN  @{days}
@@ -201,6 +201,17 @@ Check In Group
     ${aa}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
     Should Not Be Empty  ${aa}  
     Capture Page Screenshot
+
+# Reload Page
+
+# Search In Moudle
+#     ${cValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+#     Wait Until Page Contains Element  //div[@class='p-1 w-100']/div/div[2]/button
+#     Click Element  //div[@class='p-1 w-100']/div/div[2]/button
+#     Sleep  5s
+#     ${cValueB}= Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+#     Should Not Match  ${cValueA}  ${cValueB}
+
 
 *** Keywords ***
 SuiteSetup
