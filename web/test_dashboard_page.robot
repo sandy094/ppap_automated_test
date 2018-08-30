@@ -33,15 +33,19 @@ Click Search
 
     Quick Search botton    昨日
     Check Chart In Four card
+    Execute JavaScript  window.document.documentElement.scrollTo = 0;
     Count In Seven Days For yesterday
 
     Quick Search botton    本周
     Check Chart In Four card
+    Execute JavaScript  window.document.documentElement.scrollTo = 0;
     Count In A Day For week
 
     Quick Search botton    上周
     Check Chart In Four card
+    Execute JavaScript  window.document.documentElement.scrollTo = 0;
     Count In A Day For week
+    
 Click Search In Year
     @{seasons}  Set Variable  本年  去年  本季  上季
     :FOR  ${season}  IN  @{seasons}
@@ -58,6 +62,7 @@ Click Search In Year
 Check Trend Is Active
     # Reload Page
     Sleep    10s
+    Execute JavaScript  window.document.documentElement.scrollTo = 0;
     # 排行裡單一站台的趨勢圖(上周的4張卡片)
     Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')]  
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')] 
