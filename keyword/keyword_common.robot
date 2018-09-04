@@ -9,6 +9,11 @@ Chart Transform
     # 長條圖/趨勢圖轉換
     Page Should Contain Element    //div[@class='CHART-AREA']/echarts-ng2/div/div/canvas    limit=2
     Capture Page Screenshot
+    # Click Element  //div[@ngbtooltip='图表放大']
+    # Wait Until Page Contains Element  //div[@class='col-12 clearfix']/echarts-ng2/div/div/canvas
+    # Mouse Over  //div[@class='col-12 clearfix']/echarts-ng2/div/div/canvas
+    # Capture Page Screenshot
+    # Click Element  //div[@class='modal-content']//i
     Wait Until Element Is Visible  //div[@ngbtooltip='长条合计']
     Click Element    //div[@ngbtooltip='长条合计']
     Page Should Contain Element    //div[@class='CHART-AREA']/echarts-ng2/div/div/canvas    limit=2
@@ -65,7 +70,6 @@ Quick Search botton
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')] 
     Sleep    10s
     Capture Page Screenshot
-
 Search In Month
     #月份比較
     [Arguments]    ${title}

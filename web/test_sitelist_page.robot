@@ -75,7 +75,7 @@ Short
 Search In Datetime 
     Set Browser Implicit Wait    10s
     ${CheckValueA}  Set Variable  0
-    @{mounths}    Set Variable    0: 2018年8月  1: 2018年7月  2: 2018年6月  3: 2018年5月  4: 2018年4月  5: 2018年3月  6: 2018年2月  7: 2018年1月  8: 2017年12月  9: 2017年11月  10: 2017年10月  11: 2017年9月  12: 2017年8月
+    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     # 判斷是否有更新頁面
@@ -201,15 +201,16 @@ Check In Group
     Should Not Be Empty  ${aa}  
     Capture Page Screenshot
 
-# Reload Page
-
 # Search In Moudle
+#     Reload Page
 #     ${cValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-#     Wait Until Page Contains Element  //div[@class='p-1 w-100']/div/div[2]/button
-#     Click Element  //div[@class='p-1 w-100']/div/div[2]/button
+#     Wait Until Page Contains Element  //div[@bacardclass='table-panel']//div[@class="button-list"][1]
+#     Click Element  //div[@bacardclass='table-panel']//div[@class="button-list"][1]
 #     Sleep  5s
 #     ${cValueB}= Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
 #     Should Not Match  ${cValueA}  ${cValueB}
+
+    # //div[@bacardclass='table-panel']//div[@class="button-list"][1]
 
 
 *** Keywords ***

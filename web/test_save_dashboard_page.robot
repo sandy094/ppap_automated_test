@@ -17,7 +17,6 @@ Check sidebar link Dashboard navigation is correct
     Sleep    10s
     Click Sidebar Link    运营看板
     Sleep    10s
-    # Click Sidebar Link    运营看板
     Click Element    //div[@class='card-body']/div/div/a[contains(.,'运营看板')]
     Wait Until Page Contains Element  //div[@class='card-body']/div/div/a/div
     Click Element  //div[@class='card-body']/div/div/a/div
@@ -61,7 +60,8 @@ Check Trend
     \  Wait Until Page Contains Element  //ba-card[@id='firstDepositAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Click Element  //ba-card[@id='firstDepositAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
@@ -70,7 +70,8 @@ Check Trend
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@id='depositAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
@@ -79,7 +80,8 @@ Check Trend
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@id='withdrawAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
@@ -88,13 +90,14 @@ Check Trend
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@id='differenceAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
 Search In Datetime 
     Sleep    10s
-    @{mounths}    Set Variable    0: 2018年8月  1: 2018年7月  2: 2018年6月  3: 2018年5月  4: 2018年4月  5: 2018年3月  6: 2018年2月  7: 2018年1月 
+    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
 

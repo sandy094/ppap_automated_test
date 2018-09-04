@@ -16,7 +16,7 @@ Check sidebar link Dashboard navigation is correct
     # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Sleep    10s
     # Click Element  //div[@class='modal-content']//div/i
-    # Click Element  //div[@class='loader-panel load-xs-go p-2']/i
+    Click Element  //div[@class='loader-panel load-xs-go p-2']/i
     Check Topbar Link    综合看板
     No Operation
 
@@ -61,14 +61,13 @@ Check Save Search
 
 Search In Datetime For Basic
     Set Browser Implicit Wait    10s
-    @{mounths}    Set Variable    0: 2018年8月  1: 2018年7月  2: 2018年6月  3: 2018年5月  4: 2018年4月  5: 2018年3月  6: 2018年2月  7: 2018年1月  8: 2017年12月  9: 2017年11月  10: 2017年10月  11: 2017年9月  12: 2017年8月
+    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Click Element  //a[@class='active-bright']
     \  Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
     \  Search In Month    ${month}
     \  Verify Basic Table Is Active
-    \  Verify Basic Information Table Is Active Not Have Active Member
     \  Verify SiteRank Value For Basic  
     \  Reload Page
 
@@ -77,7 +76,7 @@ Search In Datetime For Save
     Set Browser Implicit Wait    10s
     # Click Element  //a[@class='active-bright']
     # Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
-    @{mounths}    Set Variable    0: 2018年8月  1: 2018年7月  2: 2018年6月  3: 2018年5月  4: 2018年4月  5: 2018年3月  6: 2018年2月  7: 2018年1月  8: 2017年12月  9: 2017年11月  10: 2017年10月  11: 2017年9月  12: 2017年8月
+    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Wait Until Page Contains Element  //a[@class='active-bright']
@@ -88,6 +87,7 @@ Search In Datetime For Save
 
 Check Chart is active
     # 只檢查昨日的圖表
+    Reload Page
     Sleep    15s
     Wait Until Page Contains Element  //a[@class='active-bright']
     Click Element  //a[@class='active-bright']
@@ -99,6 +99,7 @@ Check Chart is active
     Reload Page
 
 Short
+    Reload Page
     Sleep  10s
     Click Element  //a[@class='active-bright']
     Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'站台 ')]

@@ -12,7 +12,7 @@ Check login
 
 Check sidebar link Game Information navigation is correct
     # 關掉公告訊息提示
-    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
     Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Click Sidebar Link    运营看板
     Set Browser Implicit Wait    10s
@@ -34,7 +34,7 @@ Click Quick Search
 
 Search In Datetime 
     Sleep  5s
-    @{mounths}    Set Variable    0: 2018年8月  1: 2018年7月  2: 2018年6月  3: 2018年5月  4: 2018年4月  5: 2018年3月  6: 2018年2月  7: 2018年1月  8: 2017年12月  9: 2017年11月  10: 2017年10月  11: 2017年9月  12: 2017年8月
+    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Check Values

@@ -68,13 +68,17 @@ Check Trend Is Active
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')] 
 
     Sleep  3s
+    Wait Until Page Contains Element   //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
+    Sleep  5s
     Click Element  //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
+
     @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
     :FOR  ${row}  IN  @{rows}
     \  Wait Until Page Contains Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
     \  Click Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
-    \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
@@ -83,8 +87,9 @@ Check Trend Is Active
     @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//tbody/tr[${row}]/td[3]/div/small
-    \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
@@ -93,8 +98,9 @@ Check Trend Is Active
     @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//tbody/tr[${row}]/td[3]/div/small
-    \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
@@ -103,20 +109,22 @@ Check Trend Is Active
     @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@class="dashboss_chart memberCounts"]//tbody/tr[${row}]/td[3]/div/small
-    \  Sleep  2s
-    \  Wait Until Page Contains Element  //div[@class="col-12"]//div/div/canvas
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
 Search In Datetime 
+    Reload Page
     Sleep    10s
-    @{mounths}    Set Variable    0: 2018年8月  1: 2018年7月  2: 2018年6月  3: 2018年5月  4: 2018年4月  5: 2018年3月  6: 2018年2月  7: 2018年1月  8: 2017年12月  9: 2017年11月  10: 2017年10月  11: 2017年9月  12: 2017年8月
+    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
 
-    Reload Page
 Check All Chart Is Active
+    Reload Page
     Sleep    20s
     Execute JavaScript    window.scrollTo(200, document.body.scrollHeight)
     Check Chart In Game Classification    种类
@@ -142,7 +150,6 @@ Check Single Chart
     Click Element  //div[@class="text-left mt-4"]//div/div/ul/li/a[contains(.,'以日合计')]
     Sleep  5s
     Capture Page Screenshot
-
 
 
 # Check sidebar link Verifyaccount navigation is correct

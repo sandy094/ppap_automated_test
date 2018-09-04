@@ -16,10 +16,11 @@ Check Topbar Link
 
 Check Value Is Active
     [Documentation]    Check value in table
-    Page Should Contain Element    //div[@class='text-center'][contains(.,'損益')]
-    Page Should Contain Element    //div[@class='text-center'][contains(.,'有效投注')]
-    Page Should Contain Element    //div[@class='text-center'][contains(.,'單量')]
-    Page Should Contain Element    //div[@class='text-center'][contains(.,'咬度')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[1]/td[contains(.,'损益')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[2]/td[contains(.,'有效投注')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[3]/td[contains(.,'投注单量')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[4]/td[contains(.,'活跃会员')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[5]/td[contains(.,'营收比')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
 
