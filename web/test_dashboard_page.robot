@@ -12,8 +12,8 @@ Check login
    
 Check sidebar link Dashboard navigation is correct
     # 關掉公告訊息提示
-    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     # Click Element  //div[@class='loader-panel load-xs-go p-2']/i
     Set Browser Implicit Wait    20s
     Click Sidebar Link    运营看板
@@ -67,7 +67,7 @@ Check Trend Is Active
     Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')]  
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')] 
 
-    Sleep  3s
+    Sleep  20s
     Wait Until Page Contains Element   //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
     Sleep  5s
     Click Element  //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]

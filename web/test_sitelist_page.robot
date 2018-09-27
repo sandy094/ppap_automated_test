@@ -12,8 +12,8 @@ Check login
     
 Check sidebar link Operational navigation is correct
     # 關掉公告訊息提示
-    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Sleep    10s
     Click Sidebar Link    运营看板
     Check Operational Information Link    站台列表
@@ -42,12 +42,13 @@ Click Search
     
 Check Trend 
     # 趨勢
-    @{trs}  Set Variable  1  2  3  4  5  6  7  8  9  10
+    @{trs}  Set Variable  1  2  3  4  5  6  7  8
     :FOR  ${tr}  IN  @{trs}
     \  trend  ${tr}
 
 Short
-    Set Browser Implicit Wait    10s
+    Reload Page
+    Sleep    10s
     @{number}  Set variable  3  4  5  6  7 
     :FOR  ${num}  IN  @{number}
     \  Set Browser Implicit Wait    10s
@@ -83,9 +84,9 @@ Search In Datetime
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Check Values
 
-    Reload Page
 Search In Game Classification
-    
+    Reload Page
+    Sleep    10s
     @{labels}    Set Variable    体育-1  视讯-2  机率-3  彩票-4  棋牌-44
     :FOR    ${label}  IN  @{labels}
     \    Sleep    10s
@@ -103,10 +104,11 @@ Search In Game Classification
     \    Search In Group
     \    Reload Page
     
+    Sleep    3s
     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     # 單選細項
-    Click Element  //label[@for='p视讯-2']
+    Click Element  //label[@for='视讯-2']
     Click Element  //input[@id='视讯-BBIN-1']
     Click Element  //input[@id='视讯-AG-6']
     Click Element  //tab[@id="category"]//button[contains(.,'套用')]
@@ -120,6 +122,8 @@ Search In Game Classification
     trend  2
 
 Search In Game Hall
+    Reload Page
+    Sleep    10s
     # 查BBIN
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Click Element  //li[contains(.,'类型')] 
@@ -160,7 +164,7 @@ Search In Game Hall
     
 Search In Game Name
     Reload Page
-    Sleep  2s
+    Sleep    10s
     Wait Until Page Contains Element  //li[contains(.,'游戏查询')]
     Click Element    //li[contains(.,'游戏查询')]
     Input Text  //input[@class='form-control']    888gpk

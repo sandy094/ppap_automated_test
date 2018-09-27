@@ -12,6 +12,8 @@ ${VALID_PASSWORD}    123456
 ${LOGIN URL}    http://${SERVER}/
 ${WELCOME URL}    http://${SERVER}/welcome.html
 ${ERROR URL}    http://${SERVER}/error.html
+${devname}      Create Dictionary    deviceName=iPhone X
+
 
 # ppap.pmzoe.com/login
 # brdemo

@@ -12,11 +12,12 @@ Check login
 
 Check sidebar link Dashboard navigation is correct
     # 關掉公告訊息提示
-    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Sleep    10s
     # Click Element  //div[@class='modal-content']//div/i
-    Click Element  //div[@class='loader-panel load-xs-go p-2']/i
+    # 關掉日結計算視窗
+    # Click Element  //div[@class='loader-panel load-xs-go p-2']/i
     Check Topbar Link    综合看板
     No Operation
 
@@ -120,11 +121,12 @@ Short
 
 Advanced Search-category
     # 進階搜尋-種類
-    Sleep  2s
+    Reload Page
+    Sleep  10s
     ${CheckValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]
-    @{cates}  Set variable  棋牌  彩票   视讯  体育   机率 
+    @{cates}  Set variable    棋牌     彩票    视讯   体育    机率 
     :FOR  ${cate}  IN  @{cates}
-    \  Sleep    10s
+    \  Sleep    5s
     \  Wait Until Page Contains Element  //div[@class='mt-2 mb-2']/button[contains(.,'${cate}')]
     \  Click Element  //div[@class='mt-2 mb-2']/button[contains(.,'${cate}')]
     \  Click Element  //div[@class='mt-2 text-right']/button

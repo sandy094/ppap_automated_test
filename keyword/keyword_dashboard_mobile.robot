@@ -14,35 +14,104 @@ Quick Search In Mobile
     Sleep    5s
     Capture Page Screenshot
 
-Quick Search In Seanson
-    [Arguments]    ${season}
+Quick Search For Year And Season In Mobile
+    #本年.本季快搜
+    [Arguments]    ${title}
+    Sleep    10s
+    Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
+    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
+    Wait Until Page Contains Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
     Sleep    5s
-    Wait Until Page Contains Element  //div[@class='baDateform btn-group']/div[@class='type_pick_mobile']
-    Click Element    //div[@class='baDateform btn-group']/div[@class='type_pick_mobile']
-    Wait Until Page Contains Element    //div[@class='baDateform btn-group']/div[@class='type_pick_mobile']/div/ul/li[contains(.,'${season}')]
-    Click Element    //div[@class='baDateform btn-group']/div[@class='type_pick_mobile']/div/ul/li[contains(.,'${season}')]
-    Click Element    //div[@class='page-top clearfix animated']
+    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
+    Sleep    10s
+    Click Element    //div[@class='card-header clearfix']
     Capture Page Screenshot
-Check In Four Cards
-    @{fourCards}    Set Variable    损益    有效投注    投注单量    活跃会员
-    :FOR    ${card}    IN    @{fourCards}
-    \     Click Element  //div[@class='description']/div[contains(.,'${card}')]
-    \     Sleep    2s
-    \     Capture Page Screenshot
-    \     Click Element  //div[@class='description']/div[contains(.,'${card}')]
+
+Check Chart In Four card
+    Page Should Contain Element    //div[@id='payoffSums']
+    Click Element  //div[@id='payoffSums']
+    Sleep    3s
+    Page Should Contain Element  //ba-card[@id='payoffSumsContent']//canvas
+    Click Element  //div[@id='payoffSums']
+
+    Page Should Contain Element    //div[@id='commissionableSums']
+    Click Element  //div[@id='commissionableSums']
+    Page Should Contain Element    //ba-card[@id='commissionableSumsContent']//canvas
+    Click Element  //div[@id='commissionableSums']
+
+    Page Should Contain Element    //div[@id='wagersCounts']
+    Click Element    //div[@id='wagersCounts']
+    Page Should Contain Element    //ba-card[@id='wagersCountsContent']//canvas
+    Click Element  //div[@id='wagersCounts']
+
+    Page Should Contain Element    //div[@id='memberCounts']
+    Click Element    //div[@id='memberCounts']
+    Page Should Contain Element    //ba-card[@id='memberCountsContent']//canvas
+    Click Element  //div[@id='memberCounts']
 
 Search In Mounth For Mobile
-    #月份比較
+    #月份比較 
     [Arguments]    ${title}
-    Wait Until Page Contains Element  //h5[@class='m-0']
-    Sleep    3s
-    Click Element  //h5[@class='m-0']
-    Wait Until Page Contains Element  //div[@class='BaDateInput']
+    Wait Until Page Contains Element  //div[@class='card-body']/h5
+    Click Element     //div[@class='card-body']/h5
+    Sleep    5s
+    Mouse Over    //div[@class='selectDate_Click']
     Wait Until Page Contains Element    //div[@class='select_month']/select
     Select From List By Value    //div[@class='select_month']/select    ${title}
-    Sleep    3s
+    Sleep    5s
     Capture Page Screenshot
-    Click Element    //div[@class='page-top clearfix animated']
+
+Count In Seven Days For yesterday Mobile
+    @{cards}    Set Variable    payoffSums    commissionableSums    wagersCounts    memberCounts    
+    :FOR    ${card}    IN    @{cards}
+    \    Page Should Contain Element    //div[@id='${card}']
+    \    Click Element    //div[@id='${card}']
+    \    Wait Until Page Contains Element   //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以时合计")]
+    \    Sleep    5s
+    \    Page Should Contain Element    //ba-card[@class='dashboss_chart ${card}']//canvas
+    \    Capture Page Screenshot
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以日合计")]
+    \    Sleep    5s
+    \    Page Should Contain Element    //ba-card[@class='dashboss_chart ${card}']//canvas
+    \    Capture Page Screenshot
+    \    Click Element    //div[@id='${card}']
+
+Count In A Day For week Mobile
+    @{cards}    Set Variable    payoffSums    commissionableSums    wagersCounts    memberCounts    
+    :FOR    ${card}    IN    @{cards}
+    \    Page Should Contain Element    //div[@id='${card}']
+    \    Click Element    //div[@id='${card}']
+    \    Wait Until Page Contains Element    //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以周合计")]
+    \    Sleep    5s
+    \    Page Should Contain Element    //ba-card[@class='dashboss_chart ${card}']//canvas
+    \    Capture Page Screenshot
+    \    Click Element    //div[@id='${card}']
+
+Count In A Day For months Mobile
+    @{cards}    Set Variable    payoffSums    commissionableSums    wagersCounts    memberCounts
+    :FOR    ${card}    IN    @{cards}
+    \    Page Should Contain Element    //div[@id='${card}']
+    \    Click Element    //div[@id='${card}']
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Wait Until Page Contains Element  //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以周合计")]
+    \    Sleep    5s
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以周合计")]
+    \    Page Should Contain Element    //ba-card[@class='dashboss_chart ${card}']//canvas
+    \    Capture Page Screenshot
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//button[@id='sortMenu']
+    \    Wait Until Page Contains Element  //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以月合计")]
+    \    Click Element    //ba-card[@class='dashboss_chart ${card}']//a[contains(.,"以月合计")]
+    \    Sleep    5s
+    \    Page Should Contain Element    //ba-card[@class='dashboss_chart ${card}']//canvas
+    \    Capture Page Screenshot
+    \    Click Element    //div[@id='${card}']
+
+# 圖表
 
 Check Chart By Classification
     @{elements}    Set Variable    1    2    3    4    5
@@ -60,14 +129,14 @@ Check Chart By Station
 Check Chart In Game Classification
     [Documentation]    Check Dashboard Chart in button
     [Arguments]    ${title}
-    Click Element    //div[@class='row hidden_991']/div/div/div/button[contains(.,'${title}')]
+    Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'${title}')]
     Check Chart By Classification
     Chart Transform
 
 Check Chart In Game Station
     [Documentation]    Check Dashboard Chart in button
     [Arguments]    ${title}
-    Click Element    //div[@class='row hidden_991']/div/div/div/button[contains(.,'${title}')]
+    Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'${title}')]
     Check Chart By Station
     Chart Transform
 
