@@ -59,16 +59,16 @@ Search In Datetime
 *** Keywords ***
 SuiteSetup
     # 手機板
-    ${devname}    Create Dictionary  deviceName=iPhone 6/7/8 Plus
-    ${mobile_emulation}    Create Dictionary    mobileEmulation=${devname}
-    ${chromeoptions}    Evaluate    sys.modules['selenium.webdriver.chrome.options'].Options()     sys, selenium.webdriver.chrome.options
-    ${chromeoptions_experimental_options}    Set Variable    ${mobile_emulation}
-    Call Method    ${chromeoptions}    add_experimental_option     mobileEmulation     ${devname}
-    Create WebDriver    Chrome    chrome_options=${chromeoptions}    
-    Go To    http://ppap.pmzoe.com/login
+    # ${devname}    Create Dictionary  deviceName=iPhone 6/7/8 Plus
+    # ${mobile_emulation}    Create Dictionary    mobileEmulation=${devname}
+    # ${chromeoptions}    Evaluate    sys.modules['selenium.webdriver.chrome.options'].Options()     sys, selenium.webdriver.chrome.options
+    # ${chromeoptions_experimental_options}    Set Variable    ${mobile_emulation}
+    # Call Method    ${chromeoptions}    add_experimental_option     mobileEmulation     ${devname}
+    # Create WebDriver    Chrome    chrome_options=${chromeoptions}    
+    # Go To    http://ppap.pmzoe.com/login
 
-    # Open Browser    ${LOGIN URL}    ${BROWSER}
-    # Set Window Size    414    736
+    Open Browser    ${LOGIN URL}    ${BROWSER}
+    Set Window Size    414    736
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown
