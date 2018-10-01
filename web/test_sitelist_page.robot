@@ -76,7 +76,7 @@ Short
 Search In Datetime 
     Set Browser Implicit Wait    10s
     ${CheckValueA}  Set Variable  0
-    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
+    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     # 判斷是否有更新頁面

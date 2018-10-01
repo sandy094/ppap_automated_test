@@ -64,8 +64,8 @@ Check Trend Is Active
     Sleep    10s
     Execute JavaScript  window.document.documentElement.scrollTo = 0;
     # 排行裡單一站台的趨勢圖(上周的4張卡片)
-    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')]  
-    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')] 
+    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')]  
+    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')] 
 
     Sleep  20s
     Wait Until Page Contains Element   //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
@@ -80,6 +80,16 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot 
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
@@ -91,6 +101,16 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot 
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
@@ -102,6 +122,16 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot 
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
@@ -113,13 +143,23 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Capture Page Screenshot 
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
 Search In Datetime 
     Reload Page
     Sleep    10s
-    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
+    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
 
