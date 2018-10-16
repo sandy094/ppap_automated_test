@@ -48,8 +48,8 @@ Search In Datetime
 *** Keywords ***
 SuiteSetup
     Open Browser    ${LOGIN URL}    ${BROWSER}
-    # Maximize Browser Window
-    Set Window Size    1920  980
+    Maximize Browser Window
+    # Set Window Size    1920  980
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown

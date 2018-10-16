@@ -199,7 +199,7 @@ Check In Group
     Should Match  ${Keywords}    Alpha*
     Capture Page Screenshot
 
-    Click Element  //div[@id="data-table"]//table/tbody/tr[1]/td[2]
+    Click Element  //div[@id="data-table"]//table/tbody/tr[1]/td[2]//div[@class="text-right"]/span
     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
     ${aa}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
     Should Not Be Empty  ${aa}  

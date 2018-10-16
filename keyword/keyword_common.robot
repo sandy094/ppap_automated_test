@@ -4,7 +4,7 @@
 #     Wait Until Page Contains Element    //li[@title='${title}']
 #     Click Element    //li[@title='${title}']
 #     Wait Until Page Contains    //div[@class='${title}']
-   
+
 Chart Transform
     # 長條圖/趨勢圖轉換
     Page Should Contain Element    //div[@class='CHART-AREA']/echarts-ng2/div/div/canvas    limit=2
@@ -66,6 +66,7 @@ Quick Search botton
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')] 
     Sleep    10s
     Capture Page Screenshot
+    
 Search In Month
     #月份比較
     [Arguments]    ${title}
@@ -76,3 +77,4 @@ Search In Month
     Sleep    5s
     Capture Page Screenshot
     Click Element    //div[@class='content-top clearfix']
+

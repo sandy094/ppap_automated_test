@@ -201,7 +201,7 @@ Check Single Chart
 SuiteSetup
     Open Browser    ${LOGIN URL}    ${BROWSER}
     Maximize Browser Window
-    Login Page    ${VALID_USER}    ${VALID_PASSWORD}
+    # Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown
     Run Keyword If Any Tests Failed    Capture Page Screenshot 

@@ -44,6 +44,7 @@ Verify Basic Table Is Active
     Should Not Be Empty  ${C}
 
 Verify Basic Information Table Is Active
+    # 運營資訊
     Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'运营 ')]
     Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'活跃会员')]
     Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'损益')]
@@ -61,8 +62,25 @@ Verify Basic Information Table Is Active
     \  Capture Page Screenshot
 
 Verify SiteRank Value For Basic 
-# 待修改
     Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'站台 ')]
+
+    # 點選損益的趨勢圖
+    @{rowNumbers}  Set Variable    1  2  3  4  5  6  7  8  9  10
+    :FOR  ${rowNumber}  IN  @{rowNumbers}
+    \  Click Element  //table[@id="rank"]/tbody/tr[${rowNumber}]/td[3]
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Sleep  3s
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class='container bg-white test']/div/i
+
+    # 點展開
     Wait Until Page Contains Element  //div[@class="kanban-title"]/div/a/a
     Click Element  //div[@class="kanban-title"]/div/a/a
     @{number}  Set variable  3  4  5  6  7  8
@@ -128,7 +146,7 @@ Verify Basic Information Table For Years
     \  Page Should Contain Element  //div[@id="barChart"]/div[contains(.,'${element}')] 
     \  Capture Page Screenshot
 
-
+# 存提
 Verify Save Information Table Is Active
     Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'存款总额')]
     Page Should Contain Element  //div[@class="allData-item"]/span[contains(.,'首存总额')]
@@ -182,6 +200,9 @@ Verify Save Page Is Active
     Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'站台 ')]
     Page Should Contain Element  //div[@id="rankTable"]
     # 驗證是否有值
+    Verify SiteRank Value For Basic
+    Click Element  //div[@class="kanban-title"]/div/a/a
+    Wait Until Page Contains Element  //div[@id="rankTable"]/table//tr[1]/td[2]
     ${TEST}=  Get Text  //div[@id="rankTable"]/table//tr[1]/td[2]
     Should Not Be Empty  ${TEST}
     Verify SiteRank Value For Save 

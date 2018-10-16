@@ -22,7 +22,10 @@ Check sidebar link Dashboard navigation is correct
     No Operation
 
 Check Search For Basic
-    Set Browser Implicit Wait    10s
+    Set Browser Implicit Wait    10s  
+    Sleep  5s
+
+
     @{days}  Set Variable  上月  昨日  本周  上周  本月  
     :FOR  ${day}  IN  @{days}
     \  Sleep  5s
@@ -77,7 +80,7 @@ Search In Datetime For Save
     Set Browser Implicit Wait    10s
     # Click Element  //a[@class='active-bright']
     # Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
-    @{mounths}    Set Variable    0: 2018年9月  1: 2018年8月  2: 2018年7月  3: 2018年6月  4: 2018年5月  5: 2018年4月  6: 2018年3月  7: 2018年2月  8: 2018年1月  9: 2017年12月  10: 2017年11月  11: 2017年10月  12: 2017年9月
+    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Wait Until Page Contains Element  //a[@class='active-bright']
@@ -152,6 +155,54 @@ Advanced Search-station
     \  ${CheckValueB}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Reload Page
+
+Value Verificarion For Basic 
+    Reload Page
+    Sleep    5s
+    Click Element  //a[@class='active-bright']
+    Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[3]
+    # 損益
+    ${PayoffValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[3]//div[@class='text-right cell-nowrap']/span[1]
+    ${PayoffValueB}=  Get Text  //div[@class='allData-item'][contains(.,'损益')]/div[2]
+    Should Match  ${PayoffValueA}  ${PayoffValueB}
+    # 有效投注
+    ${BettingValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[4]//div[@class='text-right cell-nowrap']/span[1]
+    ${BettingValueB}=  Get Text  //div[@class='allData-item'][contains(.,'有效投注')]/div[2]
+    Should Match  ${BettingValueA}  ${BettingValueB} 
+    # 營收比
+    ${BiteValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[5]//div[@class='text-right cell-nowrap']/span[1]
+    ${BiteValueB}=  Get Text  //div[@class='allData-item'][contains(.,'营收比')]/div[2]
+    Should Match  ${BiteValueA}  ${BiteValueB} 
+    # 投注單量
+    ${WagersValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[6]//div[@class='text-right cell-nowrap']/span[1]
+    ${WagersValueB}=  Get Text  //div[@class='allData-item'][contains(.,'投注单量')]/div[2]
+    Should Match  ${WagersValueA}  ${WagersValueB}
+
+Value Verificarion For Save
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
+    Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,'存提 ')]
+    Sleep  5s
+    Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[3]
+    # 首存總額
+    ${firstValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[2]//div[@class='text-right cell-nowrap']/span[1]
+    ${firstValueB}=  Get Text  //div[@class='allData-item'][contains(.,'首存总额')]/div[2]
+    Should Match  ${firstValueA}  ${firstValueB}
+    # 存款總額 
+    ${saveValueA}=  Get Text   //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[3]//div[@class='text-right cell-nowrap']/span[1]
+    ${saveValueB}=  Get Text   //div[@class='allData-item'][contains(.,'存款总额')]/div[2]
+    Should Match  ${saveValueA}  ${saveValueB}
+    # 取款總額
+    ${withdrawValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[4]//div[@class='text-right cell-nowrap']/span[1]
+    ${withdrawValueB}=  Get Text  //div[@class='allData-item'][contains(.,'取款总额')]/div[2]
+    Should Match  ${WithdrawValueA}  ${WithdrawValueB}  
+    # 存提差額
+    ${differenceValueA}=  Get Text   //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[5]//div[@class='text-right cell-nowrap']/span[1]
+    ${differenceValueB}=  Get Text   //div[@class='allData-item'][contains(.,'存提差额')]/div[2]
+    Should Match  ${differenceValueA}  ${differenceValueB}
+    
+
+
     
 
 *** Keywords ***

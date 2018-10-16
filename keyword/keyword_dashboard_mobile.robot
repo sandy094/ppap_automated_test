@@ -5,28 +5,6 @@ Check Account Page
     Input Account    ${account}
     Input Password    ${password}
 
-Quick Search In Mobile
-    [Documentation]    Click Time Search In Quick Search To Search
-    [Arguments]    ${title}    
-    Wait Until Page Contains Element   //div[@class='baDateform btn-group']/a[contains(.,'${title}')]  
-    Click Link    //div[@class='baDateform btn-group']/a[contains(.,'${title}')] 
-    Page Should Contain Element    //div[@class='pie-chart-item']    limit=4
-    Sleep    5s
-    Capture Page Screenshot
-
-Quick Search For Year And Season In Mobile
-    #本年.本季快搜
-    [Arguments]    ${title}
-    Sleep    10s
-    Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Wait Until Page Contains Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
-    Sleep    5s
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
-    Sleep    10s
-    Click Element    //div[@class='card-header clearfix']
-    Capture Page Screenshot
-
 Check Chart In Four card
     Page Should Contain Element    //div[@id='payoffSums']
     Click Element  //div[@id='payoffSums']
@@ -48,18 +26,6 @@ Check Chart In Four card
     Click Element    //div[@id='memberCounts']
     Page Should Contain Element    //ba-card[@id='memberCountsContent']//canvas
     Click Element  //div[@id='memberCounts']
-
-Search In Mounth For Mobile
-    #月份比較 
-    [Arguments]    ${title}
-    Wait Until Page Contains Element  //div[@class='card-body']/h5
-    Click Element     //div[@class='card-body']/h5
-    Sleep    5s
-    Mouse Over    //div[@class='selectDate_Click']
-    Wait Until Page Contains Element    //div[@class='select_month']/select
-    Select From List By Value    //div[@class='select_month']/select    ${title}
-    Sleep    5s
-    Capture Page Screenshot
 
 Count In Seven Days For yesterday Mobile
     @{cards}    Set Variable    payoffSums    commissionableSums    wagersCounts    memberCounts    
@@ -110,6 +76,41 @@ Count In A Day For months Mobile
     \    Page Should Contain Element    //ba-card[@class='dashboss_chart ${card}']//canvas
     \    Capture Page Screenshot
     \    Click Element    //div[@id='${card}']
+
+Quick Search In Mobile
+    [Documentation]    Click Time Search In Quick Search To Search
+    [Arguments]    ${title}    
+    Wait Until Page Contains Element   //div[@class='baDateform btn-group']/a[contains(.,'${title}')]  
+    Click Link    //div[@class='baDateform btn-group']/a[contains(.,'${title}')] 
+    Page Should Contain Element    //div[@class='pie-chart-item']    limit=4
+    Sleep    5s
+    Capture Page Screenshot
+
+Quick Search For Year And Season In Mobile
+    #本年.本季快搜
+    [Arguments]    ${title}
+    Sleep    10s
+    Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
+    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
+    Wait Until Page Contains Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
+    Sleep    5s
+    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
+    Sleep    10s
+    Click Element    //div[@class='card-header clearfix']
+    Capture Page Screenshot
+
+Search In Mounth For Mobile
+    #月份比較 
+    [Arguments]    ${title}
+    Wait Until Page Contains Element  //div[@class='card-body']/h5
+    Click Element     //div[@class='card-body']/h5
+    Sleep    5s
+    Mouse Over    //div[@class='selectDate_Click']
+    Wait Until Page Contains Element    //div[@class='select_month']/select
+    Select From List By Value    //div[@class='select_month']/select    ${title}
+    Sleep    5s
+    Capture Page Screenshot
+
 
 # 圖表
 

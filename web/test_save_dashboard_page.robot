@@ -44,7 +44,7 @@ Click Search
     \  Check Chart In Four card
     \  Count In A Day For months
 
-    @{seasons}  Set Variable  本年  去年  本季  上季
+    @{seasons}  Set Variable  本年  本季  上季
     :FOR  ${season}  IN  @{seasons}
     \  Quick Search In year and season    ${season}
     \  Check Chart In Four card
@@ -97,7 +97,7 @@ Check Trend
 
 Search In Datetime 
     Sleep    10s
-    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
+    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
 
