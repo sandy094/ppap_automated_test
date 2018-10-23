@@ -42,7 +42,9 @@ Click Search
     
 Check Trend 
     # 趨勢
-    @{trs}  Set Variable  1  2  3  4  5  6  7  8
+    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本周')]  
+    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本周')] 
+    @{trs}  Set Variable  1  2  3  
     :FOR  ${tr}  IN  @{trs}
     \  trend  ${tr}
 

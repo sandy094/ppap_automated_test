@@ -25,6 +25,11 @@ Check Search For Basic
     Set Browser Implicit Wait    10s  
     Sleep  5s
 
+    Click Element  //a[@class='active-bright']
+    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上月')]  
+    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上月')] 
+    Sleep    10s
+    Verify SiteRank Value For Basic
 
     @{days}  Set Variable  上月  昨日  本周  上周  本月  
     :FOR  ${day}  IN  @{days}

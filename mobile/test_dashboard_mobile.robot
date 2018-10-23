@@ -68,11 +68,11 @@ Click Search
 #     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
 #     \  Count In A Day For months Mobile
 
-Check Trend Is Active
+Check Trend Is Active-1
 # 待改
     # Reload Page
     Sleep    10s
-    Execute JavaScript  window.document.documentElement.scrollTo = 0;
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
     # 排行裡單一站台的趨勢圖(上周的4張卡片)
     Wait Until Element Is Visible   //div[@class="baDateform btn-group"]/a[contains(.,'上周')]  
     Click Link    //div[@class="baDateform btn-group"]/a[contains(.,'上周')] 
@@ -94,17 +94,21 @@ Check Trend Is Active
     \  Capture Page Screenshot
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
+Check Trend Is Active-2
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Click Element  //div[@id='commissionableSums']
+    Wait Until Page Contains Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
 
-#     Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
-#     @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
-#     :FOR  ${row}  IN  @{rows}
-#     \  Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//tbody/tr[${row}]/td[3]/div/small
-#     \  Sleep  5s
-#     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
-#     \  Mouse Over  //div[@class='container bg-white test']//canvas
-#     \  Capture Page Screenshot
-#     \  Click Element  //div[@class="container bg-white test"]/div/i
-#     \  Sleep  3s
+    Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
+    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    :FOR  ${row}  IN  @{rows}
+    \  Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//tbody/tr[${row}]/td[3]/div/small
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class="container bg-white test"]/div/i
+    \  Sleep  3s
 
 #     Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//div/a[contains(.,'排行')]
 #     @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
@@ -170,17 +174,17 @@ Check Trend Is Active
 
 *** Keywords ***
 SuiteSetup
- # 手機板
-    # ${devname}    Create Dictionary  deviceName=iPhone 6/7/8 Plus
-    # ${mobile_emulation}    Create Dictionary    mobileEmulation=${devname}
-    # ${chromeoptions}    Evaluate    sys.modules['selenium.webdriver.chrome.options'].Options()     sys, selenium.webdriver.chrome.options
-    # ${chromeoptions_experimental_options}    Set Variable    ${mobile_emulation}
-    # Call Method    ${chromeoptions}    add_experimental_option     mobileEmulation     ${devname}
-    # Create WebDriver    Chrome    chrome_options=${chromeoptions}    
-    # Go To    http://ppap.pmzoe.com/login
+  # 手機板
+    ${devname}    Create Dictionary  deviceName=iPhone 6/7/8 Plus
+    ${mobile_emulation}    Create Dictionary    mobileEmulation=${devname}
+    ${chromeoptions}    Evaluate    sys.modules['selenium.webdriver.chrome.options'].Options()     sys, selenium.webdriver.chrome.options
+    ${chromeoptions_experimental_options}    Set Variable    ${mobile_emulation}
+    Call Method    ${chromeoptions}    add_experimental_option     mobileEmulation     ${devname}
+    Create WebDriver    Chrome    chrome_options=${chromeoptions}    
+    Go To    http://ppap.pmzoe.com/login
 
-    Open Browser    ${LOGIN URL}    ${BROWSER}
-    Set Window Size    414    736
+    # Open Browser    ${LOGIN URL}    ${BROWSER}
+    # Set Window Size    414    736
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown

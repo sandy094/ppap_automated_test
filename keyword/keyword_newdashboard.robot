@@ -71,13 +71,13 @@ Verify SiteRank Value For Basic
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Mouse Over  //div[@class='container bg-white test']//canvas
-    \  Capture Page Screenshot
+    \  Data Table Check Trend Of List
     \  Click Element  //div[@id='chart']/div/div/a[2]
     \  Sleep  10s
     \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
     \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
     \  Should Not Be Empty  ${testValue}
-    \  Capture Page Screenshot
+    \  Data Table Check Game Of List
     \  Click Element  //div[@class='container bg-white test']/div/i
 
     # 點展開

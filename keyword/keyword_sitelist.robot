@@ -43,16 +43,29 @@ trend
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
-
+    
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
+    \  Click Element  //div[@class='drop-select']/ul/li[1]
+    # 時
     \  Click Element  //div[@class="modal-content"]//div/span[2]/a
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
-    
+    # 日
     \  Click Element  //div[@class="modal-content"]//div/span[3]/a
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
-    \  Click Element  //div[@class="modal-content"]//div/i
+    # 遊戲頁籤
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
+    \  Click Element  //div[@class='container bg-white test']/div/i
+

@@ -32,6 +32,33 @@ Click Topbar Link
     Wait Until Page Contains Element    //a[@class='borderr_1px'][contains(.,'${title}')]
     Click Element    //a[@class='borderr_1px'][contains(.,'${title}')]
 
+Data Table Check Trend Of List
+# 趨勢圖裡的損益查詢 
+    @{values}    Set Variable  2  3  4  5  
+    :FOR  ${value}  IN  @{values} 
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[${value}]
+    \  Click Element  //div[@class='drop-select']/ul/li[${value}]
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+
+Data Table Check Game Of List
+# 遊戲頁籤的損益查詢
+
+    ${testValueA}  Set Variable    0
+    @{values}    Set Variable  2  3  4  5  
+    :FOR  ${value}  IN  @{values} 
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[${value}]
+    \  Click Element  //div[@class='drop-select']/ul/li[${value}]
+    \  Sleep  7s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValueB}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Match  ${testValueA}  ${testValueB}
+    
+    
 Input Account
     [Arguments]    ${account}
     Wait Until Page Contains Element    //input[@id="inputEmail3"]

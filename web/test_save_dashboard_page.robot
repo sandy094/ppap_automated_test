@@ -55,7 +55,7 @@ Check Trend
     # 排行裡單一站台的趨勢圖(本周的4張卡片)
     Quick Search botton    本周
     Click Element  //ba-card[@id='firstDepositAmountContent']//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  
     :FOR  ${row}  IN  @{rows}
     \  Wait Until Page Contains Element  //ba-card[@id='firstDepositAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Click Element  //ba-card[@id='firstDepositAmountContent']//tbody/tr[${row}]/td[3]/div/small
@@ -63,30 +63,51 @@ Check Trend
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
     Click Element  //ba-card[@id='depositAmountContent']//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@id='depositAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
     Click Element  //ba-card[@id='withdrawAmountContent']//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4 
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@id='withdrawAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
     \  Click Element  //div[@class="container bg-white test"]/div/i
 
     Click Element  //ba-card[@id='differenceAmountContent']//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@id='differenceAmountContent']//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  2s

@@ -63,7 +63,7 @@ Check Trend Is Active
     # Reload Page
     Sleep    10s
     Execute JavaScript  window.document.documentElement.scrollTo = 0;
-    # 排行裡單一站台的趨勢圖(上周的4張卡片)
+    # 排行裡單一站台的趨勢圖(昨日的4張卡片)
     Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')]  
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')] 
 
@@ -72,7 +72,7 @@ Check Trend Is Active
     Sleep  5s
     Click Element  //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
 
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  5  
     :FOR  ${row}  IN  @{rows}
     \  Wait Until Page Contains Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
     \  Click Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
@@ -80,27 +80,47 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
+    \  Click Element  //div[@class='drop-select']/ul/li[1]  
+
     \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
-    \  Sleep  3s
+    \  Sleep  5s
     \  Capture Page Screenshot
     \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot 
+    
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
+
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
     Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  5  
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
+    \  Click Element  //div[@class='drop-select']/ul/li[1]
+
     \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
@@ -111,17 +131,31 @@ Check Trend Is Active
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot 
+
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
+
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
     Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  5  
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
+    \  Click Element  //div[@class='drop-select']/ul/li[1]
+
     \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
@@ -132,17 +166,31 @@ Check Trend Is Active
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot 
+
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
+
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
     Click Element  //ba-card[@class="dashboss_chart memberCounts"]//div/a[contains(.,'排行')]
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  5  
     :FOR  ${row}  IN  @{rows}
     \  Click Element  //ba-card[@class="dashboss_chart memberCounts"]//tbody/tr[${row}]/td[3]/div/small
     \  Sleep  5s
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Capture Page Screenshot
+
+    \  Data Table Check Trend Of List
+    \  Click Element  //div[@class='drop-select']
+    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
+    \  Click Element  //div[@class='drop-select']/ul/li[1]
+
     \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
@@ -153,6 +201,14 @@ Check Trend Is Active
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot 
+
+    \  Click Element  //div[@id='chart']/div/div/a[2]
+    \  Sleep  10s
+    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Should Not Be Empty  ${testValue}
+    \  Data Table Check Game Of List
+
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
