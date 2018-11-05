@@ -8,7 +8,7 @@ Check Account Page
 Check Game Information Link
     [Documentation]    Click operational information link to check link is correct 
     [Arguments]    ${title}    
-    Click Sidebar Link    ${title}
+    Click Topbar Link    ${title}
  
 Check Topbar Link
     [Arguments]    ${title}
@@ -22,11 +22,11 @@ Verify Page Title Is Correct
 
 Check Values
 # 寫IF判斷
-    @{cols}  Set Variable  2  3  4  5  6 
+    @{cols}  Set Variable  3  4  5  6  7 
     :FOR  ${col}  IN  @{cols}
-    \  Wait Until Page Contains Element  //div[@class='inner']//table/tbody/tr[1]/td[${col}]
-    \  ${value}=  Get Text  //div[@class='inner']//table/tbody/tr[1]/td[${col}]
-    \  Should Not Be Empty  ${value}
+    \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[1]/td[${col}]
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]
+    \  Should Not Be Empty  ${valueA}  
 
 Short
     Sleep  5s

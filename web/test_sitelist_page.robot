@@ -42,8 +42,8 @@ Click Search
     
 Check Trend 
     # 趨勢
-    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本周')]  
-    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本周')] 
+    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')]  
+    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'昨日')] 
     @{trs}  Set Variable  1  2  3  
     :FOR  ${tr}  IN  @{trs}
     \  trend  ${tr}
@@ -78,7 +78,7 @@ Short
 Search In Datetime 
     Set Browser Implicit Wait    10s
     ${CheckValueA}  Set Variable  0
-    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
+    @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     # 判斷是否有更新頁面
@@ -174,7 +174,7 @@ Search In Game Name
     Click Element  //button[@id='ngb-typeahead-0-0']
     Wait Until Page Contains Element  //div[@class='show_pick_left']
     Click Element  //div[@class='show_pick_left']
-    Set Browser Implicit Wait    10s
+    Sleep    10s
     Wait Until Page Contains Element  //div[@class='inner']//table/tbody/tr[1]/td[1]  
     ${B}=  Get Text  //div[@class='inner']//table/tbody/tr[1]/td[1]
     Should Not Be Empty  ${B}

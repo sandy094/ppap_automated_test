@@ -18,7 +18,7 @@ Check sidebar link Dashboard navigation is correct
     Set Browser Implicit Wait    20s
     Click Sidebar Link    运营看板
     Click Topbar Link     站台列表
-    Click Topbar Link     游戏占比
+    Click Topbar Link     游戏解析
     No Operation
 
 Click Search
@@ -215,10 +215,10 @@ Check Trend Is Active
 Search In Datetime 
     Reload Page
     Sleep    10s
-    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
+    @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
-
+    
 Check All Chart Is Active
     Reload Page
     Sleep    20s
@@ -247,6 +247,20 @@ Check Single Chart
     Sleep  5s
     Capture Page Screenshot
 
+Search In Trend
+    Reload Page
+    Sleep    10s
+    Click Element    //ba-card[@class='dashboss_chart payoffSums']//button[@id='sortMenu']
+    Click Element    //ba-card[@class='dashboss_chart payoffSums']//li/a[contains(.,'趋势统计')]
+    Sleep  10s
+    Wait Until Page Contains Element    //div[@class="col-12 mt-2 pb-4 itrend-chart text-center"]//div/canvas
+    Mouse Over  //div[@class="col-12 mt-2 pb-4 itrend-chart text-center"]//div/canvas
+    Capture Page Screenshot
+    Click Element  //button[@class="borderr_1px"][contains(.,'以时合计')]
+    Sleep  15s
+    Wait Until Page Contains Element    //div[@class="col-12 mt-2 pb-4 itrend-chart text-center"]//div/canvas
+    Mouse Over  //div[@class="col-12 mt-2 pb-4 itrend-chart text-center"]//div/canvas
+    Capture Page Screenshot
 
 # Check sidebar link Verifyaccount navigation is correct
     # Check Verifyaccount Information Link    对帐资讯    

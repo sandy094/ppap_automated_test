@@ -84,7 +84,7 @@ Check Trend Is Active-1
     Sleep  20s
     Click Element  //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
 
-    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10  11 
+    @{rows}  Set Variable  2  3  4  5  6  7  8  9  10   
     :FOR  ${row}  IN  @{rows}
     \  Wait Until Page Contains Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
     \  Click Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
@@ -96,6 +96,7 @@ Check Trend Is Active-1
     \  Sleep  3s
 Check Trend Is Active-2
     Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Click Element  //div[@id='payoffSums']
     Click Element  //div[@id='commissionableSums']
     Wait Until Page Contains Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
 
@@ -174,7 +175,7 @@ Check Trend Is Active-2
 
 *** Keywords ***
 SuiteSetup
-  # 手機板
+    # 手機板
     ${devname}    Create Dictionary  deviceName=iPhone 6/7/8 Plus
     ${mobile_emulation}    Create Dictionary    mobileEmulation=${devname}
     ${chromeoptions}    Evaluate    sys.modules['selenium.webdriver.chrome.options'].Options()     sys, selenium.webdriver.chrome.options

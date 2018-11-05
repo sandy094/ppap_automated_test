@@ -23,13 +23,7 @@ Check sidebar link Dashboard navigation is correct
 
 Check Search For Basic
     Set Browser Implicit Wait    10s  
-    Sleep  5s
-
-    Click Element  //a[@class='active-bright']
-    Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上月')]  
-    Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上月')] 
-    Sleep    10s
-    Verify SiteRank Value For Basic
+    Sleep  10s
 
     @{days}  Set Variable  上月  昨日  本周  上周  本月  
     :FOR  ${day}  IN  @{days}
@@ -70,7 +64,7 @@ Check Save Search
 
 Search In Datetime For Basic
     Set Browser Implicit Wait    10s
-    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
+    @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Click Element  //a[@class='active-bright']
@@ -85,7 +79,7 @@ Search In Datetime For Save
     Set Browser Implicit Wait    10s
     # Click Element  //a[@class='active-bright']
     # Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
-    @{mounths}    Set Variable    0: 2018年10月  1: 2018年9月  2: 2018年8月  3: 2018年7月  4: 2018年6月  5: 2018年5月  6: 2018年4月  7: 2018年3月  8: 2018年2月  9: 2018年1月  10: 2017年12月  11: 2017年11月  12: 2017年10月
+    @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Wait Until Page Contains Element  //a[@class='active-bright']
@@ -124,14 +118,14 @@ Short
     \  ${ValueB}=    Remove String    ${ValueB}    ,
     \  Convert To Integer    ${ValueA}
     \  Convert To Integer    ${ValueB}
-    \  Should Be True  ${ValueA}>${ValueB}
+    Should Be True  ${ValueA}>=${ValueB}
     Capture Page Screenshot
 
 Advanced Search-category
     # 進階搜尋-種類
     Reload Page
     Sleep  10s
-    ${CheckValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]
+    ${CheckValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[3]
     @{cates}  Set variable    棋牌     彩票    视讯   体育    机率 
     :FOR  ${cate}  IN  @{cates}
     \  Sleep    5s
@@ -141,7 +135,7 @@ Advanced Search-category
     \  Page Should Contain Element  //div[@class='kanban-title']/div[contains(.,'${cate}')]
     \  Sleep  3s
     \  Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]  10s
-    \  ${CheckValueB}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]
+    \  ${CheckValueB}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[3]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Reload Page
 
@@ -149,7 +143,7 @@ Advanced Search-station
     # 進階搜尋-娛樂城
     Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]  10s
     ${CheckValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]
-    @{cates}  Set variable   AG   BBIN   HB  IG   NE 
+    @{cates}  Set variable   AG   BB   FG   
     :FOR  ${cate}  IN  @{cates}
     \  Sleep    10s
     \  Wait Until Page Contains Element  //div[@class='fast-city-select-panel']/button[contains(.,'${cate}')]
@@ -165,7 +159,7 @@ Value Verificarion For Basic
     Reload Page
     Sleep    5s
     Click Element  //a[@class='active-bright']
-    Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[3]
+    Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[3]
     # 損益
     ${PayoffValueA}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[2]/td[3]//div[@class='text-right cell-nowrap']/span[1]
     ${PayoffValueB}=  Get Text  //div[@class='allData-item'][contains(.,'损益')]/div[2]
