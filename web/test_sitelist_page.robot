@@ -111,7 +111,7 @@ Search In Game Classification
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     # 單選細項
     Click Element  //label[@for='视讯-2']
-    Click Element  //input[@id='视讯-BBIN-1']
+    Click Element  //input[@id='视讯-BB-1']
     Click Element  //input[@id='视讯-AG-6']
     Click Element  //tab[@id="category"]//button[contains(.,'套用')]
     Sleep    5s
@@ -130,7 +130,7 @@ Search In Game Hall
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Click Element  //li[contains(.,'类型')] 
 
-    Click Element  //label[@for='BBIN-1']
+    Click Element  //label[@for='BB-1']
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
@@ -140,7 +140,7 @@ Search In Game Hall
 
     # 查BBIN-彩票
     ${CheckValueA}=    Set Variable    ${CheckValueB}
-    Click Element  //input[@id='BBIN-彩票-4']
+    Click Element  //input[@id='BB-彩票-4']
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面

@@ -63,7 +63,10 @@ Check Save Search
     \  Verify Save Page Is Active
 
 Search In Datetime For Basic
+    Reload Page
+    Sleep  5s
     Set Browser Implicit Wait    10s
+    Click Element  //a[@class='active-bright']
     @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
@@ -76,8 +79,10 @@ Search In Datetime For Basic
 
 Search In Datetime For Save
     # 存提
+    Reload Page
+    Sleep  5s
     Set Browser Implicit Wait    10s
-    # Click Element  //a[@class='active-bright']
+    Click Element  //a[@class='active-bright']
     # Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
     @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}

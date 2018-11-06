@@ -10,21 +10,25 @@ Check Chart In Four card
     Click Element  //div[@id='payoffSums']
     Sleep    3s
     Page Should Contain Element  //ba-card[@id='payoffSumsContent']//canvas
+    Capture Page Screenshot
     Click Element  //div[@id='payoffSums']
 
     Page Should Contain Element    //div[@id='commissionableSums']
     Click Element  //div[@id='commissionableSums']
     Page Should Contain Element    //ba-card[@id='commissionableSumsContent']//canvas
+    Capture Page Screenshot
     Click Element  //div[@id='commissionableSums']
 
     Page Should Contain Element    //div[@id='wagersCounts']
     Click Element    //div[@id='wagersCounts']
     Page Should Contain Element    //ba-card[@id='wagersCountsContent']//canvas
+    Capture Page Screenshot
     Click Element  //div[@id='wagersCounts']
 
     Page Should Contain Element    //div[@id='memberCounts']
     Click Element    //div[@id='memberCounts']
     Page Should Contain Element    //ba-card[@id='memberCountsContent']//canvas
+    Capture Page Screenshot
     Click Element  //div[@id='memberCounts']
 
 Count In Seven Days For yesterday Mobile
@@ -131,8 +135,21 @@ Check Chart In Game Classification
     [Documentation]    Check Dashboard Chart in button
     [Arguments]    ${title}
     Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'${title}')]
-    Check Chart By Classification
-    Chart Transform
+    Click Element    //div[@class='trendIcon icon-Circles ml-4 mt-4']
+    Sleep  5s
+    Capture Page Screenshot
+    Execute JavaScript    window.document.documentElement.scrollTop = 700;
+    Sleep  5s
+    Wait Until Page Contains Element    //table[@class='table dataTable']//tbody/tr[1]/td/a/i
+    Click Element  //table[@class='table dataTable']//tbody/tr[1]/td/a/i
+    Sleep  5s
+    Wait Until Page Contains Element    //table[@class='table table-hover']//tbody/tr[1]/td/div
+    Click Element  //table[@class='table table-hover']//tbody/tr[1]/td/div
+    Execute JavaScript    window.document.documentElement.scrollTop = 350;
+    Sleep  5s
+    Capture Page Screenshot
+    # Check Chart By Classification
+    # Chart Transform
 
 Check Chart In Game Station
     [Documentation]    Check Dashboard Chart in button

@@ -249,6 +249,7 @@ Check Single Chart
 
 Search In Trend
     Reload Page
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
     Sleep    10s
     Click Element    //ba-card[@class='dashboss_chart payoffSums']//button[@id='sortMenu']
     Click Element    //ba-card[@class='dashboss_chart payoffSums']//li/a[contains(.,'趋势统计')]
