@@ -22,7 +22,7 @@ Verify Page Title Is Correct
 
 Check Values
 # 寫IF判斷
-    @{cols}  Set Variable  3  4  5  6  7 
+    @{cols}  Set Variable  3  4  5  6   
     :FOR  ${col}  IN  @{cols}
     \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[1]/td[${col}]
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]

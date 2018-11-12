@@ -26,10 +26,12 @@ Count In A Day For Today
     \    Capture Page Screenshot
 
 Count In Seven Days For yesterday
-    @{cards}    Set Variable    firstDepositAmountContent    depositAmountContent    withdrawAmountContent    differenceAmountContent    
+    @{cards}    Set Variable    differenceAmountContent    withdrawAmountContent    depositAmountContent    firstDepositAmountContent                
     :FOR    ${card}    IN    @{cards}
-    \    Wait Until Page Contains Element   //ba-card[@id='${card}']//button[@id='sortMenu']
+    \    Sleep    5s
+    \    Wait Until Page Contains Element    //ba-card[@id='${card}']//button[@id='sortMenu']
     \    Click Element    //ba-card[@id='${card}']//button[@id='sortMenu']
+    \    Wait Until Page Contains Element    //ba-card[@id='${card}']//a[contains(.,"以时合计")]
     \    Click Element    //ba-card[@id='${card}']//a[contains(.,"以时合计")]
     \    Sleep    5s
     \    Page Should Contain Element    //ba-card[@id='${card}']//canvas

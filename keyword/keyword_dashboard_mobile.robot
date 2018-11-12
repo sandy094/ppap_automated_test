@@ -118,20 +118,16 @@ Search In Mounth For Mobile
 
 # 圖表
 
-Check Chart By Classification
+Check Chart By Option
     @{elements}    Set Variable    1    2    3    4    5
     :FOR    ${i}    IN    @{elements}
-    \    Select From List By Value    //select[@class='form-control noborder borderr_1px']    ${i}
+    \    Select From List By Value    //select[@class='form-control noborder']    ${i}
     \    Sleep    10s
-    \    List In Right Way
+    \    Click Element    //div[@class='trendIcon icon-Circles ml-4 mt-4']
+    \    Sleep  5s
+    \    Capture Page Screenshot
 
-Check Chart By Station
-    @{elements}    Set Variable    1    2    3    4    5
-    :FOR    ${i}    IN    @{elements}
-    \    Select From List By Value    //select[@class='form-control noborder borderr_1px']    ${i}
-    \    Sleep    10s
-
-Check Chart In Game Classification
+Check Chart In Mobile
     [Documentation]    Check Dashboard Chart in button
     [Arguments]    ${title}
     Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'${title}')]
@@ -140,23 +136,29 @@ Check Chart In Game Classification
     Capture Page Screenshot
     Execute JavaScript    window.document.documentElement.scrollTop = 700;
     Sleep  5s
+    # 點選第一類
     Wait Until Page Contains Element    //table[@class='table dataTable']//tbody/tr[1]/td/a/i
     Click Element  //table[@class='table dataTable']//tbody/tr[1]/td/a/i
     Sleep  5s
     Wait Until Page Contains Element    //table[@class='table table-hover']//tbody/tr[1]/td/div
-    Click Element  //table[@class='table table-hover']//tbody/tr[1]/td/div
+    Click Element    //table[@class='table table-hover']//tbody/tr[1]/td/div
+    Sleep  3s
+    Click Element    //table[@class='table table-hover']//tbody/tr[2]/td/div
     Execute JavaScript    window.document.documentElement.scrollTop = 350;
     Sleep  5s
     Capture Page Screenshot
-    # Check Chart By Classification
-    # Chart Transform
+    # 圖表放大
+    Click Element    //div[@class='barIcon icon-Circles ml-3 mt-4']/i[@class='ion ion-android-open']
+    Sleep  3s
+    Capture Page Screenshot
+    Click Element    //div[@id='chart']/div/i
+    # 長條圖
+    Click Element    //div[@class='barIcon icon-Circles ml-3 mt-4']/i[@class='fa fa-bar-chart']
+    Sleep  3s
+    Capture Page Screenshot
 
-Check Chart In Game Station
-    [Documentation]    Check Dashboard Chart in button
-    [Arguments]    ${title}
-    Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'${title}')]
-    Check Chart By Station
-    Chart Transform
+    Check Chart By Option
+    # Chart Transform
 
 Check Chart When Click list In Right
     [Documentation]    When Click list in Right
@@ -177,13 +179,4 @@ Check Sidebar Link And Verify Page Title
     Click Sidebar Link    ${title}
     Wait Until Page Contains Element    //a[contains(.,'${title}')]
 
-List In Right Way
-    @{categorys}    Set Variable    機率    視訊    彩票    體育
-    :FOR    ${category}    IN    @{categorys}
-    \    Wait Until Page Contains Element    //div[@class="table-responsive"]//tr[contains(.,"${category}")]
-    \    Sleep    8s
-    \    Click Element    //div[@class="table-responsive"]//td[contains(.,"${category}")]
-    \    Sleep    5s
-    \    Page Should Contain Element    //table[@class='table dataTable']
-    \    Chart Transform
     
