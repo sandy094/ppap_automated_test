@@ -22,6 +22,7 @@ Click Search
     :FOR  ${day}  IN  @{days}
     \  Quick Search botton    ${day}
     \  Check Value Is Active
+    \  Sleep    5s
     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[3]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
@@ -31,6 +32,7 @@ Click Search
     :FOR  ${year}  IN  @{years}
     \  Quick Search In Year And Season    ${year}
     \  Check Value Is Active
+    \  Sleep    40s
     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
@@ -41,6 +43,7 @@ Search In Datetime
     @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
+    \  Sleep    5s
     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}

@@ -20,7 +20,8 @@ Check Value Is Active
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[3][contains(.,'有效投注')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[4][contains(.,'投注单量')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[5][contains(.,'活跃会员')]
-    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'营收比')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'游戏人次')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[7][contains(.,'营收比')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
 

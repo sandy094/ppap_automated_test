@@ -20,7 +20,6 @@ Check sidebar link Operational navigation is correct
 
 # driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 Click Search
-    # Click Element  //div[@class='loader-panel load-xs-go p-2']/i
     Set Browser Implicit Wait    10s
     ${CheckValueA}  Set Variable  0
     @{days}  Set Variable  今日  昨日  本周  上周  本月  上月
@@ -110,9 +109,9 @@ Search In Game Classification
     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     # 單選細項
-    Click Element  //label[@for='视讯-2']
-    Click Element  //input[@id='视讯-BB-1']
-    Click Element  //input[@id='视讯-AG-6']
+    Click Element  //label[@for='p视讯-2']
+    Click Element  //label[@for='视讯-BB-1']/label
+    Click Element  //label[@for='视讯-AG-6']/label
     Click Element  //tab[@id="category"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
@@ -130,7 +129,7 @@ Search In Game Hall
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Click Element  //li[contains(.,'类型')] 
 
-    Click Element  //label[@for='BB-1']
+    Click Element  //label[@for='pBB-1']/div/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
@@ -140,7 +139,8 @@ Search In Game Hall
 
     # 查BBIN-彩票
     ${CheckValueA}=    Set Variable    ${CheckValueB}
-    Click Element  //input[@id='BB-彩票-4']
+    Click Element  //label[@for='pBB-1']/div/label
+    Click Element  //label[@for='BB-彩票-4']/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
@@ -155,7 +155,7 @@ Search In Game Hall
     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Click Element  //label[@for='pAG-6']
-    Click Element  //input[@id='AG-视讯-16']
+    Click Element  //label[@for='AG-视讯-16']/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
@@ -164,48 +164,48 @@ Search In Game Hall
     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
     Capture Page Screenshot
     
-Search In Game Name
-    Reload Page
-    Sleep    10s
-    Wait Until Page Contains Element  //li[contains(.,'游戏查询')]
-    Click Element    //li[contains(.,'游戏查询')]
-    Input Text  //input[@class='form-control']    888gpk
-    Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-0']
-    Click Element  //button[@id='ngb-typeahead-0-0']
-    Wait Until Page Contains Element  //div[@class='show_pick_left']
-    Click Element  //div[@class='show_pick_left']
-    Sleep    10s
-    Wait Until Page Contains Element  //div[@class='inner']//table/tbody/tr[1]/td[1]  
-    ${B}=  Get Text  //div[@class='inner']//table/tbody/tr[1]/td[1]
-    Should Not Be Empty  ${B}
-    Capture Page Screenshot
+# Search In Game Name
+#     Reload Page
+#     Sleep    10s
+#     Wait Until Page Contains Element  //li[contains(.,'游戏查询')]
+#     Click Element    //li[contains(.,'游戏查询')]
+#     Input Text  //input[@class='form-control']    足球之巅H5
+#     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-0']
+#     Click Element  //button[@id='ngb-typeahead-0-0']
+#     Wait Until Page Contains Element  //div[@class='show_pick_left']
+#     Click Element  //div[@class='show_pick_left']
+#     Sleep    10s
+#     Wait Until Page Contains Element  //div[@class='inner']//table/tbody/tr[1]/td[1]  
+#     ${B}=  Get Text  //div[@class='inner']//table/tbody/tr[1]/td[1]
+#     Should Not Be Empty  ${B}
+#     Capture Page Screenshot
 
-Search In Keywords
-    Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
-    Click Element  //input[@class='form-control with-primary-addon']
-    Input Text  //input[@class='form-control with-primary-addon']    alpha
-    Set Browser Implicit Wait    5s
-    ${B}=    Get Text    //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
-    Should Match    ${B}  Alpha*
-    Capture Page Screenshot
+# Search In Keywords
+#     Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
+#     Click Element  //input[@class='form-control with-primary-addon']
+#     Input Text  //input[@class='form-control with-primary-addon']    alpha
+#     Set Browser Implicit Wait    5s
+#     ${B}=    Get Text    //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
+#     Should Match    ${B}  Alpha*
+#     Capture Page Screenshot
 
-    Clear Element Text  //input[@class='form-control with-primary-addon']
-Check In Group
-    Wait Until Page Contains Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
-    Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
-    Sleep    10s
-    Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
-    Click Element  //input[@class='form-control with-primary-addon']
-    Input Text  //input[@class='form-control with-primary-addon']    alpha
-    ${Keywords}=  Get Text  //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
-    Should Match  ${Keywords}    Alpha*
-    Capture Page Screenshot
+#     Clear Element Text  //input[@class='form-control with-primary-addon']
+# Check In Group
+#     Wait Until Page Contains Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
+#     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
+#     Sleep    10s
+#     Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
+#     Click Element  //input[@class='form-control with-primary-addon']
+#     Input Text  //input[@class='form-control with-primary-addon']    alpha
+#     ${Keywords}=  Get Text  //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
+#     Should Match  ${Keywords}    Alpha*
+#     Capture Page Screenshot
 
-    Click Element  //div[@id="data-table"]//table/tbody/tr[1]/td[2]//div[@class="text-right"]/span
-    Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
-    ${aa}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
-    Should Not Be Empty  ${aa}  
-    Capture Page Screenshot
+#     Click Element  //div[@id="data-table"]//table/tbody/tr[1]/td[2]//div[@class="text-right"]/span
+#     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
+#     ${aa}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
+#     Should Not Be Empty  ${aa}  
+#     Capture Page Screenshot
 
 # Search In Moudle
 #     Reload Page

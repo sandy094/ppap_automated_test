@@ -24,7 +24,7 @@ Check Values
 # 寫IF判斷
     @{cols}  Set Variable  3  4  5  6   
     :FOR  ${col}  IN  @{cols}
-    \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[1]/td[${col}]
+    \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[${col}]
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]
     \  Should Not Be Empty  ${valueA}  
 
@@ -55,3 +55,31 @@ Short
     \  Convert To Integer    ${ValueD}
     \  Should Be True  ${ValueC}>=${ValueD}
     \  Capture Page Screenshot
+
+Check the time if choose game 
+     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
+     Quick Search botton   上周
+     Sleep  5s
+     Check Values
+     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
+     Should Not Match    ${valueA}  ${valueB}
+     ${valueB}  Set Variable    ${valueA}   
+     Capture Page Screenshot
+
+     Quick Search In year and season    本季
+     Sleep  12s
+     Check Values
+     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]
+     Should Not Match    ${valueA}  ${valueB}
+     ${valueB}  Set Variable    ${valueA}
+     Capture Page Screenshot 
+
+     Search In Month    0: 2018年11月
+     Sleep  10s
+     Check Values
+     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
+     Should Not Match    ${valueA}  ${valueB}
+     ${valueB}  Set Variable    ${valueA}
+
+
+

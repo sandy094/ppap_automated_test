@@ -26,7 +26,6 @@ Click Quick Search
     \  Quick Search botton    ${day}
     \  Sleep  10s
     \  Check Values
-    # \  Capture Page Screenshot
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
     \  Should Not Match    ${valueA}  ${valueB}
     \  ${valueB}  Set Variable    ${valueA}
@@ -53,26 +52,28 @@ Search In Datetime
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
     \  Should Not Match    ${valueA}  ${valueB}
     \  ${valueB}  Set Variable    ${valueA}
-    
 
 Search In Category
     Reload Page
     Sleep    10s
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
-    @{categeories}  Set variable    CATEGORY-.1  CATEGORY-.2  CATEGORY-.3  CATEGORY-.4  CATEGORY-.5  CATEGORY-.6
+    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
+    @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,' 游戏筛选')]
-    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,' 游戏筛选')]
+    \  Sleep  5s
+    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  sleep  5s
     \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Sleep  5s
-    \  Wait Until Page Contains Element    //label[@for="${category}"]
-    \  Click Element    //label[@for="${category}"]
-    \  Click Element    //app-category-tab/button[contains(.,' 查詢 ')]
+    \  Wait Until Page Contains Element    //label[@for="${category}"]/div
+    \  Click Element    //label[@for="${category}"]/div
+    \  Click Element    //app-game-filter-drop-down//button[contains(.,' 查詢 ')]
     \  Sleep    10s
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
+    \  Capture Page Screenshot
+    \  ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
     \  Should Not Match    ${valueA}  ${valueB}
-    \  ${valueB}  Set Variable    ${valueA}
+    \  Check the time if choose game
 
 
 Search In Classification
@@ -80,24 +81,24 @@ Search In Classification
     Sleep    10s
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
     
-    @{gameHalls}  Set variable    GAMEHALL-.0.0  GAMEHALL-.0.1  GAMEHALL-.0.2  GAMEHALL-.0.3  GAMEHALL-.0.4
+    @{gameHalls}  Set variable    p3Sing-13  pAB-17  
     :FOR  ${gameHall}  IN  @{gameHalls}
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div
-    \  Click Element    //div[@class="filter-type"]/div
-    \  Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'类型查询')]
-    \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'类型查询')]
-    \  Sleep  3s
-    \  Wait Until Page Contains Element  //label[@for='${gameHall}']
-    \  Click Element    //label[@for='${gameHall}']
-    \  Click Element    //app-game-hall-tab/button[contains(.,' 查詢 ')]
-    \  Sleep  3s
+    \  Sleep  5s
+    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //label[@for='${gameHall}']/div
+    \  Click Element    //label[@for='${gameHall}']/div
+    \  Click Element    //app-game-filter-drop-down//button[contains(.,' 查詢 ')]
+    \  Sleep  5s
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
     \  Should Not Match    ${valueA}  ${valueB}
-    \  ${valueB}  Set Variable    ${valueA}
+    \  Check the time if choose game
  
 Search In Game Name
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    Set Browser Implicit Wait    10s
+    Reload Page
+    Sleep    10s
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
     Wait Until Page Contains Element    //div[@class="filter-type"]/div
     Click Element    //div[@class="filter-type"]/div
@@ -110,7 +111,7 @@ Search In Game Name
     Click Element  //button[@id='ngb-typeahead-0-1']
     Click Element  //div[@class='game-search-panel']//button[contains(.,'查询')]
     Sleep  5s
-    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
+    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]
     Should Not Match    ${valueA}  ${valueB}
     Capture Page Screenshot
 
@@ -126,14 +127,15 @@ Search In Collection
     Sleep    5s
     Wait Until Page Contains Element    //app-game-select-tab//button[@class='btn btn-gray']
     Click Element    //app-game-select-tab//button[@class='btn btn-gray']
-    Click Element    //app-game-select-tab//div[@class='send-btn pl-2 lr-2 mb-2']/button[contains(.,'查询')]
+    Click Element    //div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    5s
-    Page Should Contain Element    //div[@class='card-body']/div/a[contains(.,'1108test遊戲查詢')]
+    Page Should Contain Element    //div[@class='col-lg-12 col-12 text-center mobile_btn_area2']/a[1][contains(.,'1108test')]
+    Sleep    5s
     Capture Page Screenshot
 
-    
-    
-
+Insert Value  
+    Reload Page   
+    Sleep  10s 
 
 Modularization
     # 展開圖表

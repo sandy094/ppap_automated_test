@@ -19,7 +19,7 @@ Verify Basic Table Is Active
     # 逐日列表 標題
     
     ${titleA}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/thead/tr[1]/th[2]//span
-    Should Be True  '${titleA}'=='活跃会员'
+    Should Be True  '${titleA}'=='游戏人次'
 
     ${titleB}=  Get Text  //ng2-smart-table[@class='frozen_1']/table/thead/tr[1]/th[3]//span
     Should Be True  '${titleB}'=='损益'

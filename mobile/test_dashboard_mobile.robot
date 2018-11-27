@@ -160,6 +160,7 @@ Check All Chart Is Active
 Check Single Chart
     # 細項點掉單一圖表
     Sleep    20s
+    Execute JavaScript  window.document.documentElement.scrollTop = 350;
     Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'种类')]
     Click Element    //i[@class='fa fa-area-chart']
     Execute JavaScript    window.document.documentElement.scrollTop = 360;
@@ -184,7 +185,7 @@ Check Single Chart
 *** Keywords ***
 SuiteSetup
     # 手機板
-    ${devname}    Create Dictionary  deviceName=iPhone 6/7/8 Plus
+    ${devname}    Create Dictionary  deviceName=iPhone X
     ${mobile_emulation}    Create Dictionary    mobileEmulation=${devname}
     ${chromeoptions}    Evaluate    sys.modules['selenium.webdriver.chrome.options'].Options()     sys, selenium.webdriver.chrome.options
     ${chromeoptions_experimental_options}    Set Variable    ${mobile_emulation}

@@ -16,11 +16,12 @@ Check Topbar Link
 
 Check Value Is Active
     [Documentation]    Check value in table
-    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[1]/td[contains(.,'损益')]
-    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[2]/td[contains(.,'有效投注')]
-    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[3]/td[contains(.,'投注单量')]
-    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[4]/td[contains(.,'活跃会员')]
-    Page Should Contain Element    //table[@id='TrendInfoTable']/tbody/tr[5]/td[contains(.,'营收比')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[2][contains(.,'损益')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[3][contains(.,'有效投注')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[4][contains(.,'投注单量')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[5][contains(.,'活跃会员')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'游戏人次')]
+    Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[7][contains(.,'营收比')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
 
@@ -36,7 +37,7 @@ Quick Search botton In Mobile
     [Arguments]    ${title}    
     Wait Until Element Is Visible   //div[@class="baDateform btn-group"]/a[contains(.,'${title}')]  
     Click Link    //div[@class="baDateform btn-group"]/a[contains(.,'${title}')] 
-    Sleep    5s
+    Sleep    7s
 
 Quick Search For Year And Season In Mobile
     #本年.本季快搜
