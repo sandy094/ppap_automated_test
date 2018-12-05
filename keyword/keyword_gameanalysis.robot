@@ -74,7 +74,7 @@ Check the time if choose game
      ${valueB}  Set Variable    ${valueA}
      Capture Page Screenshot 
 
-     Search In Month    0: 2018年11月
+     Search In Month    0: 2018年12月
      Sleep  10s
      Check Values
      ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]

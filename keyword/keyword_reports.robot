@@ -25,8 +25,34 @@ Check Value Is Active
     Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
 
+Check the time if choose game 
+     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+     Quick Search botton   上周
+     Sleep  5s
+     Check Value Is Active
+     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+     Should Not Match    ${valueA}  ${valueB}
+     ${valueB}  Set Variable    ${valueA}   
+     Capture Page Screenshot
+
+     Quick Search In year and season    本季
+     Sleep  12s
+     Check Value Is Active
+     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+     Should Not Match    ${valueA}  ${valueB}
+     ${valueB}  Set Variable    ${valueA}
+     Capture Page Screenshot 
+
+     Search In Month    0: 2018年12月
+     Sleep  10s
+     Check Value Is Active
+     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+     Should Not Match    ${valueA}  ${valueB}
+     ${valueB}  Set Variable    ${valueA}
+
 Verify Page Title Is Correct
     [Documentation]    Verify page title is match sidebar link and match
     [Arguments]    ${title}
     Wait Until Page Contains Element    //div[@class="page-top clearfix"]/ba-content-top/div/ul/li[contains(.,'${title}')]
     Click Element    //div[@class="page-top clearfix"]/ba-content-top/div/ul/li[contains(.,'${title}')]
+
