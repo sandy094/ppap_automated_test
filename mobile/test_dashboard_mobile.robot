@@ -150,39 +150,39 @@ Search In Datetime
     \  Check Chart In Four card
     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
 
-Check All Chart Is Active
-    # Reload Page
-    Sleep    20s
-    Execute JavaScript    window.document.documentElement.scrollTop = 350;
-    Check Chart In Mobile     种类
-    Reload Page
-    Sleep    10s
-    Execute JavaScript    window.document.documentElement.scrollTop = 350;
-    Check Chart In Mobile    娱乐城
+# Check All Chart Is Active
+#     # Reload Page
+#     Sleep    20s
+#     Execute JavaScript    window.document.documentElement.scrollTop = 350;
+#     Check Chart In Mobile     种类
+#     Reload Page
+#     Sleep    10s
+#     Execute JavaScript    window.document.documentElement.scrollTop = 350;
+#     Check Chart In Mobile    娱乐城
 
-Check Single Chart
-    # 細項點掉單一圖表
-    Sleep    20s
-    Execute JavaScript  window.document.documentElement.scrollTop = 350;
-    Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'种类')]
-    Click Element    //i[@class='fa fa-area-chart']
-    Execute JavaScript    window.document.documentElement.scrollTop = 360;
-    Sleep    10s
-    Wait Until Page Contains Element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
-    Click element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
-    Sleep    20s
-    Wait Until Page Contains Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
-    Click Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
-    Sleep  10s
-    Execute JavaScript  window.document.documentElement.scrollTop = 360;
-    Capture Page Screenshot
+# Check Single Chart
+#     # 細項點掉單一圖表
+#     Sleep    20s
+#     Execute JavaScript  window.document.documentElement.scrollTop = 350;
+#     Click Element    //div[@class='row show_991']/div/div/div/button[contains(.,'种类')]
+#     Click Element    //i[@class='fa fa-area-chart']
+#     Execute JavaScript    window.document.documentElement.scrollTop = 360;
+#     Sleep    10s
+#     Wait Until Page Contains Element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
+#     Click element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
+#     Sleep    20s
+#     Wait Until Page Contains Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
+#     Click Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
+#     Sleep  10s
+#     Execute JavaScript  window.document.documentElement.scrollTop = 360;
+#     Capture Page Screenshot
     
-    # 以日合計
-    Click Element  //div[@class="ba-date-select"]//div/button[contains(.,'七日资讯')]
-    Wait Until Page Contains Element  //div[@class="ba-date-select"]//div/button[contains(.,'七日资讯')]
-    Click Element  //div[@class="ba-date-select"]//div/div/ul/li/a[contains(.,'以日合计')]
-    Sleep  5s
-    Capture Page Screenshot
+#     # 以日合計
+#     Click Element  //div[@class="ba-date-select"]//div/button[contains(.,'七日资讯')]
+#     Wait Until Page Contains Element  //div[@class="ba-date-select"]//div/button[contains(.,'七日资讯')]
+#     Click Element  //div[@class="ba-date-select"]//div/div/ul/li/a[contains(.,'以日合计')]
+#     Sleep  5s
+#     Capture Page Screenshot
 
 
 *** Keywords ***
