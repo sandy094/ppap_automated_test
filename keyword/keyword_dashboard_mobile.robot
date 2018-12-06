@@ -100,7 +100,7 @@ Quick Search For Year And Season In Mobile
     Sleep    5s
     Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
     Sleep    10s
-    Click Element    //div[@class='card-header clearfix']
+    # Click Element    //div[@class='card-header clearfix']
     Capture Page Screenshot
 
 Search In Mounth For Mobile
