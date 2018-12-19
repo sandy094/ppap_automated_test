@@ -32,15 +32,15 @@ Check the time if choose game
      Check Value Is Active
      ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
      Should Not Match    ${valueA}  ${valueB}
-     ${valueB}  Set Variable    ${valueA}   
+     ${valueA}  Set Variable    ${valueB}   
      Capture Page Screenshot
 
      Quick Search In year and season    本季
-     Sleep  12s
+     Sleep  10s
      Check Value Is Active
-     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
      Should Not Match    ${valueA}  ${valueB}
-     ${valueB}  Set Variable    ${valueA}
+     ${valueA}  Set Variable    ${valueB}
      Capture Page Screenshot 
 
      Search In Month    0: 2018年12月
@@ -48,7 +48,8 @@ Check the time if choose game
      Check Value Is Active
      ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
      Should Not Match    ${valueA}  ${valueB}
-     ${valueB}  Set Variable    ${valueA}
+
+     Reload Page
 
 Verify Page Title Is Correct
     [Documentation]    Verify page title is match sidebar link and match

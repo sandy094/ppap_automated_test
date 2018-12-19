@@ -34,20 +34,20 @@ Click Search
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
 
-    # ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]
-    # @{years}  Set Variable  本年  去年  本季  上季
-    # :FOR  ${year}  IN  @{years}
-    # \  Quick Search For Year And Season In Mobile    ${year}
-    # \  Check Value Is Active
-    # \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-    # \  Should Not Match  ${CheckValueA}  ${CheckValueB}
-    # \  ${CheckValueA}=  Set Variable  ${CheckValueB}
-    # \  Quick Search botton In Mobile    本周
+    ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]
+    @{years}  Set Variable  本年  去年  本季  上季
+    :FOR  ${year}  IN  @{years}
+    \  Quick Search For Year And Season In Mobile    ${year}
+    \  Check Value Is Active
+    \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+    \  Should Not Match  ${CheckValueA}  ${CheckValueB}
+    \  ${CheckValueA}=  Set Variable  ${CheckValueB}
+    \  Quick Search botton In Mobile    本周
 
 Search In Datetime 
     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]
-    @{mounths}    Set Variable    0: 2018年11月  1: 2018年10月  2: 2018年9月  3: 2018年8月  4: 2018年7月  5: 2018年6月  6: 2018年5月  7: 2018年4月  8: 2018年3月  9: 2018年2月  10: 2018年1月  11: 2017年12月  12: 2017年11月
-    :FOR    ${month}  IN  @{mounths}
+    @{months}    Set Variable    0: 2018年12月  1: 2018年11月  2: 2018年10月  3: 2018年9月  4: 2018年8月  5: 2018年7月  6: 2018年6月  7: 2018年5月  8: 2018年4月  9: 2018年3月  10: 2018年2月  11: 2018年1月  12: 2017年12月
+    :FOR  ${month}  IN  @{months}
     \  Sleep  10s
     \  Search In Mounth For Mobile    ${month}
     \  Sleep  15s
@@ -55,24 +55,24 @@ Search In Datetime
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
 
-Search In Category
-    Reload Page  
-    Sleep    5s 
-    Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos show_991']/div/button[contains(.,'游戏选单')]
-    Click Element    //div[@class='mobile_btn_area_pos show_991']/div/button[contains(.,'游戏选单')]
-    Sleep    2s
-    Wait Until Page Contains Element    //div[@class='bamenu_btn_area']/button[1]
-    Click Element    //div[@class='bamenu_btn_area']/button[1]
-    Sleep    2s
-    Wait Until Page Contains Element    //ba-query-menu[@class='sitelist_NAVlist']//div[@class='checkI']/label[@for='体育-1']
-    Click Element    //ba-query-menu[@class='sitelist_NAVlist']//div[@class='checkI']/label[@for='体育-1']
-    Wait Until Page Contains Element    //ba-query-menu[@class='sitelist_NAVlist']//label[@for='体育-3Sing-13']/label
-    Click Element    //ba-query-menu[@class='sitelist_NAVlist']//label[@for='体育-3Sing-13']/label
-    Wait Until Page Contains Element    //div[@class='bamenu_btn_area']/button[2]
-    Click Element    //div[@class='bamenu_btn_area']/button[2]
-    Sleep    2s
-    Page Should Contain Element    //div[@id='hottestInfoTable']//div[@class='card-header clearfix'][contains(.,'体育')]
-    Capture Page Screenshot
+# Search In Category
+#     Reload Page  
+#     Sleep    5s 
+#     Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos show_991']/div/button[contains(.,'游戏选单')]
+#     Click Element    //div[@class='mobile_btn_area_pos show_991']/div/button[contains(.,'游戏选单')]
+#     Sleep    2s
+#     Wait Until Page Contains Element    //div[@class='bamenu_btn_area']/button[1]
+#     Click Element    //div[@class='bamenu_btn_area']/button[1]
+#     Sleep    2s
+#     Wait Until Page Contains Element    //ba-query-menu[@class='sitelist_NAVlist']//div[@class='checkI']/label[@for='体育-1']
+#     Click Element    //ba-query-menu[@class='sitelist_NAVlist']//div[@class='checkI']/label[@for='体育-1']
+#     Wait Until Page Contains Element    //ba-query-menu[@class='sitelist_NAVlist']//label[@for='体育-3Sing-13']/label
+#     Click Element    //ba-query-menu[@class='sitelist_NAVlist']//label[@for='体育-3Sing-13']/label
+#     Wait Until Page Contains Element    //div[@class='bamenu_btn_area']/button[2]
+#     Click Element    //div[@class='bamenu_btn_area']/button[2]
+#     Sleep    2s
+#     Page Should Contain Element    //div[@id='hottestInfoTable']//div[@class='card-header clearfix'][contains(.,'体育')]
+#     Capture Page Screenshot
     
 *** Keywords ***
 SuiteSetup

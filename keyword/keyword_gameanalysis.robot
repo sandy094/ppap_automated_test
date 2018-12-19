@@ -22,7 +22,7 @@ Verify Page Title Is Correct
 
 Check Values
 # 寫IF判斷
-    @{cols}  Set Variable  3  4  5  6   
+    @{cols}  Set Variable  2  3  4  5   
     :FOR  ${col}  IN  @{cols}
     \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[${col}]
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]
@@ -57,29 +57,34 @@ Short
     \  Capture Page Screenshot
 
 Check the time if choose game 
-     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
-     Quick Search botton   上周
-     Sleep  5s
-     Check Values
-     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
-     Should Not Match    ${valueA}  ${valueB}
-     ${valueB}  Set Variable    ${valueA}   
-     Capture Page Screenshot
+    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]
+    Quick Search botton   上周
+    Sleep  50s
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Should Not Be Empty  ${valueB} 
+    Should Not Match    ${valueA}  ${valueB}
+    ${valueA}  Set Variable    ${valueB}   
+    Capture Page Screenshot
 
-     Quick Search In year and season    本季
-     Sleep  12s
-     Check Values
-     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]
-     Should Not Match    ${valueA}  ${valueB}
-     ${valueB}  Set Variable    ${valueA}
-     Capture Page Screenshot 
+    Quick Search In year and season    本季
+    Sleep  20s
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Should Not Be Empty  ${valueB}
+    Should Not Match    ${valueA}  ${valueB}
+    ${valueA}  Set Variable    ${valueB}
+    Capture Page Screenshot 
 
-     Search In Month    0: 2018年12月
-     Sleep  10s
-     Check Values
-     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
-     Should Not Match    ${valueA}  ${valueB}
-     ${valueB}  Set Variable    ${valueA}
+    Sleep  5s
+    Search In Month    0: 2018年12月
+    Sleep  10s
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Should Not Be Empty  ${valueB}
+    Should Not Match    ${valueA}  ${valueB}
+
+    Reload Page
 
 
 
