@@ -49,7 +49,8 @@ Search In Datetime
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
 
 Search In Category
-    Reload Page
+    [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
+    # Reload Page
     Sleep    10s
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
@@ -69,7 +70,7 @@ Search In Category
     \  Capture Page Screenshot
     \  ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     \  Should Not Match    ${valueA}  ${valueB}
-    \  Check the time if choose game
+    \  Check the time if choose game 
 
 Search In Classification
     Reload Page
@@ -84,7 +85,7 @@ Search In Classification
     Wait Until Page Contains Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查詢 ')]
     Click Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查詢 ')]
     Sleep    2s
-    Check the time if choose game
+    Check the time if choose game 
     
 Search In Game
     Reload Page
@@ -100,7 +101,7 @@ Search In Game
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
     Click Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
     Sleep    4s
-    Capture Page Screenshot
+    Check the time if choose game 
 
 Search In Collection
     Reload Page
@@ -118,7 +119,7 @@ Search In Collection
     Sleep    4s
     Capture Page Screenshot
     Execute JavaScript  window.document.documentElement.scrollTop = 550;
-    Capture Page Screenshot
+    Check the time if choose game 
 
 Search In Site 
     Reload Page

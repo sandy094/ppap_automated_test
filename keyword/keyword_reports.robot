@@ -22,7 +22,7 @@ Check Value Is Active
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[5][contains(.,'活跃会员')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'游戏人次')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[7][contains(.,'营收比')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
+    Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏')]
     Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
 
 Check the time if choose game 
@@ -36,7 +36,7 @@ Check the time if choose game
      Capture Page Screenshot
 
      Quick Search In year and season    本季
-     Sleep  10s
+     Sleep  20s
      Check Value Is Active
      ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
      Should Not Match    ${valueA}  ${valueB}
