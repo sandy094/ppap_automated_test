@@ -20,6 +20,7 @@ Check sidebar link Operational navigation is correct
     Check Operational Information Link    报表呈现
 
 Click Search
+    [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
     Sleep    10s
     Wait Until Page contains Element  //div[@class="baDateform btn-group"]/a[contains(.,'今日')]
     Click Element    //div[@class="baDateform btn-group"]/a[contains(.,'今日')]
@@ -39,6 +40,7 @@ Click Search
     :FOR  ${year}  IN  @{years}
     \  Quick Search For Year And Season In Mobile    ${year}
     \  Check Value Is Active
+    \  Sleep    5s
     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
@@ -90,4 +92,5 @@ SuiteSetup
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown
+    Run Keyword If Test Failed    Capture Page Screenshot
     Close Browser

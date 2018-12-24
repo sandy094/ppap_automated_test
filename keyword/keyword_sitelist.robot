@@ -15,11 +15,15 @@ Check Topbar Link
     Click Element    //li/a[contains(.,'${title}')]
 
 Check Values
-    @{cols}  Set Variable  3  4  5  6  7 
-    :FOR  ${C}  IN  @{cols}  
-    \  ${values}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[${C}]
-    \  Should Not Be Empty  ${values}
-    #   Wait For Condition
+    # 判斷是否有更新頁面
+    ${orignalValue}  Set Variable  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    @{columns}  Set Variable  3  4  5  6  7 
+    :FOR  ${column}  IN  @{columns}  
+    \  Wait Until Page Contains Element    //div[@id="data-table"]//table/tbody/tr[1]/td[${column}]
+    \  ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[${column}]
+    \  Should Not Be Empty  ${newValue}
+    \  Should Not Match    ${orignalValue}    ${newValue}
+    \  ${orignalValue}    Set Variable    ${newValue}
 
 Search In Group
     [Documentation]    Click the tab in Group

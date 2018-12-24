@@ -20,23 +20,15 @@ Check sidebar link Operational navigation is correct
 
 # driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 Click Search
-    Set Browser Implicit Wait    10s
-    ${CheckValueA}  Set Variable  0
+    Sleep    10s
     @{days}  Set Variable  今日  昨日  本周  上周  本月  上月
     :FOR  ${day}  IN  @{days}
     \  Quick Search botton    ${day}
-    # 判斷是否有更新頁面
-    \  ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Check Values
 
-    ${CheckValueA}  Set Variable  0
     @{years}  Set Variable  本年  去年  本季  上季
     :FOR  ${year}  IN  @{years}
     \  Quick Search In year and season    ${year}
-    # 判斷是否有更新頁面
-    \  ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Check Values
     
 Check Trend 
@@ -76,13 +68,9 @@ Short
 
 Search In Datetime 
     Set Browser Implicit Wait    10s
-    ${CheckValueA}  Set Variable  0
     @{mounths}    Set Variable    0: 2018年12月  1: 2018年11月  2: 2018年10月  3: 2018年9月  4: 2018年8月  5: 2018年7月  6: 2018年6月  7: 2018年5月  8: 2018年4月  9: 2018年3月  10: 2018年2月  11: 2018年1月  12: 2017年12月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
-    # 判斷是否有更新頁面
-    \  ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Check Values
 
 Search In Game Classification
@@ -91,7 +79,7 @@ Search In Game Classification
     @{labels}    Set Variable    体育-1  视讯-2  机率-3  彩票-4  棋牌-44
     :FOR    ${label}  IN  @{labels}
     \    Sleep    10s
-    \    ${CheckValueA}=    Get Text    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    # \    ${orignalValue}=    Get Text    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     \    Wait Until Page Contains Element  //label[@for='${label}']  
     \    Click Element  //label[@for='${label}']
     \    Sleep    5s
@@ -99,15 +87,15 @@ Search In Game Classification
     \    Click Element  //tab[@id="category"]//button[contains(.,'套用')]
     \    Sleep  5s
      # 判斷是否有更新頁面
-    \    ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    \    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    # \    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    # \    Should Not Match  ${orignalValue}  ${newValue}
     \    Check Values
     \    Search In Group
     \    Reload Page
     
     Sleep    3s
     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    ${orignalValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     # 單選細項
     Click Element  //label[@for='p视讯-2']
     Click Element  //label[@for='视讯-BB-1']/label
@@ -115,8 +103,8 @@ Search In Game Classification
     Click Element  //tab[@id="category"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
-    ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Match  ${orignalValue}  ${newValue}
     Capture Page Screenshot
     
     # 檢查趨勢圖是否顯示正常
@@ -126,26 +114,26 @@ Search In Game Hall
     Reload Page
     Sleep    10s
     # 查BBIN
-    ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    ${orignalValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Click Element  //li[contains(.,'类型')] 
 
     Click Element  //label[@for='pBB-1']/div/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
-    ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Match  ${orignalValue}  ${newValue}
     Capture Page Screenshot
 
     # 查BBIN-彩票
-    ${CheckValueA}=    Set Variable    ${CheckValueB}
+    ${orignalValue}=    Set Variable    ${newValue}
     Click Element  //label[@for='pBB-1']/div/label
     Click Element  //label[@for='BB-彩票-4']/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
-    ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Match  ${orignalValue}  ${newValue}
     Capture Page Screenshot
     trend  2
 
@@ -153,71 +141,70 @@ Search In Game Hall
     Wait Until Page Contains Element  //tab[@id="gamehall"]//button[contains(.,'清除/全选')]
     Click Element  //tab[@id="gamehall"]//button[contains(.,'清除/全选')]
     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    ${CheckValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    ${orignalValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Click Element  //label[@for='pAG-6']
     Click Element  //label[@for='AG-视讯-16']/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
     Sleep    5s
     # 判斷是否有更新頁面
-    ${CheckValueB}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Match  ${orignalValue}  ${newValue}
     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
     Capture Page Screenshot
     
-# Search In Game Name
-#     Reload Page
-#     Sleep    10s
-#     Wait Until Page Contains Element  //li[contains(.,'游戏查询')]
-#     Click Element    //li[contains(.,'游戏查询')]
-#     Input Text  //input[@class='form-control']    足球之巅H5
-#     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-0']
-#     Click Element  //button[@id='ngb-typeahead-0-0']
-#     Wait Until Page Contains Element  //div[@class='show_pick_left']
-#     Click Element  //div[@class='show_pick_left']
-#     Sleep    10s
-#     Wait Until Page Contains Element  //div[@class='inner']//table/tbody/tr[1]/td[1]  
-#     ${B}=  Get Text  //div[@class='inner']//table/tbody/tr[1]/td[1]
-#     Should Not Be Empty  ${B}
-#     Capture Page Screenshot
+Search In Game Name
+    Reload Page
+    Sleep    10s
+    Wait Until Page Contains Element  //li[contains(.,'游戏查询')]
+    Click Element    //li[contains(.,'游戏查询')]
+    Input Text  //input[@class='form-control']    足球之巅H5
+    Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-0']
+    Click Element  //button[@id='ngb-typeahead-0-0']
+    Wait Until Page Contains Element  //div[@class='show_pick_left']
+    Click Element  //div[@class='show_pick_left']
+    Sleep    10s
+    Wait Until Page Contains Element  //div[@class='inner']//table/tbody/tr[1]/td[1]  
+    ${B}=  Get Text  //div[@class='inner']//table/tbody/tr[1]/td[1]
+    Should Not Be Empty  ${B}
+    Capture Page Screenshot
 
-# Search In Keywords
-#     Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
-#     Click Element  //input[@class='form-control with-primary-addon']
-#     Input Text  //input[@class='form-control with-primary-addon']    alpha
-#     Set Browser Implicit Wait    5s
-#     ${B}=    Get Text    //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
-#     Should Match    ${B}  Alpha*
-#     Capture Page Screenshot
+Search In Keywords
+    Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
+    Click Element  //input[@class='form-control with-primary-addon']
+    Input Text  //input[@class='form-control with-primary-addon']    alpha
+    Set Browser Implicit Wait    5s
+    ${keywordValue}=    Get Text    //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
+    Should Match    ${keywordValue}  Alpha*
+    Capture Page Screenshot
 
-#     Clear Element Text  //input[@class='form-control with-primary-addon']
-# Check In Group
-#     Wait Until Page Contains Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
-#     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
-#     Sleep    10s
-#     Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
-#     Click Element  //input[@class='form-control with-primary-addon']
-#     Input Text  //input[@class='form-control with-primary-addon']    alpha
-#     ${Keywords}=  Get Text  //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
-#     Should Match  ${Keywords}    Alpha*
-#     Capture Page Screenshot
+    Clear Element Text  //input[@class='form-control with-primary-addon']
+Check In Group
+    Wait Until Page Contains Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
+    Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
+    Sleep    10s
+    Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
+    Click Element  //input[@class='form-control with-primary-addon']
+    Input Text  //input[@class='form-control with-primary-addon']    alpha
+    ${Keywords}=  Get Text  //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
+    Should Match  ${Keywords}    Alpha*
+    Capture Page Screenshot
 
-#     Click Element  //div[@id="data-table"]//table/tbody/tr[1]/td[2]//div[@class="text-right"]/span
-#     Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
-#     ${aa}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
-#     Should Not Be Empty  ${aa}  
-#     Capture Page Screenshot
+    Click Element  //div[@id="data-table"]//table/tbody/tr[1]/td[2]//div[@class="text-right"]/span
+    Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
+    ${searchValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
+    Should Not Be Empty  ${searchValue}  
+    Capture Page Screenshot
 
-# Search In Moudle
-#     Reload Page
-#     ${cValueA}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-#     Wait Until Page Contains Element  //div[@bacardclass='table-panel']//div[@class="button-list"][1]
-#     Click Element  //div[@bacardclass='table-panel']//div[@class="button-list"][1]
-#     Sleep  5s
-#     ${cValueB}= Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-#     Should Not Match  ${cValueA}  ${cValueB}
-
-    # //div[@bacardclass='table-panel']//div[@class="button-list"][1]
-
+Search In Moudle
+    Reload Page
+    ${orignalValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Wait Until Page Contains Element  //div[@bacardclass='table-panel']//div[@class="button-list"][1]
+    Click Element  //div[@bacardclass='table-panel']//div[@class="button-list"][4]
+    Sleep  5s
+    Wait Until Page Contains Element    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    ${newValue}=  Get Text    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Be Empty    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Match  ${orignalValue}  ${newValue}
 
 *** Keywords ***
 SuiteSetup
