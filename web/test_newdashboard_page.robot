@@ -22,6 +22,7 @@ Check sidebar link Dashboard navigation is correct
     No Operation
 
 Check Search For Basic
+    [Teardown]  Run Keyword If Any Tests Failed    Capture Page Screenshot
     Set Browser Implicit Wait    10s  
     Sleep  10s
 
@@ -48,7 +49,9 @@ Check Search For Basic
     \  Reload Page
 
 Check Save Search
-    Set Browser Implicit Wait    10s
+    [Teardown]  Run Keyword If Any Tests Failed    Capture Page Screenshot
+    Reload Page
+    Sleep    10s
     @{days}  Set Variable  昨日  本周  上周  本月  上月  
     :FOR  ${day}  IN  @{days}
     \  Sleep  5s

@@ -79,16 +79,12 @@ Search In Game Classification
     @{labels}    Set Variable    体育-1  视讯-2  机率-3  彩票-4  棋牌-44
     :FOR    ${label}  IN  @{labels}
     \    Sleep    10s
-    # \    ${orignalValue}=    Get Text    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     \    Wait Until Page Contains Element  //label[@for='${label}']  
     \    Click Element  //label[@for='${label}']
     \    Sleep    5s
     \    Wait Until Page Contains Element  //tab[@id="category"]//button[contains(.,'套用')]
     \    Click Element  //tab[@id="category"]//button[contains(.,'套用')]
     \    Sleep  5s
-     # 判斷是否有更新頁面
-    # \    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    # \    Should Not Match  ${orignalValue}  ${newValue}
     \    Check Values
     \    Search In Group
     \    Reload Page
@@ -111,6 +107,7 @@ Search In Game Classification
     trend  2
 
 Search In Game Hall
+    [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
     Reload Page
     Sleep    10s
     # 查BBIN
@@ -145,11 +142,14 @@ Search In Game Hall
     Click Element  //label[@for='pAG-6']
     Click Element  //label[@for='AG-视讯-16']/label
     Click Element  //tab[@id="gamehall"]//button[contains(.,'套用')]
-    Sleep    5s
+    Sleep    6s
     # 判斷是否有更新頁面
     ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     Should Not Match  ${orignalValue}  ${newValue}
+    ${orignalValue}  Set Variable    ${newValue}
     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
+    ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
+    Should Not Match  ${orignalValue}  ${newValue}
     Capture Page Screenshot
     
 Search In Game Name
@@ -194,6 +194,8 @@ Check In Group
     ${searchValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[2]/td[3]
     Should Not Be Empty  ${searchValue}  
     Capture Page Screenshot
+
+    trend  2
 
 Search In Moudle
     Reload Page

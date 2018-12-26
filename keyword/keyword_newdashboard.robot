@@ -73,7 +73,7 @@ Verify SiteRank Value For Basic
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Data Table Check Trend Of List
     \  Click Element  //div[@id='chart']/div/div/a[2]
-    \  Sleep  10s
+    \  Sleep  15s
     \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
     \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
     \  Should Not Be Empty  ${testValue}
