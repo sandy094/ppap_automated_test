@@ -43,7 +43,7 @@ Check the time if choose game
      ${valueA}  Set Variable    ${valueB}
      Capture Page Screenshot 
 
-     Search In Month    0: 2018年12月
+     Search In Month    0: 2019年1月
      Sleep  10s
      Check Value Is Active
      ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
