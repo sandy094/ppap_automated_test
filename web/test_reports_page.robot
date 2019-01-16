@@ -105,7 +105,7 @@ Search In Game
     Check the time if choose game 
 
 Search In Collection
-    Reload Page
+    # Reload Page
     Sleep    10s
     Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
     Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
@@ -114,6 +114,7 @@ Search In Collection
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
     Click Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-select mt-2 mb-3']/button[2]
     Click Element    //app-game-select-tab//div[@class='loveList-select mt-2 mb-3']/button[2]
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Click Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
