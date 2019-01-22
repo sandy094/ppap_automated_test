@@ -7,12 +7,12 @@ Check Account Page
 
 Search In Time
     Sleep    10s
-    ${txtValueA}=  Get Text    //ng2-smart-table[@class='gamehall_TB']//tbody/tr/td[2]
+    ${txtValueA}=  Get Text    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     @{days}  Set Variable      上周  本月  上月  昨日
     :FOR  ${day}  IN  @{days}
     \  Quick Search botton    ${day}
     \  Sleep  5s
-    \  ${txtValueB}=  Get Text    //ng2-smart-table[@class='gamehall_TB']//tbody/tr/td[2]
+    \  ${txtValueB}=  Get Text    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${txtValueB}'=='0'    Capture Page Screenshot
     \  Should Not Match    ${txtValueA}  ${txtValueB}
     \  ${txtValueA}   Set Variable    ${txtValueB}
@@ -23,7 +23,7 @@ Search In Year
     :FOR  ${season}  IN  @{seasons}
     \  Quick Search In year and season    ${season}
     \  Sleep  20s
-    \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall_TB']//tbody/tr/td[2]
+    \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${tableValueB}'=='0'    Capture Page Screenshot    ELSE    No Operation
     \  Should Not Match    ${tableValueA}  ${tableValueB}
     \  ${tableValueA}  Set Variable    ${tableValueB}
@@ -35,7 +35,7 @@ Search In Datetime
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    10s
-    \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall_TB']//tbody/tr/td[2]
+    \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${tableValueB}'=='0'    Capture Page Screenshot    ELSE    No Operation
     \  Should Not Match    ${tableValueA}  ${tableValueB}
     \  ${tableValueA}  Set Variable    ${tableValueB}

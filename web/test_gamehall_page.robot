@@ -28,15 +28,15 @@ Click Quick Search
     \  Wait Until Page Contains Element    //label[@for='${gameHall}']
     \  Click Element    //label[@for='${gameHall}']
     \  Sleep    5s
-    \  Wait Until Page Contains Element    //ng2-smart-table[@class='gamehall_TB']//tbody/tr/td[2]
-    \  ${tableValueA}=  Get Text   //ng2-smart-table[@class='gamehall_TB']//tbody/tr/td[2]
+    \  Wait Until Page Contains Element    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
+    \  ${tableValueA}=  Get Text   //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${tableValueA}'=='0'   Capture Page Screenshot    ELSE    No Operation
     \  Search In Time  
     \  Search In Year
     \  Search In Datetime 
 
 # 時日分頁待新增
-# //div[@class='DWM_pick_left']/div[@clas='DWM_pull'][2]/span[contains(.,'时')]
+# //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'时')]
 
 *** Keywords ***
 SuiteSetup
