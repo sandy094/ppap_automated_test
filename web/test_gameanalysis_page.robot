@@ -27,7 +27,8 @@ Click Quick Search
     \  Sleep  10s
     \  Check Values
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]   #有效投注
-    \  Should Not Match    ${valueA}  ${valueB}
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  ${valueB}  Set Variable    ${valueA}
    
 Click Quick Search In Year 
@@ -38,7 +39,8 @@ Click Quick Search In Year
     \  Sleep  30s
     \  Check Values
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
-    \  Should Not Match    ${valueA}  ${valueB}
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  ${valueB}  Set Variable    ${valueA}
 
 Search In Datetime 
@@ -50,7 +52,8 @@ Search In Datetime
     \  Sleep    10s
     \  Check Values
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]
-    \  Should Not Match    ${valueA}  ${valueB}
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  ${valueB}  Set Variable    ${valueA}
 
 Search In Category
@@ -72,7 +75,8 @@ Search In Category
     \  Sleep    10s
     \  Capture Page Screenshot
     \  ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]
-    \  Should Not Match    ${valueA}  ${valueB}
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  Check the time if choose game
 
 
@@ -92,7 +96,8 @@ Search In Classification
     \  Click Element    //app-game-filter-drop-down//button[contains(.,' 查詢 ')]
     \  Sleep  5s
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
-    \  Should Not Match    ${valueA}  ${valueB}
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  Check the time if choose game
  
 Search In Game 
@@ -111,7 +116,8 @@ Search In Game
     Click Element  //div[@class='game-search-panel']//button[contains(.,'查询')]
     Sleep  5s
     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
-    Should Not Match    ${valueA}  ${valueB}
+    ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     Check the time if choose game
 
 Search In Collection
@@ -158,12 +164,12 @@ Modularization
     Capture Page Screenshot
 
     Click Element  //div[@class='slidechart']//button[contains(.,'投注单量')]
-    Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'活跃会员')]
-    Click Element  //div[@class='slidechart']//ul/li[contains(.,'活跃会员')]
+    Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'游戏人次')]
+    Click Element  //div[@class='slidechart']//ul/li[contains(.,'游戏人次')]
     Sleep  5s
     Capture Page Screenshot
 
-    Click Element  //div[@class='slidechart']//button[contains(.,'活跃会员')]
+    Click Element  //div[@class='slidechart']//button[contains(.,'游戏人次')]
     Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'营收比')]
     Click Element  //div[@class='slidechart']//ul/li[contains(.,'营收比')]
     Sleep  5s

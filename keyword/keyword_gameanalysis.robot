@@ -63,7 +63,8 @@ Check the time if choose game
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
     Should Not Be Empty  ${valueB} 
-    Should Not Match    ${valueA}  ${valueB}
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}   
     Capture Page Screenshot
 
@@ -72,7 +73,8 @@ Check the time if choose game
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
     Should Not Be Empty  ${valueB}
-    Should Not Match    ${valueA}  ${valueB}
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}
     Capture Page Screenshot 
 
@@ -82,7 +84,8 @@ Check the time if choose game
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
     Should Not Be Empty  ${valueB}
-    Should Not Match    ${valueA}  ${valueB}
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
 
     Reload Page
 

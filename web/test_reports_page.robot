@@ -79,8 +79,8 @@ Search In Classification
     Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
     Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
     Sleep    2s
-    Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'类型查询')]
-    Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'类型查询')]
+    Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
+    Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
     Wait Until Page Contains Element    //label[@for='pAB-17']//label
     Click Element     //label[@for='pAB-17']//label
     Wait Until Page Contains Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查詢 ')]
@@ -105,7 +105,7 @@ Search In Game
     Check the time if choose game 
 
 Search In Collection
-    # Reload Page
+    Reload Page
     Sleep    10s
     Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
     Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
@@ -121,6 +121,7 @@ Search In Collection
     Sleep    4s
     Capture Page Screenshot
     Execute JavaScript  window.document.documentElement.scrollTop = 550;
+  
     Check the time if choose game 
 
 Search In Site 
@@ -158,7 +159,6 @@ Search In Group
 SuiteSetup
     Open Browser    ${LOGIN URL}    ${BROWSER}
     Maximize Browser Window
-    # Set Window Size    1920  980
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown

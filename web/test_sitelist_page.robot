@@ -100,8 +100,8 @@ Search In Game Classification
     Sleep    5s
     # 判斷是否有更新頁面
     ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${orignalValue}  ${newValue}
-    Capture Page Screenshot
+    ${result}=  Run Keyword And Return Status    Should Not Match  ${orignalValue}  ${newValue}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE   No Operation
     
     # 檢查趨勢圖是否顯示正常
     trend  2
@@ -119,8 +119,8 @@ Search In Game Hall
     Sleep    5s
     # 判斷是否有更新頁面
     ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${orignalValue}  ${newValue}
-    Capture Page Screenshot
+    ${result}=  Run Keyword And Return Status    Should Not Match  ${orignalValue}  ${newValue}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE   No Operation
 
     # 查BBIN-彩票
     ${orignalValue}=    Set Variable    ${newValue}
@@ -130,8 +130,8 @@ Search In Game Hall
     Sleep    5s
     # 判斷是否有更新頁面
     ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${orignalValue}  ${newValue}
-    Capture Page Screenshot
+    ${result}=  Run Keyword And Return Status    Should Not Match  ${orignalValue}  ${newValue}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE   No Operation
     trend  2
 
     # 查看AG视讯
@@ -145,12 +145,14 @@ Search In Game Hall
     Sleep    6s
     # 判斷是否有更新頁面
     ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${orignalValue}  ${newValue}
+    ${result}=  Run Keyword And Return Status    Should Not Match  ${orignalValue}  ${newValue}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE   No Operation
+
     ${orignalValue}  Set Variable    ${newValue}
     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
     ${newValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Should Not Match  ${orignalValue}  ${newValue}
-    Capture Page Screenshot
+    ${result}=  Run Keyword And Return Status    Should Not Match  ${orignalValue}  ${newValue}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE   No Operation
     
 Search In Game Name
     Reload Page
@@ -169,22 +171,23 @@ Search In Game Name
     Capture Page Screenshot
 
 Search In Keywords
-    Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
-    Click Element  //input[@class='form-control with-primary-addon']
-    Input Text  //input[@class='form-control with-primary-addon']    alpha
+    Sleep    5s
+    Wait Until Page Contains Element    //input[@placeholder='站台快搜...']
+    Click Element    //input[@placeholder='站台快搜...']
+    Input Text    //input[@placeholder='站台快搜...']    alpha
     Set Browser Implicit Wait    5s
     ${keywordValue}=    Get Text    //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
     Should Match    ${keywordValue}  Alpha*
     Capture Page Screenshot
 
-    Clear Element Text  //input[@class='form-control with-primary-addon']
+    Clear Element Text    //input[@placeholder='站台快搜...']
 Check In Group
     Wait Until Page Contains Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
     Click Element  //a[@class='nor_tabs mt-0'][contains(.,'分群')]
     Sleep    10s
-    Wait Until Page Contains Element  //input[@class='form-control with-primary-addon']
-    Click Element  //input[@class='form-control with-primary-addon']
-    Input Text  //input[@class='form-control with-primary-addon']    alpha
+    Wait Until Page Contains Element  //input[@placeholder='分群快搜...']
+    Click Element  //input[@placeholder='分群快搜...']
+    Input Text  //input[@placeholder='分群快搜...']   alpha
     ${Keywords}=  Get Text  //div[@id="data-table"]//tbody/tr[1]/td[2]//span[1]
     Should Match  ${Keywords}    Alpha*
     Capture Page Screenshot

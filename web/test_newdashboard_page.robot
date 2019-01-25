@@ -22,7 +22,7 @@ Check sidebar link Dashboard navigation is correct
     No Operation
 
 Check Search For Basic
-    [Teardown]  Run Keyword If Any Tests Failed    Capture Page Screenshot
+    [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
     Set Browser Implicit Wait    10s  
     Sleep  10s
 
