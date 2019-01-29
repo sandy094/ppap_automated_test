@@ -31,33 +31,33 @@ Click Search
     # Check Chart In Four card
     # Count In A Day For Today
 
-    Quick Search botton    昨日
-    Check Chart In Four card
-    Execute JavaScript  window.document.documentElement.scrollTo = 0;
-    Count In Seven Days For yesterday
+#     Quick Search botton    昨日
+#     Check Chart In Four card
+#     Execute JavaScript  window.document.documentElement.scrollTo = 0;
+#     Count In Seven Days For yesterday
 
-    Quick Search botton    本周
-    Check Chart In Four card
-    Execute JavaScript  window.document.documentElement.scrollTo = 0;
-    Count In A Day For week
+#     Quick Search botton    本周
+#     Check Chart In Four card
+#     Execute JavaScript  window.document.documentElement.scrollTo = 0;
+#     Count In A Day For week
 
-    Quick Search botton    上周
-    Check Chart In Four card
-    Execute JavaScript  window.document.documentElement.scrollTo = 0;
-    Count In A Day For week
+#     Quick Search botton    上周
+#     Check Chart In Four card
+#     Execute JavaScript  window.document.documentElement.scrollTo = 0;
+#     Count In A Day For week
     
-Click Search In Year
-    @{seasons}  Set Variable  本年  去年  本季  上季
-    :FOR  ${season}  IN  @{seasons}
-    \  Quick Search In year and season    ${season}
-    \  Check Chart In Four card
-    \  Count In A Day For months
+# Click Search In Year
+#     @{seasons}  Set Variable  本年  去年  本季  上季
+#     :FOR  ${season}  IN  @{seasons}
+#     \  Quick Search In year and season    ${season}
+#     \  Check Chart In Four card
+#     \  Count In A Day For months
 
-    @{years}  Set Variable  本月  上月
-    :FOR  ${year}  IN  @{years}
-    \  Quick Search botton    ${year}
-    \  Check Chart In Four card
-    \  Count In A Day For months
+#     @{years}  Set Variable  本月  上月
+#     :FOR  ${year}  IN  @{years}
+#     \  Quick Search botton    ${year}
+#     \  Check Chart In Four card
+#     \  Count In A Day For months
 
 Check Trend Is Active
     # Reload Page
@@ -86,12 +86,12 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
     \  Click Element  //div[@class='drop-select']/ul/li[1]  
 
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[2]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  5s
     \  Capture Page Screenshot
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[3]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
@@ -121,12 +121,12 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
     \  Click Element  //div[@class='drop-select']/ul/li[1]
 
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[2]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[3]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
@@ -156,12 +156,12 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
     \  Click Element  //div[@class='drop-select']/ul/li[1]
 
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[2]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[3]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
@@ -191,12 +191,12 @@ Check Trend Is Active
     \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[1]
     \  Click Element  //div[@class='drop-select']/ul/li[1]
 
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[contains(.,'时')]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[2]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
     \  Capture Page Screenshot
-    \  Click Element  //div[@class='W_DWM_pick_left']/div/span[3]
+    \  Click Element  //div[@class='w__time__pick_left']/div/span[3]
     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
     \  Mouse Over  //div[@class='container bg-white test']//canvas
     \  Sleep  3s
@@ -212,40 +212,40 @@ Check Trend Is Active
     \  Click Element  //div[@class="container bg-white test"]/div/i
     \  Sleep  3s
 
-Search In Datetime 
-    Reload Page
-    Sleep    10s
-    @{mounths}    Set Variable    0: 2019年1月  1: 2018年12月  2: 2018年11月  3: 2018年10月  4: 2018年9月  5: 2018年8月  6: 2018年7月  7: 2018年6月  8: 2018年5月  9: 2018年4月  10: 2018年3月  11: 2018年2月  12: 2018年1月
-    :FOR    ${month}  IN  @{mounths}
-    \  Search In Month    ${month}
+# Search In Datetime 
+#     Reload Page
+#     Sleep    10s
+#     @{mounths}    Set Variable    0: 2019年1月  1: 2018年12月  2: 2018年11月  3: 2018年10月  4: 2018年9月  5: 2018年8月  6: 2018年7月  7: 2018年6月  8: 2018年5月  9: 2018年4月  10: 2018年3月  11: 2018年2月  12: 2018年1月
+#     :FOR    ${month}  IN  @{mounths}
+#     \  Search In Month    ${month}
     
-Check All Chart Is Active
-    Reload Page
-    Sleep    20s
-    Execute JavaScript    window.scrollTo(200, document.body.scrollHeight)
-    Check Chart In Game Classification    种类
-    Check Chart In Game Station    娱乐城
+# Check All Chart Is Active
+#     Reload Page
+#     Sleep    20s
+#     Execute JavaScript    window.scrollTo(200, document.body.scrollHeight)
+#     Check Chart In Game Classification    种类
+#     Check Chart In Game Station    娱乐城
 
-Check Single Chart
-    # 細項點掉單一圖表
-    Sleep    20s
-    Click Element    //div[@class='row hidden_991']/div/div/div/button[contains(.,'种类')]
-    Execute JavaScript    window.scrollTo(200, document.body.scrollHeight)
-    Sleep    10s
-    Wait Until Page Contains Element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
-    Click element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
-    Sleep    20s
-    Wait Until Page Contains Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
-    Click Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
-    Sleep  10s
-    Capture Page Screenshot
+# Check Single Chart
+#     # 細項點掉單一圖表
+#     Sleep    20s
+#     Click Element    //div[@class='row hidden_991']/div/div/div/button[contains(.,'种类')]
+#     Execute JavaScript    window.scrollTo(200, document.body.scrollHeight)
+#     Sleep    10s
+#     Wait Until Page Contains Element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
+#     Click element  //table[@class='table dataTable']/tbody/tr[1]/td[1]
+#     Sleep    20s
+#     Wait Until Page Contains Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
+#     Click Element  //table[@class='table table-hover']/tbody/tr[1]/td[1]/div
+#     Sleep  10s
+#     Capture Page Screenshot
     
-    # 以日合計
-    Click Element  //div[@class="text-left mt-4"]//div/div/button
-    Wait Until Page Contains Element  //div[@class="text-left mt-4"]//div/div/ul/li/a[contains(.,'以时合计')]
-    Click Element  //div[@class="text-left mt-4"]//div/div/ul/li/a[contains(.,'以日合计')]
-    Sleep  5s
-    Capture Page Screenshot
+#     # 以日合計
+#     Click Element  //div[@class="text-left mt-4"]//div/div/button
+#     Wait Until Page Contains Element  //div[@class="text-left mt-4"]//div/div/ul/li/a[contains(.,'以时合计')]
+#     Click Element  //div[@class="text-left mt-4"]//div/div/ul/li/a[contains(.,'以日合计')]
+#     Sleep  5s
+#     Capture Page Screenshot
 
 # 暫時隱藏
 # Search In Trend

@@ -74,7 +74,8 @@ Verify SiteRank Value For Basic
     \  Data Table Check Trend Of List
     \  Click Element  //div[@id='chart']/div/div/a[2]
     \  Sleep  15s
-    \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  ${result}=  Run Keyword And Return Status    Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
+    \  Run Keyword If    '${result}'=='Fasle'    Capture Page Screenshot    Else    No Operation
     \  ${testValue}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
     \  Should Not Be Empty  ${testValue}
     \  Data Table Check Game Of List

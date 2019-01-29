@@ -51,7 +51,7 @@ Search In Datetime
 
 Search In Category
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    # Reload Page
+    Reload Page
     Sleep    10s
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
@@ -89,13 +89,14 @@ Search In Classification
     Check the time if choose game 
     
 Search In Game
-    Reload Page
+    # Reload Page
     Sleep    10s
     Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
     Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+
     Input Text    //app-game-select-tab/div/div/input    1
     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-2']
     Click Element    //button[@id='ngb-typeahead-0-2']
@@ -124,35 +125,35 @@ Search In Collection
   
     Check the time if choose game 
 
-Search In Site 
-    Reload Page
-    Sleep    5s
-    ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-    Wait Until Page Contains Element      //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
-    Click Element      //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
-    Wait Until Page Contains Element      //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
-    Click Element    //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
-    Wait Until Page Contains Element      //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
-    Click Element    //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
-    Click Element    //div[@class='send-btn p-2 mb-2']/button
-    Sleep    2s
-    Capture Page Screenshot
-    ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-    Should Not Match    ${valueA}  ${valueB}
-    Check the time if choose game
+# Search In Site 
+#     Reload Page
+#     Sleep    5s
+#     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+#     Wait Until Page Contains Element      //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
+#     Click Element      //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
+#     Wait Until Page Contains Element      //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
+#     Click Element    //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
+#     Wait Until Page Contains Element      //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
+#     Click Element    //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
+#     Click Element    //div[@class='send-btn p-2 mb-2']/button
+#     Sleep    2s
+#     Capture Page Screenshot
+#     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+#     Should Not Match    ${valueA}  ${valueB}
+#     Check the time if choose game
 
-Search In Group
-    Reload Page
-    Sleep   5s
-    Wait Until Page Contains Element     //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
-    Click Element    //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
-    Wait Until Page Contains Element    //div[@class='site-select-panel']/span
-    Click Element    //div[@class='site-select-panel']/span
-    Wait Until Page Contains Element     //table[@class='table table-striped mt-3']/tbody/tr[1]/td
-    Click Element    //table[@class='table table-striped mt-3']/tbody/tr[1]/td
-    Click Element    //div[@class='send-btn mt-2 p-2 mb-2']/button
-    Sleep    2s
-    Capture Page Screenshot
+# Search In Group
+#     Reload Page
+#     Sleep   5s
+#     Wait Until Page Contains Element     //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
+#     Click Element    //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
+#     Wait Until Page Contains Element    //div[@class='site-select-panel']/span
+#     Click Element    //div[@class='site-select-panel']/span
+#     Wait Until Page Contains Element     //table[@class='table table-striped mt-3']/tbody/tr[1]/td
+#     Click Element    //table[@class='table table-striped mt-3']/tbody/tr[1]/td
+#     Click Element    //div[@class='send-btn mt-2 p-2 mb-2']/button
+#     Sleep    2s
+#     Capture Page Screenshot
     
 
 *** Keywords ***

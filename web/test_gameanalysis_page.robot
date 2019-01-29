@@ -109,7 +109,9 @@ Search In Game
     Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
 
-    Input Text  //input[@id="searchKey"]    8
+    Wait Until Page Contains Element    //app-game-select-tab/div/div/div[contains(.,'依游戏查询')]
+    Click Element    //app-game-select-tab/div/div/div[contains(.,'依游戏查询')]
+    Input Text  //input[@id="searchKey"]    1
     Sleep  5s
     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-1']
     Click Element  //button[@id='ngb-typeahead-0-1']
@@ -129,8 +131,7 @@ Search In Collection
     Click Element    //div[@class="filter-type"]/div
     Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
-    Wait Until Page Contains Element    //app-game-select-tab/div/div/div[contains(.,'依收藏集查询')]
-    Click Element    //app-game-select-tab/div/div/div[contains(.,'依收藏集查询')]
+    
     Sleep    5s
     Wait Until Page Contains Element    //app-game-select-tab//button[@class='btn btn-gray']
     Click Element    //app-game-select-tab//button[@class='btn btn-gray']

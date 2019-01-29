@@ -50,8 +50,11 @@ Data Table Check Game Of List
     ${testValueA}  Set Variable    0
     @{values}    Set Variable  2  3  4  5  
     :FOR  ${value}  IN  @{values} 
+    \  Wait Until Page Contains Element  //div[@class='drop-select']
     \  Click Element  //div[@class='drop-select']
-    \  Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[${value}]
+    \  Sleep  2s
+    \  ${result}=    Run Keyword And Return Status    Wait Until Page Contains Element  //div[@class='drop-select']/ul/li[${value}]
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    Else    No Operation    
     \  Click Element  //div[@class='drop-select']/ul/li[${value}]
     \  Sleep  7s
     \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
