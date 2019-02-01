@@ -60,7 +60,7 @@ Click Search In Year
     \  Count In A Day For months
 
 Check Trend Is Active
-    # Reload Page
+    Reload Page
     Sleep    10s
     Execute JavaScript  window.document.documentElement.scrollTo = 0;
     # 排行裡單一站台的趨勢圖(昨日的4張卡片)
@@ -215,7 +215,7 @@ Check Trend Is Active
 Search In Datetime 
     Reload Page
     Sleep    10s
-    @{mounths}    Set Variable    0: 2019年1月  1: 2018年12月  2: 2018年11月  3: 2018年10月  4: 2018年9月  5: 2018年8月  6: 2018年7月  7: 2018年6月  8: 2018年5月  9: 2018年4月  10: 2018年3月  11: 2018年2月  12: 2018年1月
+    @{mounths}    Set Variable    0: 2019年2月  1: 2019年1月  2: 2018年12月  3: 2018年11月  4: 2018年10月  5: 2018年9月  6: 2018年8月  7: 2018年7月  8: 2018年6月  9: 2018年5月  10: 2018年4月  11: 2018年3月  12: 2018年2月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     

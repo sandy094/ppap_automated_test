@@ -79,7 +79,7 @@ Check the time if choose game
     Capture Page Screenshot 
 
     Sleep  5s
-    Search In Month    0: 2019年1月
+    Search In Month    0: 2019年2月
     Sleep  10s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值

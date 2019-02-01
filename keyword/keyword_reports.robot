@@ -48,7 +48,7 @@ Check the time if choose game
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}
 
-    Search In Month    0: 2019年1月
+    Search In Month    0: 2019年2月
     Sleep  10s
     Run Keyword If    '${Count}'=='6'   Check Value Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
