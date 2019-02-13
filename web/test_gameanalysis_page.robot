@@ -63,15 +63,15 @@ Search In Category
     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
     \  Sleep  5s
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
-    \  Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     \  sleep  5s
     \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Sleep  5s
     \  Wait Until Page Contains Element    //label[@for="${category}"]/div
     \  Click Element    //label[@for="${category}"]/div
-    \  Click Element    //app-game-filter-drop-down//button[contains(.,' 查詢 ')]
+    \  Click Element    //app-category-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
     \  Sleep    10s
     \  Capture Page Screenshot
     \  ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]
@@ -88,12 +88,12 @@ Search In Classification
     @{gameHalls}  Set variable    p3Sing-13  pAB-17  
     :FOR  ${gameHall}  IN  @{gameHalls}
     \  Sleep  5s
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
-    \  Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     \  Sleep  5s
     \  Wait Until Page Contains Element  //label[@for='${gameHall}']/div
     \  Click Element    //label[@for='${gameHall}']/div
-    \  Click Element    //app-game-filter-drop-down//button[contains(.,' 查詢 ')]
+    \  Click Element    //app-game-hall-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
     \  Sleep  5s
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}

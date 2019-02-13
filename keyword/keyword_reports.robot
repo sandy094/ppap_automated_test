@@ -26,7 +26,7 @@ Check Value Is Active
     Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
 
 Check the time if choose game 
-    # window.document.documentElement.scrollTop = 0;
+    # Execute JavaScript    window.document.documentElement.scrollTop = 0;
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     Quick Search botton   上周
     Sleep  5s
@@ -39,6 +39,8 @@ Check the time if choose game
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}   
 
+    Execute JavaScript    window.document.documentElement.scrollTop = 0;
+
     Quick Search In year and season    本季
     Sleep  20s
     Run Keyword If    '${Count}'=='6'   Check Value Is Active Without Memeber    ELSE    Check Value Is Active
@@ -47,6 +49,8 @@ Check the time if choose game
     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}
+
+    Execute JavaScript    window.document.documentElement.scrollTop = 0;
 
     Search In Month    0: 2019年2月
     Sleep  10s

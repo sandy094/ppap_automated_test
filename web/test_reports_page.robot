@@ -60,8 +60,8 @@ Search In Category
     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
     \  Sleep  5s
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
-    \  Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     \  sleep  5s
     \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
@@ -69,7 +69,7 @@ Search In Category
     \  Click Element    //app-game-filter-drop-down//button[contains(.,' 清除 ')]
     \  Wait Until Page Contains Element    //label[@for="${category}"]/div
     \  Click Element    //label[@for="${category}"]/div
-    \  Click Element    //app-game-filter-drop-down//button[contains(.,' 查詢 ')]
+    \  Click Element    //app-category-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
     \  Sleep    10s
     \  Capture Page Screenshot
     \  ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
@@ -79,23 +79,23 @@ Search In Category
 Search In Classification
     Reload Page
     Sleep    10s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
     Wait Until Page Contains Element    //label[@for='pAB-17']//label
     Click Element     //label[@for='pAB-17']//label
-    Wait Until Page Contains Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查詢 ')]
-    Click Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查詢 ')]
+    Wait Until Page Contains Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查询 ')]
+    Click Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查询 ')]
     Sleep    2s
     Check the time if choose game 
     
 Search In Game
     Reload Page
     Sleep    10s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
@@ -111,8 +111,8 @@ Search In Game
 Search In Collection
     Reload Page
     Sleep    10s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div[contains(.,' 游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
