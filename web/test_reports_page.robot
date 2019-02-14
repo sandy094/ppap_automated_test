@@ -133,8 +133,8 @@ Search In Site
     Reload Page
     Sleep    5s
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-    Wait Until Page Contains Element      //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
-    Click Element      //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
+    Wait Until Page Contains Element      //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
+    Click Element      //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
     Wait Until Page Contains Element      //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
     Click Element    //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
     Wait Until Page Contains Element      //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
@@ -149,8 +149,8 @@ Search In Site
 Search In Group
     Reload Page
     Sleep   5s
-    Wait Until Page Contains Element     //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
-    Click Element    //div[@class="filter-site"]/div[contains(.,' 站台筛选')]
+    Wait Until Page Contains Element     //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
+    Click Element    //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
     Wait Until Page Contains Element    //div[@class='site-select-panel']/span
     Click Element    //div[@class='site-select-panel']/span
     Wait Until Page Contains Element     //table[@class='table table-striped mt-3']/tbody/tr[1]/td

@@ -153,7 +153,7 @@ Modularization
     Mouse Over  //div[@class='chart-area']//canvas
     Capture Page Screenshot
 
-    Click Element  //div[@class='slidechart']//button[contains(.,'損益')]
+    Click Element  //div[@class='slidechart']//div[@class='btn-group dropdown']/button[contains(.,'损益')]
     Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
     Click Element  //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
     Sleep  5s
