@@ -105,6 +105,6 @@ Search In Month
     Wait Until Page Contains Element    //div[@class='select_month']/select
     Select From List By Value    //div[@class='select_month']/select    ${title}
     Sleep    5s
-    Capture Page Screenshot
+    # Capture Page Screenshot
     Click Element    //div[@class='content-top clearfix']
 

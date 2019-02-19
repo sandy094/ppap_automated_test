@@ -22,21 +22,39 @@ Check sidebar link Game Information navigation is correct
     Click Element    //li[@title="娱乐城"] /ul//li[contains(.,'对帐查询')]
     Sleep  5s
 
-Click Quick Search
-    @{gameHalls}    Set Variable    BB-1    New MG-41    BG-31    AB-17    CQ9-28
-    :FOR  ${gameHall}  IN  @{gameHalls}
-    \  Wait Until Page Contains Element    //label[@for='${gameHall}']
-    \  Click Element    //label[@for='${gameHall}']
-    \  Sleep    5s
-    \  Wait Until Page Contains Element    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
-    \  ${tableValueA}=  Get Text   //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
-    \  Run Keyword If    '${tableValueA}'=='0'   Capture Page Screenshot    ELSE    No Operation
-    \  Search In Time  
-    \  Search In Year
-    \  Search In Datetime 
+# Click Quick Search
+#     @{gameHalls}    Set Variable    BB-1    New MG-41    BG-31    AB-17    CQ9-28
+#     :FOR  ${gameHall}  IN  @{gameHalls}
+#     \  Wait Until Page Contains Element    //label[@for='${gameHall}']
+#     \  Click Element    //label[@for='${gameHall}']
+#     \  Sleep    5s
+#     \  Wait Until Page Contains Element    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
+#     \  ${tableValueA}=  Get Text   //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
+#     \  Run Keyword If    '${tableValueA}'=='0'   Capture Page Screenshot    ELSE    No Operation
+#     \  Search In Time  
+#     \  Search In Year
+#     \  Search In Datetime 
 
+Search In Hour And Month 
 # 時日分頁待新增
-# //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'时')]
+    Quick Search botton    本月
+    Wait Until Page Contains Element    //label[@for='BB-1']
+    Click Element    //label[@for='BB-1']
+    ${tableValueA}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//thead/tr[2]/th[2]
+    Wait Until Page Contains Element    //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'时')]
+    Click Element     //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'时')]
+    Wait Until Page Contains Element    //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span/a[@class='active'][contains(.,'时')]
+    Sleep    2s
+    ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//thead/tr[2]/th[2]  
+    ${result}=    Should Match    ${tableValueA}  ${tableValueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot   Else    No Operation
+    Wait Until Page Contains Element    //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'月')]
+    Click Element    //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'月')]
+    Wait Until Page Contains Element    //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span/a[@class='active'][contains(.,'月')]
+    Sleep    4s
+    ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//thead/tr[2]/th[2]
+    ${result}=    Should Match    ${tableValueA}  ${tableValueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot   Else    No Operation
 
 *** Keywords ***
 SuiteSetup

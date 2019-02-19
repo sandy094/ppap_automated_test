@@ -14,7 +14,8 @@ Search In Time
     \  Sleep  5s
     \  ${txtValueB}=  Get Text    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${txtValueB}'=='0'    Capture Page Screenshot
-    \  Should Not Match    ${txtValueA}  ${txtValueB}
+    \  ${result}=    Run Keyword And Return Status   Should Not Match    ${txtValueA}  ${txtValueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  ${txtValueA}   Set Variable    ${txtValueB}
 
 Search In Year
@@ -25,7 +26,8 @@ Search In Year
     \  Sleep  20s
     \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${tableValueB}'=='0'    Capture Page Screenshot    ELSE    No Operation
-    \  Should Not Match    ${tableValueA}  ${tableValueB}
+    \  ${result}=    Should Not Match    ${tableValueA}  ${tableValueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
     \  ${tableValueA}  Set Variable    ${tableValueB}
 
 Search In Datetime 
@@ -37,6 +39,7 @@ Search In Datetime
     \  Sleep    10s
     \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${tableValueB}'=='0'    Capture Page Screenshot    ELSE    No Operation
-    \  Should Not Match    ${tableValueA}  ${tableValueB}
+    \  ${result}=    Should Not Match    ${tableValueA}  ${tableValueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
     \  ${tableValueA}  Set Variable    ${tableValueB}
 

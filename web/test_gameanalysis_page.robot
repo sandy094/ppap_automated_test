@@ -24,7 +24,7 @@ Click Quick Search
     @{days}  Set Variable      昨日  上周  本月  上月
     :FOR  ${day}  IN  @{days}
     \  Quick Search botton    ${day}
-    \  Sleep  10s
+    \  Sleep  5s
     \  Check Values
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[3]   #有效投注
     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
