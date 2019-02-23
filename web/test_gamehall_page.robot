@@ -22,18 +22,18 @@ Check sidebar link Game Information navigation is correct
     Click Element    //li[@title="娱乐城"] /ul//li[contains(.,'对帐查询')]
     Sleep  5s
 
-# Click Quick Search
-#     @{gameHalls}    Set Variable    BB-1    New MG-41    BG-31    AB-17    CQ9-28
-#     :FOR  ${gameHall}  IN  @{gameHalls}
-#     \  Wait Until Page Contains Element    //label[@for='${gameHall}']
-#     \  Click Element    //label[@for='${gameHall}']
-#     \  Sleep    5s
-#     \  Wait Until Page Contains Element    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
-#     \  ${tableValueA}=  Get Text   //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
-#     \  Run Keyword If    '${tableValueA}'=='0'   Capture Page Screenshot    ELSE    No Operation
-#     \  Search In Time  
-#     \  Search In Year
-#     \  Search In Datetime 
+Click Quick Search
+    @{gameHalls}    Set Variable    BB-1    New MG-41    BG-31    AB-17    CQ9-28
+    :FOR  ${gameHall}  IN  @{gameHalls}
+    \  Wait Until Page Contains Element    //label[@for='${gameHall}']
+    \  Click Element    //label[@for='${gameHall}']
+    \  Sleep    5s
+    \  Wait Until Page Contains Element    //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
+    \  ${tableValueA}=  Get Text   //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
+    \  Run Keyword If    '${tableValueA}'=='0'   Capture Page Screenshot    ELSE    No Operation
+    \  Search In Time  
+    \  Search In Year
+    \  Search In Datetime 
 
 Search In Hour And Month 
 # 時日分頁待新增

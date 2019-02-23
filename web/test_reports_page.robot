@@ -162,9 +162,17 @@ Search In Group
 
 *** Keywords ***
 SuiteSetup
-    Open Browser    ${LOGIN URL}    ${BROWSER}
-    Maximize Browser Window
+    ${chrome options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome options}   add_argument    ignore-certificate-errors
+    Call Method    ${chrome options}   add_argument    ignore-ssl-errors
+    ${options}=     Call Method     ${chrome_options}    to_capabilities      
+    Create Webdriver    Chrome    desired_capabilities=${options}
+    Go to     ${LOGIN URL}
+	Maximize Browser Window
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
+    # Open Browser    ${LOGIN URL}    ${BROWSER}
+    # Maximize Browser Window
+    # Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     
 SuiteTeardown
     Run Keyword If Any Tests Failed    Capture Page Screenshot 

@@ -139,6 +139,7 @@ Advanced Search-category
     \  Page Should Contain Element  //div[@class='kanban-title']/div[contains(.,'${cate}')]
     \  Sleep  3s
     \  Wait Until Page Contains Element  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[2]  10s
+    \  Wait Until Page Contains Element  //div[@class='kanban-title']/div[@class="eveday_bgcolor"][contains(.,'${cate}')]
     \  ${CheckValueB}=  Get Text  //div[@class='kanban-everyDay-panel mt-2 mb-3']//table/tbody/tr[1]/td[3]
     \  Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Reload Page
