@@ -2,9 +2,9 @@
 Force Tags    Login
 Suite Setup    SuiteSetup
 Suite Teardown    SuiteTeardown
-Resource    ../lib/resource.robot
-Resource    ../keyword/keyword_common.robot
-Resource    ../keyword/keyword_newdashboard.robot
+Resource    ../../lib/resource.robot
+Resource    ../../keyword/keyword_common.robot
+Resource    ../../keyword/keyword_newdashboard.robot
 
 *** Test Cases ***
 Check login
@@ -68,7 +68,7 @@ Check Save Search
 Search In Datetime For Basic
     Reload Page
     Set Browser Implicit Wait    10s
-    @{mounths}    Set Variable    0: 2019年2月  1: 2019年1月  2: 2018年12月  3: 2018年11月  4: 2018年10月  5: 2018年9月  6: 2018年8月  7: 2018年7月  8: 2018年6月  9: 2018年5月  10: 2018年4月  11: 2018年3月  12: 2018年2月
+    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Click Element  //a[@class='active-bright']
@@ -83,7 +83,7 @@ Search In Datetime For Save
     Reload Page
     Set Browser Implicit Wait    10s
     # Click Element  //div[@class="header-link-bar text-center"]/a[contains(.,' 逐日 ')]
-    @{mounths}    Set Variable    0: 2019年2月  1: 2019年1月  2: 2018年12月  3: 2018年11月  4: 2018年10月  
+    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  
     :FOR    ${month}  IN  @{mounths}
     \  Sleep  10s
     \  Wait Until Page Contains Element  //a[@class='active-bright']

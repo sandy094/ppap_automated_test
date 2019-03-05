@@ -36,10 +36,11 @@ Click Quick Search
     \  Search In Datetime 
 
 Search In Hour And Month 
-# 時日分頁待新增
+# 時日分頁
     Quick Search botton    本月
     Wait Until Page Contains Element    //label[@for='BB-1']
     Click Element    //label[@for='BB-1']
+    Sleep    2s
     ${tableValueA}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//thead/tr[2]/th[2]
     Wait Until Page Contains Element    //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'时')]
     Click Element     //div[@class='DWM_pick_left']/div[@class='DWM_pull']/span[contains(.,'时')]
@@ -60,7 +61,6 @@ Search In Hour And Month
 SuiteSetup
     Open Browser    ${LOGIN URL}    ${BROWSER}
     Maximize Browser Window
-    # Set Window Size    1920    1080
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     Set Browser Implicit Wait    10s
     

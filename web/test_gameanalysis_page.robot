@@ -46,7 +46,7 @@ Click Quick Search In Year
 Search In Datetime 
     Sleep  5s
     ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年2月  1: 2019年1月  2: 2018年12月  3: 2018年11月  4: 2018年10月  5: 2018年9月  6: 2018年8月  
+    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    10s
@@ -133,11 +133,12 @@ Search In Collection
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     
     Sleep    5s
-    Wait Until Page Contains Element    //app-game-select-tab//button[@class='btn btn-gray']
-    Click Element    //app-game-select-tab//button[@class='btn btn-gray']
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
+    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
     Click Element    //div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    5s
-    Page Should Contain Element    //div[@class='col-lg-12 col-12 text-center mobile_btn_area2']/a[1][contains(.,'1126test')]
+    # 確認收藏集是否有變更
+    Page Should Contain Element    //div[@class='col-lg-12 col-12 text-center mobile_btn_area2']/a[1][contains(.,'test')]
     Sleep    5s
     Check the time if choose game
 

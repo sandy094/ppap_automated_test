@@ -68,7 +68,7 @@ Short
 
 Search In Datetime 
     Set Browser Implicit Wait    10s
-    @{mounths}    Set Variable    0: 2019年2月  1: 2019年1月  2: 2018年12月  3: 2018年11月  4: 2018年10月  5: 2018年9月  6: 2018年8月  7: 2018年7月  8: 2018年6月  9: 2018年5月  10: 2018年4月  11: 2018年3月  12: 2018年2月
+    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Check Values
@@ -203,8 +203,8 @@ Check In Group
 Search In Moudle
     Reload Page
     ${orignalValue}=  Get Text  //div[@id="data-table"]//table/tbody/tr[1]/td[3]
-    Wait Until Page Contains Element  //div[@bacardclass='table-panel']//div[@class="button-list"][1]
-    Click Element  //div[@bacardclass='table-panel']//div[@class="button-list"][4]
+    Wait Until Page Contains Element  //div[@bacardclass='table-panel']//div[@class="button-list"][3]
+    Click Element  //div[@bacardclass='table-panel']//div[@class="button-list"][3]
     Sleep  5s
     Wait Until Page Contains Element    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
     ${newValue}=  Get Text    //div[@id="data-table"]//table/tbody/tr[1]/td[3]
