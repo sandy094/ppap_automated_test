@@ -11,8 +11,9 @@ Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
 
 Check sidebar link Operational navigation is correct
-    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    # 關掉公告訊息提示
+    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Check Operational Information Link    报表呈现
 
 Click Search
@@ -36,14 +37,16 @@ Click Search
     \  Check Value Is Active
     \  Sleep    1m
     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]  #驗證數值
-    \  ${result}=  Run Keyword And Return Status    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    \  ${checkResult}=  Run Keyword And Return Status    Should Not Match    ${CheckValueB}    0
+    \  Run Keyword If     '${checkResult}'=='False'    Capture Page Screenshot    ELSE    NO Operation
+    \  ${statusResult}=  Run Keyword And Return Status    Should Not Match  ${CheckValueA}  ${CheckValueB}
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot        ELSE    NO Operation
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
 
 
 Search In Datetime 
     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]
-    @{mounths}    Set Variable    0: 2019年2月  1: 2019年1月  2: 2018年12月  3: 2018年11月  4: 2018年10月  5: 2018年9月  6: 2018年8月  7: 2018年7月  8: 2018年6月  9: 2018年5月  10: 2018年4月  11: 2018年3月  12: 2018年2月
+    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    50s
@@ -118,9 +121,9 @@ Search In Collection
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
     Click Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
-    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-select mt-2 mb-3']/button[2]
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
     Sleep    5s
-    Click Element    //app-game-select-tab//div[@class='loveList-select mt-2 mb-3']/button[2]
+    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Click Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    4s
