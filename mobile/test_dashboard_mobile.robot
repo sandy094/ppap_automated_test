@@ -25,7 +25,6 @@ Check sidebar link Dashboard navigation is correct
 
 Click Search
     Set Browser Implicit Wait    5s
-    
     Click Topbar Link    运营看板
     Sleep  2s
 
