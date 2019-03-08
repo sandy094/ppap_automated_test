@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1 (Python 3.6.5 on win32)" generated="20190305 15:11:29.686" rpa="false">
-<suite id="s1" name="Test Gamehall Page" source="C:\unit_test\web\test_gamehall_page.robot">
+<robot generator="Robot 3.1 (Python 3.6.5 on win32)" generated="20190308 16:52:43.071" rpa="false">
+<suite id="s1" name="Test Dashboard Mobile" source="C:\unit_test\mobile\test_dashboard_mobile.robot">
 <kw name="SuiteSetup" type="setup">
-<kw name="Open Browser" library="Selenium2Library">
-<doc>Opens a new browser instance to the given ``url``.</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
 <arguments>
-<arg>${LOGIN URL}</arg>
-<arg>${BROWSER}</arg>
+<arg>deviceName=iPhone X</arg>
 </arguments>
-<msg timestamp="20190305 15:11:29.832" level="INFO">Opening browser 'Chrome' to base url 'https://ppap.pmzoe.com/login/'.</msg>
-<status status="PASS" starttime="20190305 15:11:29.832" endtime="20190305 15:11:35.976"></status>
+<assign>
+<var>${devname}</var>
+</assign>
+<msg timestamp="20190308 16:52:43.216" level="INFO">${devname} = {'deviceName': 'iPhone X'}</msg>
+<status status="PASS" starttime="20190308 16:52:43.215" endtime="20190308 16:52:43.216"></status>
 </kw>
-<kw name="Maximize Browser Window" library="Selenium2Library">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20190305 15:11:35.977" endtime="20190305 15:11:37.099"></status>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>mobileEmulation=${devname}</arg>
+</arguments>
+<assign>
+<var>${mobile_emulation}</var>
+</assign>
+<msg timestamp="20190308 16:52:43.216" level="INFO">${mobile_emulation} = {'mobileEmulation': {'deviceName': 'iPhone X'}}</msg>
+<status status="PASS" starttime="20190308 16:52:43.216" endtime="20190308 16:52:43.216"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver.chrome.options'].Options()</arg>
+<arg>sys, selenium.webdriver.chrome.options</arg>
+</arguments>
+<assign>
+<var>${chromeoptions}</var>
+</assign>
+<msg timestamp="20190308 16:52:43.217" level="INFO">${chromeoptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001A07890AB70&gt;</msg>
+<status status="PASS" starttime="20190308 16:52:43.216" endtime="20190308 16:52:43.217"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${mobile_emulation}</arg>
+</arguments>
+<assign>
+<var>${chromeoptions_experimental_options}</var>
+</assign>
+<msg timestamp="20190308 16:52:43.217" level="INFO">${chromeoptions_experimental_options} = {'mobileEmulation': {'deviceName': 'iPhone X'}}</msg>
+<status status="PASS" starttime="20190308 16:52:43.217" endtime="20190308 16:52:43.217"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chromeoptions}</arg>
+<arg>add_experimental_option</arg>
+<arg>mobileEmulation</arg>
+<arg>${devname}</arg>
+</arguments>
+<status status="PASS" starttime="20190308 16:52:43.217" endtime="20190308 16:52:43.217"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chromeoptions}</arg>
+</arguments>
+<msg timestamp="20190308 16:52:43.217" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20190308 16:52:43.217" endtime="20190308 16:52:47.634"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>https://ppap.pmzoe.com/login</arg>
+</arguments>
+<msg timestamp="20190308 16:52:47.634" level="INFO">Opening url 'https://ppap.pmzoe.com/login'</msg>
+<status status="PASS" starttime="20190308 16:52:47.634" endtime="20190308 16:52:49.243"></status>
 </kw>
 <kw name="Login Page" library="keyword_common">
 <arguments>
@@ -25,8 +84,8 @@
 <arguments>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190305 15:11:37.099" level="INFO">TEST1234</msg>
-<status status="PASS" starttime="20190305 15:11:37.099" endtime="20190305 15:11:37.100"></status>
+<msg timestamp="20190308 16:52:49.244" level="INFO">TEST1234</msg>
+<status status="PASS" starttime="20190308 16:52:49.244" endtime="20190308 16:52:49.244"></status>
 </kw>
 <kw name="Input Account" library="keyword_common">
 <arguments>
@@ -37,7 +96,7 @@
 <arguments>
 <arg>//input[@id="inputEmail3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.100" endtime="20190305 15:11:37.116"></status>
+<status status="PASS" starttime="20190308 16:52:49.245" endtime="20190308 16:52:49.266"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -45,10 +104,10 @@
 <arg>//input[@id="inputEmail3"]</arg>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190305 15:11:37.117" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
-<status status="PASS" starttime="20190305 15:11:37.116" endtime="20190305 15:11:37.219"></status>
+<msg timestamp="20190308 16:52:49.267" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
+<status status="PASS" starttime="20190308 16:52:49.267" endtime="20190308 16:52:49.351"></status>
 </kw>
-<status status="PASS" starttime="20190305 15:11:37.100" endtime="20190305 15:11:37.220"></status>
+<status status="PASS" starttime="20190308 16:52:49.244" endtime="20190308 16:52:49.351"></status>
 </kw>
 <kw name="Input Password" library="keyword_common">
 <arguments>
@@ -59,7 +118,7 @@
 <arguments>
 <arg>//input[@id="inputPassword3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.221" endtime="20190305 15:11:37.231"></status>
+<status status="PASS" starttime="20190308 16:52:49.352" endtime="20190308 16:52:49.362"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -67,39 +126,22 @@
 <arg>//input[@id="inputPassword3"]</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20190305 15:11:37.231" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
-<status status="PASS" starttime="20190305 15:11:37.231" endtime="20190305 15:11:37.291"></status>
+<msg timestamp="20190308 16:52:49.362" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
+<status status="PASS" starttime="20190308 16:52:49.362" endtime="20190308 16:52:49.444"></status>
 </kw>
-<status status="PASS" starttime="20190305 15:11:37.220" endtime="20190305 15:11:37.291"></status>
+<status status="PASS" starttime="20190308 16:52:49.351" endtime="20190308 16:52:49.444"></status>
 </kw>
-<kw name="Click Signin Button" library="keyword_common">
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
+<kw name="Press Key" library="Selenium2Library">
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
 <arguments>
-<arg>//button[@class="btn btn-default btn-auth"]</arg>
+<arg>//input[@id="inputPassword3"]</arg>
+<arg>\\13</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.292" endtime="20190305 15:11:37.300"></status>
+<status status="PASS" starttime="20190308 16:52:49.444" endtime="20190308 16:52:49.470"></status>
 </kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//button[@class="btn btn-default btn-auth"]</arg>
-</arguments>
-<msg timestamp="20190305 15:11:37.301" level="INFO">Clicking element '//button[@class="btn btn-default btn-auth"]'.</msg>
-<status status="PASS" starttime="20190305 15:11:37.301" endtime="20190305 15:11:37.346"></status>
+<status status="PASS" starttime="20190308 16:52:49.243" endtime="20190308 16:52:49.470"></status>
 </kw>
-<status status="PASS" starttime="20190305 15:11:37.292" endtime="20190305 15:11:37.346"></status>
-</kw>
-<status status="PASS" starttime="20190305 15:11:37.099" endtime="20190305 15:11:37.346"></status>
-</kw>
-<kw name="Set Browser Implicit Wait" library="Selenium2Library">
-<doc>Sets the implicit wait value used by Selenium.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<status status="PASS" starttime="20190305 15:11:37.346" endtime="20190305 15:11:37.348"></status>
-</kw>
-<status status="PASS" starttime="20190305 15:11:29.831" endtime="20190305 15:11:37.348"></status>
+<status status="PASS" starttime="20190308 16:52:43.215" endtime="20190308 16:52:49.470"></status>
 </kw>
 <test id="s1-t1" name="Check login">
 <kw name="Login Page" library="keyword_common">
@@ -112,8 +154,8 @@
 <arguments>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190305 15:11:37.349" level="INFO">TEST1234</msg>
-<status status="PASS" starttime="20190305 15:11:37.349" endtime="20190305 15:11:37.349"></status>
+<msg timestamp="20190308 16:52:49.471" level="INFO">TEST1234</msg>
+<status status="PASS" starttime="20190308 16:52:49.471" endtime="20190308 16:52:49.471"></status>
 </kw>
 <kw name="Input Account" library="keyword_common">
 <arguments>
@@ -124,7 +166,7 @@
 <arguments>
 <arg>//input[@id="inputEmail3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.349" endtime="20190305 15:11:37.358"></status>
+<status status="PASS" starttime="20190308 16:52:49.471" endtime="20190308 16:52:49.478"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -132,10 +174,10 @@
 <arg>//input[@id="inputEmail3"]</arg>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190305 15:11:37.358" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
-<status status="PASS" starttime="20190305 15:11:37.358" endtime="20190305 15:11:37.436"></status>
+<msg timestamp="20190308 16:52:49.478" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
+<status status="PASS" starttime="20190308 16:52:49.478" endtime="20190308 16:52:49.561"></status>
 </kw>
-<status status="PASS" starttime="20190305 15:11:37.349" endtime="20190305 15:11:37.436"></status>
+<status status="PASS" starttime="20190308 16:52:49.471" endtime="20190308 16:52:49.561"></status>
 </kw>
 <kw name="Input Password" library="keyword_common">
 <arguments>
@@ -146,7 +188,7 @@
 <arguments>
 <arg>//input[@id="inputPassword3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.436" endtime="20190305 15:11:37.444"></status>
+<status status="PASS" starttime="20190308 16:52:49.562" endtime="20190308 16:52:49.569"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -154,163 +196,306 @@
 <arg>//input[@id="inputPassword3"]</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20190305 15:11:37.444" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
-<status status="PASS" starttime="20190305 15:11:37.444" endtime="20190305 15:11:37.491"></status>
+<msg timestamp="20190308 16:52:49.570" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
+<status status="PASS" starttime="20190308 16:52:49.570" endtime="20190308 16:52:49.634"></status>
 </kw>
-<status status="PASS" starttime="20190305 15:11:37.436" endtime="20190305 15:11:37.492"></status>
+<status status="PASS" starttime="20190308 16:52:49.562" endtime="20190308 16:52:49.634"></status>
 </kw>
-<kw name="Click Signin Button" library="keyword_common">
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
+<kw name="Press Key" library="Selenium2Library">
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
 <arguments>
-<arg>//button[@class="btn btn-default btn-auth"]</arg>
+<arg>//input[@id="inputPassword3"]</arg>
+<arg>\\13</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.492" endtime="20190305 15:11:37.502"></status>
+<status status="PASS" starttime="20190308 16:52:49.635" endtime="20190308 16:52:49.652"></status>
 </kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//button[@class="btn btn-default btn-auth"]</arg>
-</arguments>
-<msg timestamp="20190305 15:11:37.503" level="INFO">Clicking element '//button[@class="btn btn-default btn-auth"]'.</msg>
-<status status="PASS" starttime="20190305 15:11:37.503" endtime="20190305 15:11:37.542"></status>
-</kw>
-<status status="PASS" starttime="20190305 15:11:37.492" endtime="20190305 15:11:37.542"></status>
-</kw>
-<status status="PASS" starttime="20190305 15:11:37.349" endtime="20190305 15:11:37.542"></status>
+<status status="PASS" starttime="20190308 16:52:49.471" endtime="20190308 16:52:49.652"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="PASS" starttime="20190305 15:11:37.348" endtime="20190305 15:11:37.543" critical="yes"></status>
+<status status="PASS" starttime="20190308 16:52:49.470" endtime="20190308 16:52:49.653" critical="yes"></status>
 </test>
-<test id="s1-t2" name="Check sidebar link Game Information navigation is correct">
+<test id="s1-t2" name="Check sidebar link Dashboard navigation is correct">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190308 16:52:54.656" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190308 16:52:49.654" endtime="20190308 16:52:54.656"></status>
+</kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
 <arg>//div[@class='container bg-white boss-know-panel']//button[1]</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:11:37.545" endtime="20190305 15:11:40.314"></status>
+<status status="PASS" starttime="20190308 16:52:54.656" endtime="20190308 16:52:54.668"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@class='container bg-white boss-know-panel']//button[1]</arg>
 </arguments>
-<msg timestamp="20190305 15:11:40.314" level="INFO">Clicking element '//div[@class='container bg-white boss-know-panel']//button[1]'.</msg>
-<status status="PASS" starttime="20190305 15:11:40.314" endtime="20190305 15:11:40.362"></status>
+<msg timestamp="20190308 16:52:54.669" level="INFO">Clicking element '//div[@class='container bg-white boss-know-panel']//button[1]'.</msg>
+<status status="PASS" starttime="20190308 16:52:54.668" endtime="20190308 16:52:54.725"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20190308 16:52:57.727" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190308 16:52:54.726" endtime="20190308 16:52:57.727"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>//a[@class='collapse-menu-link ion-navicon']</arg>
+</arguments>
+<status status="PASS" starttime="20190308 16:52:57.727" endtime="20190308 16:52:57.738"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//a[@class='collapse-menu-link ion-navicon']</arg>
+</arguments>
+<msg timestamp="20190308 16:52:57.739" level="INFO">Clicking element '//a[@class='collapse-menu-link ion-navicon']'.</msg>
+<status status="PASS" starttime="20190308 16:52:57.738" endtime="20190308 16:52:57.787"></status>
 </kw>
 <kw name="Click Sidebar Link" library="keyword_common">
 <arguments>
-<arg>对帐资讯</arg>
+<arg>运营看板</arg>
 </arguments>
 <kw name="Sleep" library="BuiltIn">
 <doc>Pauses the test executed for the given time.</doc>
 <arguments>
 <arg>30s</arg>
 </arguments>
-<msg timestamp="20190305 15:12:10.363" level="INFO">Slept 30 seconds</msg>
-<status status="PASS" starttime="20190305 15:11:40.363" endtime="20190305 15:12:10.363"></status>
+<msg timestamp="20190308 16:53:27.790" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20190308 16:52:57.788" endtime="20190308 16:53:27.790"></status>
 </kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
 <arg>//li[@title="${title}"]</arg>
 </arguments>
-<status status="PASS" starttime="20190305 15:12:10.363" endtime="20190305 15:12:10.375"></status>
+<status status="PASS" starttime="20190308 16:53:27.790" endtime="20190308 16:53:27.800"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//li[@title="${title}"]</arg>
 </arguments>
-<msg timestamp="20190305 15:12:10.375" level="INFO">Clicking element '//li[@title="对帐资讯"]'.</msg>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190305 15:12:10.790" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190305 15:12:10.407" endtime="20190305 15:12:10.790"></status>
+<msg timestamp="20190308 16:53:27.801" level="INFO">Clicking element '//li[@title="运营看板"]'.</msg>
+<status status="PASS" starttime="20190308 16:53:27.800" endtime="20190308 16:53:27.847"></status>
 </kw>
-<msg timestamp="20190305 15:12:10.828" level="FAIL">WebDriverException: Message: unknown error: Element &lt;li _ngcontent-c10="" class="al-sidebar-list-item with-sub-menu" title="对帐资讯"&gt;...&lt;/li&gt; is not clickable at point (125, 432). Other element would receive the click: &lt;ngb-modal-window role="dialog" tabindex="-1" class="modal fade show d-block"&gt;...&lt;/ngb-modal-window&gt;
-  (Session info: chrome=72.0.3626.119)
-  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64)
-</msg>
-<status status="FAIL" starttime="20190305 15:12:10.375" endtime="20190305 15:12:10.828"></status>
+<status status="PASS" starttime="20190308 16:52:57.788" endtime="20190308 16:53:27.847"></status>
 </kw>
-<status status="FAIL" starttime="20190305 15:11:40.362" endtime="20190305 15:12:10.828"></status>
+<kw name="No Operation" library="BuiltIn">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" starttime="20190308 16:53:27.847" endtime="20190308 16:53:27.848"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="FAIL" starttime="20190305 15:11:37.544" endtime="20190305 15:12:10.829" critical="yes">WebDriverException: Message: unknown error: Element &lt;li _ngcontent-c10="" class="al-sidebar-list-item with-sub-menu" title="对帐资讯"&gt;...&lt;/li&gt; is not clickable at point (125, 432). Other element would receive the click: &lt;ngb-modal-window role="dialog" tabindex="-1" class="modal fade show d-block"&gt;...&lt;/ngb-modal-window&gt;
-  (Session info: chrome=72.0.3626.119)
-  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64)
-</status>
+<status status="PASS" starttime="20190308 16:52:49.654" endtime="20190308 16:53:27.848" critical="yes"></status>
 </test>
-<test id="s1-t3" name="Click Quick Search">
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
+<test id="s1-t3" name="Check Five Chart In Category">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
 <arguments>
-<arg>BB-1</arg>
-<arg>New MG-41</arg>
-<arg>BG-31</arg>
-<arg>AB-17</arg>
-<arg>CQ9-28</arg>
+<arg>5s</arg>
 </arguments>
-<assign>
-<var>@{gameHalls}</var>
-</assign>
-<msg timestamp="20190305 15:12:10.832" level="INFO">@{gameHalls} = [ BB-1 | New MG-41 | BG-31 | AB-17 | CQ9-28 ]</msg>
-<status status="PASS" starttime="20190305 15:12:10.832" endtime="20190305 15:12:10.832"></status>
+<msg timestamp="20190308 16:53:32.852" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190308 16:53:27.850" endtime="20190308 16:53:32.852"></status>
 </kw>
-<kw name="${gameHall} IN [ @{gameHalls} ]" type="for">
-<kw name="${gameHall} = BB-1" type="foritem">
+<tags>
+<tag>Login</tag>
+</tags>
+<status status="PASS" starttime="20190308 16:53:27.850" endtime="20190308 16:53:32.853" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Check Five Chart In Classification">
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
-<arg>//label[@for='${gameHall}']</arg>
+<arg>//div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]</arg>
 </arguments>
+<status status="PASS" starttime="20190308 16:53:32.855" endtime="20190308 16:53:32.866"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:32.866" level="INFO">Clicking element '//div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:32.866" endtime="20190308 16:53:32.961"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20190308 16:53:34.963" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190308 16:53:32.962" endtime="20190308 16:53:34.963"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//div[@class='text-center mobile_btn_area2']/a[contains(.,'娱乐城查询')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:34.963" level="INFO">Clicking element '//div[@class='text-center mobile_btn_area2']/a[contains(.,'娱乐城查询')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:34.963" endtime="20190308 16:53:35.065"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:35.065" level="INFO">Clicking element '//div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:35.065" endtime="20190308 16:53:35.172"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20190308 16:53:37.173" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190308 16:53:35.173" endtime="20190308 16:53:37.173"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//div[@class='card-header clearfix']/h3[contains(.,'娱乐城')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:37.184" level="INFO">Current page contains element '//div[@class='card-header clearfix']/h3[contains(.,'娱乐城')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:37.173" endtime="20190308 16:53:37.184"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 560;</arg>
+</arguments>
+<msg timestamp="20190308 16:53:37.185" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 560;</msg>
+<status status="PASS" starttime="20190308 16:53:37.185" endtime="20190308 16:53:37.189"></status>
+</kw>
 <kw name="Capture Page Screenshot" library="Selenium2Library">
 <doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190305 15:12:21.357" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190305 15:12:21.040" endtime="20190305 15:12:21.357"></status>
+<msg timestamp="20190308 16:53:37.888" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-112.png"&gt;&lt;img src="selenium-screenshot-112.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190308 16:53:37.190" endtime="20190308 16:53:37.889"></status>
 </kw>
-<msg timestamp="20190305 15:12:21.358" level="FAIL">Element '//label[@for='BB-1']' did not appear in 5 seconds.</msg>
-<status status="FAIL" starttime="20190305 15:12:10.832" endtime="20190305 15:12:21.358"></status>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 430;</arg>
+</arguments>
+<msg timestamp="20190308 16:53:37.890" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 430;</msg>
+<status status="PASS" starttime="20190308 16:53:37.889" endtime="20190308 16:53:37.894"></status>
 </kw>
-<status status="FAIL" starttime="20190305 15:12:10.832" endtime="20190305 15:12:21.358"></status>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:37.895" level="INFO">Clicking element '//div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:37.895" endtime="20190308 16:53:38.067"></status>
 </kw>
-<status status="FAIL" starttime="20190305 15:12:10.832" endtime="20190305 15:12:21.358"></status>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20190308 16:53:40.069" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190308 16:53:38.068" endtime="20190308 16:53:40.069"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20190308 16:53:42.070" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190308 16:53:40.069" endtime="20190308 16:53:42.070"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>//div[@class='accordion']//label[contains(.,'3Sing')]/div</arg>
+</arguments>
+<status status="PASS" starttime="20190308 16:53:42.071" endtime="20190308 16:53:42.082"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//div[@class='accordion']//label[contains(.,'3Sing')]/div</arg>
+</arguments>
+<msg timestamp="20190308 16:53:42.083" level="INFO">Clicking element '//div[@class='accordion']//label[contains(.,'3Sing')]/div'.</msg>
+<status status="PASS" starttime="20190308 16:53:42.082" endtime="20190308 16:53:42.162"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:42.163" level="INFO">Clicking element '//div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:42.163" endtime="20190308 16:53:42.274"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 500;</arg>
+</arguments>
+<msg timestamp="20190308 16:53:42.275" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 500;</msg>
+<status status="PASS" starttime="20190308 16:53:42.275" endtime="20190308 16:53:42.282"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20190308 16:53:44.285" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190308 16:53:42.283" endtime="20190308 16:53:44.285"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Page Should Contain Element</arg>
+<arg>//div[@class='card-header clearfix']/h3[contains(.,'3Sing')]</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//div[@class='card-header clearfix']/h3[contains(.,'3Sing')]</arg>
+</arguments>
+<msg timestamp="20190308 16:53:44.296" level="INFO">Current page contains element '//div[@class='card-header clearfix']/h3[contains(.,'3Sing')]'.</msg>
+<status status="PASS" starttime="20190308 16:53:44.286" endtime="20190308 16:53:44.296"></status>
+</kw>
+<msg timestamp="20190308 16:53:44.296" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190308 16:53:44.285" endtime="20190308 16:53:44.296"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${result}'=='False'</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>ELSE</arg>
+<arg>NO Operation</arg>
+</arguments>
+<kw name="No Operation" library="BuiltIn">
+<doc>Does absolutely nothing.</doc>
+<status status="PASS" starttime="20190308 16:53:44.297" endtime="20190308 16:53:44.297"></status>
+</kw>
+<status status="PASS" starttime="20190308 16:53:44.297" endtime="20190308 16:53:44.297"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="FAIL" starttime="20190305 15:12:10.831" endtime="20190305 15:12:21.358" critical="yes">Element '//label[@for='BB-1']' did not appear in 5 seconds.</status>
-</test>
-<test id="s1-t4" name="Search In Hour And Month">
-<kw name="Quick Search botton" library="keyword_common">
-<doc>Click Time Search In Quick Search To Search</doc>
-<arguments>
-<arg>本月</arg>
-</arguments>
-<kw name="Wait Until Element Is Visible" library="Selenium2Library">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190305 15:12:31.917" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-12.png"&gt;&lt;img src="selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190305 15:12:31.607" endtime="20190305 15:12:31.917"></status>
-</kw>
-<msg timestamp="20190305 15:12:31.918" level="FAIL">Element '//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本月')]' not visible after 5 seconds.</msg>
-<status status="FAIL" starttime="20190305 15:12:21.361" endtime="20190305 15:12:31.918"></status>
-</kw>
-<status status="FAIL" starttime="20190305 15:12:21.361" endtime="20190305 15:12:31.918"></status>
-</kw>
-<tags>
-<tag>Login</tag>
-</tags>
-<status status="FAIL" starttime="20190305 15:12:21.360" endtime="20190305 15:12:31.919" critical="yes">Element '//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本月')]' not visible after 5 seconds.</status>
+<status status="PASS" starttime="20190308 16:53:32.854" endtime="20190308 16:53:44.297" critical="yes"></status>
 </test>
 <kw name="SuiteTeardown" type="teardown">
 <kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
@@ -318,31 +503,26 @@
 <arguments>
 <arg>Capture Page Screenshot</arg>
 </arguments>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190305 15:12:32.250" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-13.png"&gt;&lt;img src="selenium-screenshot-13.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190305 15:12:31.921" endtime="20190305 15:12:32.250"></status>
-</kw>
-<status status="PASS" starttime="20190305 15:12:31.921" endtime="20190305 15:12:32.250"></status>
+<status status="PASS" starttime="20190308 16:53:44.299" endtime="20190308 16:53:44.300"></status>
 </kw>
 <kw name="Close Browser" library="Selenium2Library">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190305 15:12:32.250" endtime="20190305 15:12:35.289"></status>
+<status status="PASS" starttime="20190308 16:53:44.300" endtime="20190308 16:53:47.340"></status>
 </kw>
-<status status="PASS" starttime="20190305 15:12:31.920" endtime="20190305 15:12:35.289"></status>
+<status status="PASS" starttime="20190308 16:53:44.299" endtime="20190308 16:53:47.340"></status>
 </kw>
-<status status="FAIL" starttime="20190305 15:11:29.688" endtime="20190305 15:12:35.289"></status>
+<status status="PASS" starttime="20190308 16:52:43.072" endtime="20190308 16:53:47.340"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="3">Critical Tests</stat>
-<stat pass="1" fail="3">All Tests</stat>
+<stat pass="4" fail="0">Critical Tests</stat>
+<stat pass="4" fail="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="3">Login</stat>
+<stat pass="4" fail="0">Login</stat>
 </tag>
 <suite>
-<stat pass="1" fail="3" id="s1" name="Test Gamehall Page">Test Gamehall Page</stat>
+<stat pass="4" fail="0" id="s1" name="Test Dashboard Mobile">Test Dashboard Mobile</stat>
 </suite>
 </statistics>
 <errors>

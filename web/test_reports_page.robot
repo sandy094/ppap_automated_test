@@ -44,123 +44,123 @@ Click Search
     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
 
 
-# Search In Datetime 
-#     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]
-#     @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
-#     :FOR    ${month}  IN  @{mounths}
-#     \  Search In Month    ${month}
-#     \  Sleep    50s
-#     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-#     \  ${result}=  Run keyword And Return Status    Should Not Match  ${CheckValueA}  ${CheckValueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
-#     \  ${CheckValueA}=  Set Variable  ${CheckValueB}
+Search In Datetime 
+    ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]
+    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
+    :FOR    ${month}  IN  @{mounths}
+    \  Search In Month    ${month}
+    \  Sleep    50s
+    \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+    \  ${result}=  Run keyword And Return Status    Should Not Match  ${CheckValueA}  ${CheckValueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
+    \  ${CheckValueA}=  Set Variable  ${CheckValueB}
 
-# Search In Category
-#     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-#     Reload Page
-#     Sleep    10s
-#     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-#     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
-#     :FOR  ${category}  IN  @{categeories}
-#     \  Sleep  5s
-#     \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     \  sleep  5s
-#     \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
-#     \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
-#     \  Sleep  5s
-#     \  Click Element    //app-game-filter-drop-down//button[contains(.,' 清除 ')]
-#     \  Wait Until Page Contains Element    //label[@for="${category}"]/div
-#     \  Click Element    //label[@for="${category}"]/div
-#     \  Click Element    //app-category-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
-#     \  Sleep    10s
-#     \  Capture Page Screenshot
-#     \  ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-#     \  ${result}=  Run keyword And Return Status    Should Not Match    ${valueA}  ${valueB}    ELSE    NO Operation
-#     \  Check the time if choose game 
+Search In Category
+    [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
+    Reload Page
+    Sleep    10s
+    ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+    @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
+    :FOR  ${category}  IN  @{categeories}
+    \  Sleep  5s
+    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  sleep  5s
+    \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
+    \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
+    \  Sleep  5s
+    \  Click Element    //app-game-filter-drop-down//button[contains(.,' 清除 ')]
+    \  Wait Until Page Contains Element    //label[@for="${category}"]/div
+    \  Click Element    //label[@for="${category}"]/div
+    \  Click Element    //app-category-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
+    \  Sleep    10s
+    \  Capture Page Screenshot
+    \  ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+    \  ${result}=  Run keyword And Return Status    Should Not Match    ${valueA}  ${valueB}    ELSE    NO Operation
+    \  Check the time if choose game 
 
-# Search In Classification
-#     Reload Page
-#     Sleep    10s
-#     Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     Sleep    2s
-#     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
-#     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
-#     Wait Until Page Contains Element    //label[@for='pAB-17']//label
-#     Click Element     //label[@for='pAB-17']//label
-#     Wait Until Page Contains Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查询 ')]
-#     Click Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查询 ')]
-#     Sleep    2s
-#     Check the time if choose game 
+Search In Classification
+    Reload Page
+    Sleep    10s
+    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Sleep    2s
+    Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
+    Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
+    Wait Until Page Contains Element    //label[@for='pAB-17']//label
+    Click Element     //label[@for='pAB-17']//label
+    Wait Until Page Contains Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查询 ')]
+    Click Element    //app-game-hall-tab//div[@class='bamenu_btn_area']//button[contains(.,' 查询 ')]
+    Sleep    2s
+    Check the time if choose game 
     
-# Search In Game
-#     Reload Page
-#     Sleep    10s
-#     Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     Sleep    2s
-#     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
-#     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+Search In Game
+    Reload Page
+    Sleep    10s
+    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Sleep    2s
+    Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+    Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
 
-#     Input Text    //app-game-select-tab/div/div/input    1
-#     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-2']
-#     Click Element    //button[@id='ngb-typeahead-0-2']
-#     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
-#     Click Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
-#     Sleep    4s
-#     Check the time if choose game 
+    Input Text    //app-game-select-tab/div/div/input    1
+    Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-2']
+    Click Element    //button[@id='ngb-typeahead-0-2']
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
+    Click Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
+    Sleep    4s
+    Check the time if choose game 
 
-# Search In Collection
-#     Reload Page
-#     Sleep    10s
-#     Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-#     Sleep    2s
-#     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
-#     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
-#     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
-#     Click Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
-#     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
-#     Sleep    5s
-#     Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
-#     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
-#     Click Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
-#     Sleep    4s
-#     Capture Page Screenshot
-#     Execute JavaScript  window.document.documentElement.scrollTop = 550;
+Search In Collection
+    Reload Page
+    Sleep    10s
+    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Sleep    2s
+    Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+    Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
+    Click Element    //app-game-select-tab//div[@class='game-search-panel']//div[@class='link-line small']
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
+    Sleep    5s
+    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
+    Click Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
+    Sleep    4s
+    Capture Page Screenshot
+    Execute JavaScript  window.document.documentElement.scrollTop = 550;
   
-#     Check the time if choose game 
+    Check the time if choose game 
 
-# Search In Site 
-#     Reload Page
-#     Sleep    5s
-#     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-#     Wait Until Page Contains Element      //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
-#     Click Element      //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
-#     Wait Until Page Contains Element      //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
-#     Click Element    //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
-#     Wait Until Page Contains Element      //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
-#     Click Element    //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
-#     Click Element    //div[@class='send-btn p-2 mb-2']/button
-#     Sleep    2s
-#     Capture Page Screenshot
-#     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-#     Should Not Match    ${valueA}  ${valueB}
-#     Check the time if choose game
+Search In Site 
+    Reload Page
+    Sleep    5s
+    ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+    Wait Until Page Contains Element      //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
+    Click Element      //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
+    Wait Until Page Contains Element      //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
+    Click Element    //a[@class='ng2-smart-sort-link sort'][contains(.,'取消全选')]
+    Wait Until Page Contains Element      //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
+    Click Element    //div[@id='unselectTable']//tbody/tr[8]/td[1]//span
+    Click Element    //div[@class='send-btn p-2 mb-2']/button
+    Sleep    2s
+    Capture Page Screenshot
+    ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
+    Should Not Match    ${valueA}  ${valueB}
+    Check the time if choose game
 
-# Search In Group
-#     Reload Page
-#     Sleep   5s
-#     Wait Until Page Contains Element     //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
-#     Click Element    //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
-#     Wait Until Page Contains Element    //div[@class='site-select-panel']/span
-#     Click Element    //div[@class='site-select-panel']/span
-#     Wait Until Page Contains Element     //table[@class='table table-striped mt-3']/tbody/tr[1]/td
-#     Click Element    //table[@class='table table-striped mt-3']/tbody/tr[1]/td
-#     Click Element    //div[@class='send-btn mt-2 p-2 mb-2']/button
-#     Sleep    2s
-#     Capture Page Screenshot
+Search In Group
+    Reload Page
+    Sleep   5s
+    Wait Until Page Contains Element     //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
+    Click Element    //div[@class="filter-site"]/div/span[contains(.,'站台筛选')]
+    Wait Until Page Contains Element    //div[@class='site-select-panel']/span
+    Click Element    //div[@class='site-select-panel']/span
+    Wait Until Page Contains Element     //table[@class='table table-striped mt-3']/tbody/tr[1]/td
+    Click Element    //table[@class='table table-striped mt-3']/tbody/tr[1]/td
+    Click Element    //div[@class='send-btn mt-2 p-2 mb-2']/button
+    Sleep    2s
+    Capture Page Screenshot
     
 
 *** Keywords ***

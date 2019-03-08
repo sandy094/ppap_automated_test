@@ -23,10 +23,6 @@ Click Sidebar Link
     Wait Until Page Contains Element    //li[@title="${title}"]    
     Click Element    //li[@title="${title}"] 
 
-Click Signin Button
-    Wait Until Page Contains Element    //button[@class="btn btn-default btn-auth"]
-    Click Element    //button[@class="btn btn-default btn-auth"]
-
 Click Topbar Link 
     [Arguments]    ${title}
     Wait Until Page Contains Element    //a[@class='borderr_1px'][contains(.,'${title}')]
@@ -77,7 +73,8 @@ Login Page
     Log    ${account}
     Input Account    ${account}
     Input Password    ${password}
-    Click Signin Button
+    Press Key   //input[@id="inputPassword3"]    \\13
+    
 Quick Search In year and season
     #本年.本季快搜
     [Arguments]    ${title}
