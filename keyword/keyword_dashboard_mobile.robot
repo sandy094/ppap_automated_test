@@ -115,7 +115,55 @@ Search In Mounth For Mobile
     Sleep    5s
     Capture Page Screenshot
 
+Increase Field
+# 新增欄位
+    Execute JavaScript     window.document.documentElement.scrollTop = 600;
+    Sleep    2s
+    Wait Until Page Contains Element    //div[@class='add-new-field']/span
+    Click Element    //div[@class='add-new-field']/span
+    Wait Until Page Contains Element    //div[@class='add-new-field']//div/label[contains(.,'有效投注')]
+    Click Element    //div[@class='add-new-field']//div/label[contains(.,'有效投注')]
+    Click Element    //div[@class='add-new-field']//div/label[contains(.,'投注单量')]
+    Click Element    //div[@class='add-new-field']/span
+    Page Should Contain Element    //div[@id='tableData']/table/thead/tr[1]/td[contains(.,'有效投注')]
+    Page Should Contain Element    //div[@id='tableData']/table/thead/tr[1]/td[contains(.,'投注单量')]
+    Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[1]/td[5]
+    Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[1]/td[6]
+    
+Chart Change
+# 長條圖.趨勢圖放大
+    Wait Until Page Contains Element    //div[@class='icon-Circles-pane']//div/i[@class='fa fa-bar-chart']
+    Click Element    //div[@class='icon-Circles-pane']//div/i[@class='fa fa-bar-chart']
+    Sleep    2s
+    Click Element    //div[@id='rankChartData']
+    Capture Page Screenshot
+    Wait Until Page Contains Element    //div[@class='icon-Circles-pane']//div/i[@class='ion ion-android-open']
+    Click Element    //div[@class='icon-Circles-pane']//div/i[@class='ion ion-android-open']
+    Sleep    1s
+    Capture Page Screenshot
+    Click Element    //div[@class='modal-content']//div[@class='close_btn']
 
+Modularization In Chart
+# 排行榜展開下拉選單
+    Execute JavaScript     window.document.documentElement.scrollTop = 800;
+    # 點選下拉選單圖示
+    Wait Until Page Contains Element    //tr[@id='tr-1']/td/div
+    Click Element    //tr[@id='tr-1']/td/div
+    Sleep     2s
+    Wait Until Page Contains Element    //dashboss-dropdown-selector/div[@class='btn-group dropdown']//button
+    Click Element    //dashboss-dropdown-selector/div[@class='btn-group dropdown']//button
+    Wait Until Page Contains Element    //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
+    Click Element    //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
+    Sleep    2s
+    Capture Page Screenshot
 
-
-
+Search In Seven Day 
+# 暫時PASS
+    Sleep     5s
+    Wait Until Page Contains Element    //ba-date-selector[@class='dashbossDateSelector']/div/div/button[@id='sortMenu']
+    Click Element    //ba-date-selector[@class='dashbossDateSelector']/div/div/button[@id='sortMenu']
+    Wait Until Page Contains Element    //ba-date-selector[@class='dashbossDateSelector']//ul/li[contains(.,'以日合计')]
+    Click Element    //ba-date-selector[@class='dashbossDateSelector']//ul/li[contains(.,'以日合计')]
+    Sleep    2s
+    Click Element    //div[@id='rankChartData']
+    Capture Page Screenshot

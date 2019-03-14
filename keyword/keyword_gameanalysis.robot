@@ -87,7 +87,7 @@ Check the time if choose game
     ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
 
-    Reload Page
+    
 
 
 

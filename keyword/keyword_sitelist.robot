@@ -39,7 +39,7 @@ verification value
 trend
     [Arguments]    ${tr}
     # 趨勢圖
-    @{tds}  Set Variable  3  4  5  6  7  8
+    @{tds}  Set Variable  3  4  5
     :FOR  ${td}  IN  @{tds}
     \  Wait Until Page Contains Element  //div[@id="data-table"]//table/tbody/tr[${tr}]/td[${td}]
     \  Click Element  //div[@id="data-table"]//table/tbody/tr[${tr}]/td[${td}]

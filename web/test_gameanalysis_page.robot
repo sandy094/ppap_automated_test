@@ -12,8 +12,8 @@ Check login
 
 Check sidebar link Game Information navigation is correct
      # 關掉公告訊息提示
-    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Click Sidebar Link    运营看板
     Set Browser Implicit Wait    10s
     Check Game Information Link    游戏解析
@@ -87,6 +87,7 @@ Search In Classification
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[2]
     @{gameHalls}  Set variable    p3Sing-13  pAB-17  
     :FOR  ${gameHall}  IN  @{gameHalls}
+    \  Reload Page
     \  Sleep  5s
     \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
@@ -138,10 +139,24 @@ Search In Collection
     Click Element    //div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    5s
     # 確認收藏集是否有變更
-    Page Should Contain Element    //div[@class='col-lg-12 col-12 text-center mobile_btn_area2']/a[1][contains(.,'test')]
+    Page Should Contain Element    //div[@class='col-lg-12 col-12 text-center mobile_btn_area2 pl-0 pr-0']/a[1][contains(.,' 收藏集游戏查询 ')]
     Sleep    5s
     Check the time if choose game
 
+New Field
+    Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
+    Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
+    Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b0'][contains(.,'推荐排序')]
+    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b0'][contains(.,'推荐排序')]
+    Sleep    5s
+    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a6'][contains(.,' 点击数')]
+    Sleep    5s
+    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a7'][contains(.,' 流失率')]
+    Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
+    Sleep    5s
+    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']
+    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']
+    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='percentage-td']
 
 Modularization
     # 展開圖表
