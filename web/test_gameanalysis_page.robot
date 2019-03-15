@@ -12,8 +12,8 @@ Check login
 
 Check sidebar link Game Information navigation is correct
      # 關掉公告訊息提示
-    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Click Sidebar Link    运营看板
     Set Browser Implicit Wait    10s
     Check Game Information Link    游戏解析
