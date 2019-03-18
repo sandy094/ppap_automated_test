@@ -146,25 +146,25 @@ Search In Collection
 New Field
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
+    Sleep    4s
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b0'][contains(.,'推荐排序')]
     Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b0'][contains(.,'推荐排序')]
     Sleep    5s
-    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a6'][contains(.,' 点击数')]
+    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a4'][contains(.,' 游戏人次')]
     Sleep    5s
     Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a7'][contains(.,' 流失率')]
+    Sleep    40s
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
-    Sleep    5s
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']
-    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']
+    Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='trend-td']
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='percentage-td']
 
 Modularization
     # 展開圖表
     Sleep    10s
-    Wait Until Page Contains Element  //div[@id='tableData']//tbody/tr[2]
-    Click Element  //div[@id='tableData']//tbody/tr[2]
+    Wait Until Page Contains Element  //div[@id='tableData']//tbody/tr[2]/td[@class='icon-Circles-td']
+    Click Element  //div[@id='tableData']//tbody/tr[2]/td[@class='icon-Circles-td']
     Wait Until Page Contains Element  //div[@class='chart-area']//canvas
-
     Sleep  5s
     Mouse Over  //div[@class='chart-area']//canvas
     Capture Page Screenshot

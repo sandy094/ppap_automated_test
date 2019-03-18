@@ -146,7 +146,8 @@ Search In Site
     Sleep    2s
     Capture Page Screenshot
     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
-    Should Not Match    ${valueA}  ${valueB}
+    ${request}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    Run keyword If    '${request}'=='False'    Capture Page Screenshot    ELSE    No Operation
     Check the time if choose game
 
 Search In Group

@@ -67,20 +67,20 @@ Check the time if choose game
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}   
     Capture Page Screenshot
+# 本季搜尋時間過長 待改善
+    # Quick Search In year and season    本季
+    # Sleep  20s
+    # Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
+    # ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    # Should Not Be Empty  ${valueB}
+    # ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    # Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    # ${valueA}  Set Variable    ${valueB}
+    # Capture Page Screenshot 
 
-    Quick Search In year and season    本季
-    Sleep  20s
-    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
-    Should Not Be Empty  ${valueB}
-    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
-    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    ${valueA}  Set Variable    ${valueB}
-    Capture Page Screenshot 
-
-    Sleep  5s
+    # Sleep  5s
     Search In Month    0: 2019年3月
-    Sleep  10s
+    Sleep  50s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
     Should Not Be Empty  ${valueB}
