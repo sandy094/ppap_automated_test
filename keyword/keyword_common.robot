@@ -42,7 +42,6 @@ Data Table Check Trend Of List
 
 Data Table Check Game Of List
 # 遊戲頁籤的損益查詢
-
     ${testValueA}  Set Variable    0
     @{values}    Set Variable  2  3  4  5  
     :FOR  ${value}  IN  @{values} 
@@ -55,7 +54,7 @@ Data Table Check Game Of List
     \  Sleep  7s
     \  Wait Until Page Contains Element  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
     \  ${testValueB}=  Get Text  //table[@class='table-striped type-table']//tbody/tr[1]/td[2]
-    \  Should Not Match  ${testValueA}  ${testValueB}
+    \  ${result}=  Run Keyword And Return Status    Should Not Match  ${testValueA}  ${testValueB}
     
     
 Input Account
@@ -83,7 +82,7 @@ Quick Search In year and season
     Wait Until Page Contains Element    //div[@id="pick"]/ul/li[contains(.,'${title}')]
     Click Element    //div[@id="pick"]/ul/li[contains(.,'${title}')]
     Sleep    10s
-    Capture Page Screenshot
+    # Capture Page Screenshot
 
 Quick Search botton
     #今日.昨日..上月快搜
@@ -92,7 +91,6 @@ Quick Search botton
     Wait Until Element Is Visible   //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]  
     Click Link    //div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')] 
     Sleep    10s
-    Capture Page Screenshot
     
 Search In Month
     #月份比較
@@ -102,6 +100,5 @@ Search In Month
     Wait Until Page Contains Element    //div[@class='select_month']/select
     Select From List By Value    //div[@class='select_month']/select    ${title}
     Sleep    5s
-    # Capture Page Screenshot
     Click Element    //div[@class='content-top clearfix']
 

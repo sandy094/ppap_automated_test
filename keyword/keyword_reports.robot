@@ -32,7 +32,7 @@ Check the time if choose game
     Sleep  5s
     # 判斷要檢查的欄位
     ${Count}=  Get Element Count   //table[@id='TrendInfoTable']/thead/tr[1]/th
-    Run Keyword If    '${Count}'=='6'   Check Value Is Active Without Memeber    ELSE    Check Value Is Active
+    Run Keyword If    '${Count}'=='6'   Check Field Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     Run Keyword If    '${valueB}'=='0'   Capture Page Screenshot    ELSE    No Operation
     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
@@ -43,7 +43,7 @@ Check the time if choose game
 
     Quick Search In year and season    本季
     Sleep  20s
-    Run Keyword If    '${Count}'=='6'   Check Value Is Active Without Memeber    ELSE    Check Value Is Active
+    Run Keyword If    '${Count}'=='6'   Check Field Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     Run Keyword If    '${valueA}'=='0'   Capture Page Screenshot    ELSE    No Operation
     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
@@ -54,14 +54,14 @@ Check the time if choose game
 
     Search In Month    0: 2019年3月 
     Sleep  10s
-    Run Keyword If    '${Count}'=='6'   Check Value Is Active Without Memeber    ELSE    Check Value Is Active
+    Run Keyword If    '${Count}'=='6'   Check Field Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
     Run Keyword If    '${valueB}'=='0'   Capture Page Screenshot    ELSE    No Operation
     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    Reload Page
 
-Check Value Is Active Without Memeber  
+
+Check Field Is Active Without Memeber  
     [Documentation]    Check value in table
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[2][contains(.,'损益')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[3][contains(.,'有效投注')]

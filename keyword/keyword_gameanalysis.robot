@@ -14,15 +14,9 @@ Check Topbar Link
     [Arguments]    ${title}
     Click Element    //li/a[contains(.,'${title}')]
 
-Verify Page Title Is Correct
-    [Documentation]    Verify page title is match sidebar link and match
-    [Arguments]    ${title}
-    Wait Until Page Contains Element    //div[@class="page-top clearfix"]/ba-content-top/div/ul/li[contains(.,'${title}')]
-    Click Element    //div[@class="page-top clearfix"]/ba-content-top/div/ul/li[contains(.,'${title}')]
-
 Check Values
 # 寫IF判斷
-    @{cols}  Set Variable  2  3  4  5   
+    @{cols}  Set Variable  3  4  5  6   
     :FOR  ${col}  IN  @{cols}
     \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[${col}]
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]
@@ -42,8 +36,8 @@ Short
     \  ${ValueB}=    Remove String    ${ValueB}    ,
     \  Convert To Integer    ${ValueA}
     \  Convert To Integer    ${ValueB}
-    \  Should Be True  ${ValueA}<=${ValueB}
-    \  Capture Page Screenshot
+    \  ${request}=    Run keyword And Return Status    Should Be True  ${ValueA}<=${ValueB}
+    \  Run Keyword If    '${request}'=='False'    Capture Page Screenshot   ELSE    No Operation
 
     # 降冪
     \  Click Element  //div[@class='DETAIL-TABLE']//table/thead/tr[1]/th[${num}]//a
@@ -53,13 +47,12 @@ Short
     \  ${ValueD}=    Remove String    ${ValueD}    ,
     \  Convert To Integer    ${ValueC}
     \  Convert To Integer    ${ValueD}
-    \  Should Be True  ${ValueC}>=${ValueD}
-    \  Capture Page Screenshot
+    \  ${request}=    Run keyword And Return Status    Should Be True  ${ValueC}>=${ValueD}
+    \  Run Keyword If    '${request}'=='False'    Capture Page Screenshot    ELSE    No Operation
 
 Check the time if choose game 
     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]
     Quick Search botton   上周
-    Sleep  50s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
     Should Not Be Empty  ${valueB} 
@@ -68,19 +61,18 @@ Check the time if choose game
     ${valueA}  Set Variable    ${valueB}   
     Capture Page Screenshot
 # 本季搜尋時間過長 待改善
-    # Quick Search In year and season    本季
-    # Sleep  20s
-    # Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
-    # ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
-    # Should Not Be Empty  ${valueB}
-    # ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
-    # Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    # ${valueA}  Set Variable    ${valueB}
-    # Capture Page Screenshot 
+    Quick Search In year and season    本季
+    Sleep  20s
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Should Not Be Empty  ${valueB}
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    ${valueA}  Set Variable    ${valueB}
+    Capture Page Screenshot 
 
-    # Sleep  5s
     Search In Month    0: 2019年3月
-    Sleep  50s
+    Sleep  20s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
     Should Not Be Empty  ${valueB}
