@@ -115,17 +115,17 @@ Quick Search For Year And Season In Mobile
     Sleep    10s
     Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
     Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Wait Until Page Contains Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
+    Wait Until Page Contains Element    //div[@class="type_pick_pop"]/ul/li[contains(.,'本年')]
     Sleep    5s
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
+    Click Element    //div[@class="type_pick_pop"]/ul/li[contains(.,'本年')]
     Sleep    10s
     Capture Page Screenshot
 
 Search In Mounth For Mobile
     #月份比較 
     [Arguments]    ${title}
-    Wait Until Page Contains Element  //div[@class='card-body']/h5
-    Click Element     //div[@class='card-body']/h5
+    Wait Until Page Contains Element  //div[@class='card-body card-box']/h5
+    Click Element     //div[@class='card-body card-box']/h5
     Sleep    5s
     Mouse Over    //div[@class='selectDate_Click']
     Wait Until Page Contains Element    //div[@class='select_month']/select

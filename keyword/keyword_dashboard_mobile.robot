@@ -81,19 +81,6 @@ Count In A Day For months Mobile
     \    Capture Page Screenshot
     \    Click Element    //div[@id='${card}']
 
-
-Quick Search For Year And Season In Mobile
-    #本年.本季快搜
-    [Arguments]    ${title}
-    Sleep    10s
-    Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Wait Until Page Contains Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
-    Sleep    5s
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
-    Sleep    10s
-    Capture Page Screenshot
-
 Increase Field
 # 新增欄位
     Execute JavaScript     window.document.documentElement.scrollTop = 600;
