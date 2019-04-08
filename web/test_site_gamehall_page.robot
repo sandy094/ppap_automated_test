@@ -9,11 +9,14 @@ Resource    ../keyword/keyword_gamehall.robot
 *** Test Cases ***
 Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
+    Wait Until Page Contains Element    //div[@class='auth-block']/form/div/div/button[contains(.,'E-mail ')]
+    Click Element    //div[@class='auth-block']/form/div/div/button[contains(.,'E-mail ')]
+    Sleep    1.5m
 
 Check sidebar link Game Information navigation is correct
     # 關掉公告訊息提示
-    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
     Click Sidebar Link    对帐资讯
     Sleep   2s
     Wait Until Page Contains Element    //li[@title="站台"] /a[contains(.,'站台')]
@@ -22,6 +25,7 @@ Check sidebar link Game Information navigation is correct
     Wait Until Page Contains Element    //li[@title="站台"] /ul//li[contains(.,'对帐查询')]
     Click Element    //li[@title="站台"] /ul//li[contains(.,'对帐查询')]
     Sleep  5s
+    Capture Page Screenshot
 
 # Click Quick Search
 #     @{gameSites}    Set Variable     5    6  7  8  9  10    

@@ -19,150 +19,154 @@ Check sidebar link Dashboard navigation is correct
     Wait Until Page Contains Element    //a[@class='collapse-menu-link ion-navicon']
     Click Element    //a[@class='collapse-menu-link ion-navicon']
     Click Sidebar Link    运营看板
-    # Click Topbar Link     站台列表
-    # Click Topbar Link     游戏解析
     No Operation
 
-# Click Search
-#     Set Browser Implicit Wait    5s
-#     Click Topbar Link    运营看板
-#     Sleep  2s
+Click Search
+    Set Browser Implicit Wait    5s
+    Sleep  2s
 
-#     Quick Search In Mobile    昨日
-#     Check Chart In Four card
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Count In Seven Days For yesterday Mobile
+    Quick Search In Mobile    昨日
+    Page Should Contain Element    //div[@class='dashboss_card_value_container_piechart']    limit=4
+    Sleep    5s
+    Check Chart In Four card
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Count In Seven Days For yesterday Mobile
     
-#     Quick Search In Mobile    本周
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Check Chart In Four card
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Count In A Day For week Mobile
+    Quick Search In Mobile    本周
+    Page Should Contain Element    //div[@class='dashboss_card_value_container_piechart']    limit=4
+    Sleep    5s
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Check Chart In Four card
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Count In A Day For week Mobile
 
-#     Quick Search In Mobile    上周
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#    Check Chart In Four card
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Count In A Day For week Mobile
+    Quick Search In Mobile    上周
+    Page Should Contain Element    //div[@class='dashboss_card_value_container_piechart']    limit=4
+    Sleep    5s
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Check Chart In Four card
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Count In A Day For week Mobile
     
-# Click Search In Year
-#     Reload Page
-#     Sleep    10s
-#     @{seasons}  Set Variable  本年  去年  本季  上季
-#     :FOR  ${season}  IN  @{seasons}
-#     \  Quick Search For Year And Season In Mobile    ${season}
-#     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     \  Check Chart In Four card
-#     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     \  Count In A Day For months Mobile
-#     \  Click Link    //div[@class='baDateform btn-group']/a[contains(.,'昨日')] 
+Click Search In Year
+    Reload Page
+    Sleep    10s
+    # 待改版
+    # @{seasons}  Set Variable  本年  去年  本季  上季
+    # :FOR  ${season}  IN  @{seasons}
+    # \  Quick Search For Year And Season In Mobile    ${season}
+    # \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    # \  Check Chart In Four card
+    # \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    # \  Count In A Day For months Mobile
+    # \  Click Link    //div[@class='baDateform btn-group']/a[contains(.,'昨日')] 
 
 
-#     @{years}  Set Variable  本月  上月
-#     :FOR  ${year}  IN  @{years}
-#     \  Quick Search In Mobile    ${year}
-#     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     \  Check Chart In Four card
-#     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     \  Count In A Day For months Mobile
+    @{years}  Set Variable  本月  上月
+    :FOR  ${year}  IN  @{years}
+    \  Quick Search In Mobile    ${year}
+    \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    \  Check Chart In Four card
+    \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    \  Count In A Day For months Mobile
 
-# Check Trend Is Active
-# # 損益/有效損益/投注單量/ 活耀會員  排行
-#     Reload Page
-#     Sleep    10s
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     # 排行裡單一站台的趨勢圖(上周的4張卡片)
-#     Wait Until Element Is Visible   //div[@class="baDateform btn-group"]/a[contains(.,'上周')]  
-#     Click Link    //div[@class="baDateform btn-group"]/a[contains(.,'上周')] 
+Check Trend Is Active
+# 損益/有效損益/投注單量/ 活耀會員  排行
+    Reload Page
+    Sleep    10s
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    # 排行裡單一站台的趨勢圖(上周的4張卡片)
+    Wait Until Element Is Visible   //div[@class="baDateform btn-group"]/a[contains(.,'上周')]  
+    Click Link    //div[@class="baDateform btn-group"]/a[contains(.,'上周')] 
 
-#     Sleep  3s
-#     Page Should Contain Element    //div[@id='payoffSums']
-#     Click Element  //div[@id='payoffSums']
-#     Wait Until Page Contains Element   //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
-#     Sleep  20s
-#     Click Element  //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
+    Sleep  3s
+    Page Should Contain Element    //div[@id='payoffSums']
+    Click Element  //div[@id='payoffSums']
+    Wait Until Page Contains Element   //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
+    Sleep  20s
+    Click Element  //ba-card[@class="dashboss_chart payoffSums"]//div/a[contains(.,'排行')]
 
-#     @{rows}  Set Variable  2  3  4  
-#     :FOR  ${row}  IN  @{rows}
-#     \  Wait Until Page Contains Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
-#     \  Click Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
-#     \  Sleep  5s
-#     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
-#     \  Mouse Over  //div[@class='container bg-white test']//canvas
-#     \  Capture Page Screenshot
-#     \  Click Element  //div[@class="container bg-white test"]/div/i
-#     \  Sleep  3s
+    @{rows}  Set Variable  2  3  4  
+    :FOR  ${row}  IN  @{rows}
+    \  Wait Until Page Contains Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
+    \  Click Element  //ba-card[@class="dashboss_chart payoffSums"]//tbody/tr[${row}]/td[3]/div/small
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class="container bg-white test"]/div/i
+    \  Sleep  3s
 
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Click Element  //div[@id='payoffSums']
-#     Click Element  //div[@id='commissionableSums']
-#     Wait Until Page Contains Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Click Element  //div[@id='payoffSums']
+    Click Element  //div[@id='commissionableSums']
+    Wait Until Page Contains Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
 
-#     Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
-#     @{rows}  Set Variable  2  3  4  
-#     :FOR  ${row}  IN  @{rows}
-#     \  Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//tbody/tr[${row}]/td[3]/div/small
-#     \  Sleep  5s
-#     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
-#     \  Mouse Over  //div[@class='container bg-white test']//canvas
-#     \  Capture Page Screenshot
-#     \  Click Element  //div[@class="container bg-white test"]/div/i
-#     \  Sleep  3s
+    Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//div/a[contains(.,'排行')]
+    @{rows}  Set Variable  2  3  4  
+    :FOR  ${row}  IN  @{rows}
+    \  Click Element  //ba-card[@class="dashboss_chart commissionableSums"]//tbody/tr[${row}]/td[3]/div/small
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class="container bg-white test"]/div/i
+    \  Sleep  3s
 
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Click Element  //div[@id='commissionableSums']
-#     Click Element  //div[@id='wagersCounts']
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Click Element  //div[@id='commissionableSums']
+    Click Element  //div[@id='wagersCounts']
 
-#     Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//div/a[contains(.,'排行')]
-#     @{rows}  Set Variable  2  3  4 
-#     :FOR  ${row}  IN  @{rows}
-#     \  Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//tbody/tr[${row}]/td[3]/div/small
-#     \  Sleep  5s
-#     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
-#     \  Mouse Over  //div[@class='container bg-white test']//canvas
-#     \  Capture Page Screenshot
-#     \  Click Element  //div[@class="container bg-white test"]/div/i
-#     \  Sleep  3s
+    Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//div/a[contains(.,'排行')]
+    @{rows}  Set Variable  2  3  4 
+    :FOR  ${row}  IN  @{rows}
+    \  Click Element  //ba-card[@class="dashboss_chart wagersCounts"]//tbody/tr[${row}]/td[3]/div/small
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class="container bg-white test"]/div/i
+    \  Sleep  3s
 
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     Click Element  //div[@id='wagersCounts']
-#     Click Element  //div[@id='memberCounts']
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    Click Element  //div[@id='wagersCounts']
+    Click Element  //div[@id='memberCounts']
 
-#     Click Element  //ba-card[@class="dashboss_chart memberCounts"]//div/a[contains(.,'排行')]
-#     @{rows}  Set Variable  2  3  4 
-#     :FOR  ${row}  IN  @{rows}
-#     \  Click Element  //ba-card[@class="dashboss_chart memberCounts"]//tbody/tr[${row}]/td[3]/div/small
-#     \  Sleep  5s
-#     \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
-#     \  Mouse Over  //div[@class='container bg-white test']//canvas
-#     \  Capture Page Screenshot
-#     \  Click Element  //div[@class="container bg-white test"]/div/i
-#     \  Sleep  3s
+    Click Element  //ba-card[@class="dashboss_chart memberCounts"]//div/a[contains(.,'排行')]
+    @{rows}  Set Variable  2  3  4 
+    :FOR  ${row}  IN  @{rows}
+    \  Click Element  //ba-card[@class="dashboss_chart memberCounts"]//tbody/tr[${row}]/td[3]/div/small
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //div[@class='container bg-white test']//canvas
+    \  Mouse Over  //div[@class='container bg-white test']//canvas
+    \  Capture Page Screenshot
+    \  Click Element  //div[@class="container bg-white test"]/div/i
+    \  Sleep  3s
 
-# Search In Datetime 
-#     Reload Page
-#     Sleep    10s
-#     Execute JavaScript  window.document.documentElement.scrollTop = 0;
-#     @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
-#     :FOR    ${month}  IN  @{mounths}
-#     \  Search In Mounth For Mobile    ${month}
-#     \  Check Chart In Four card
-#     \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
+Search In Datetime 
+    Reload Page
+    Sleep    10s
+    Execute JavaScript  window.document.documentElement.scrollTop = 0;
+    @{mounths}    Set Variable    0: 2019年4月  1: 2019年3月  2: 2019年2月  3: 2019年1月  
+    :FOR    ${month}  IN  @{mounths}
+    \  Search In Mounth For Mobile    ${month}
+    \  Check Chart In Four card
+    \  Execute JavaScript  window.document.documentElement.scrollTop = 0;
 
-# Check Five Chart Is Synchronize
-    # Reload Page
-    # Sleep    5s
-    # @{chartValues}    Set Variable  有效投注  投注单量  营收比  损益  游戏人次
-    # :FOR  ${chartValue}  IN  @{chartValues}
-    # \  Execute JavaScript    window.document.documentElement.scrollTop = 350;
-    # \  Wait Until Page Contains Element  //div[@class='selectBarLine']/a[contains(.,'${chartValue}')]
-    # \  Click Element    //div[@class='selectBarLine']/a[contains(.,'${chartValue}')]
-    # \  Sleep    3s
-    # \  Capture Page Screenshot
-    # \  Execute JavaScript    window.document.documentElement.scrollTop = 500;
-    # \  ${result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[4][contains(.,'${chartValue}')]
-    # \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    # \  Chart Change
+Check Five Chart Is Synchronize
+    Reload Page
+    Sleep    5s
+    @{chartValues}    Set Variable  有效投注  投注单量  营收比  损益  游戏人次
+    :FOR  ${chartValue}  IN  @{chartValues}
+    \  Execute JavaScript    window.document.documentElement.scrollTop = 350;
+    \  Wait Until Page Contains Element  //div[@class='selectBarLine']/a[contains(.,'${chartValue}')]
+    \  Click Element    //div[@class='selectBarLine']/a[contains(.,'${chartValue}')]
+    \  Sleep    3s
+    \  Capture Page Screenshot
+    \  Execute JavaScript    window.document.documentElement.scrollTop = 500;
+    \  ${result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[4][contains(.,'${chartValue}')]
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  Chart Change
 
 Chart   
     # Increase Field

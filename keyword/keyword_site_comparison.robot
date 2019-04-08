@@ -28,25 +28,30 @@ Check Search Condition Is correct
     ${totalValueB}=  Get Text  //table[@id='comparisonArea']/tbody/tr[5]/td[3]
     ${result}=  Run Keyword And Return Status    Should Not Be Empty  ${totalValueB}
     # 種類數據 第一排序 數值
+    Page Should Contain Element    //table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 种类 数据占比 ')]
     ${categoryValueA}=  Get Text  //table[@id='comparisonArea']/tbody/tr[25]/td[3] 
     ${result}=  Run Keyword And Return Status    Should Not Be Empty  ${categoryValueA}
     ${categoryValueB}=  Get Text  //table[@id='comparisonArea']/tbody/tr[25]/td[5]
     ${result}=  Run Keyword And Return Status    Should Not Be Empty  ${categoryValueB}
     # 娛樂廳 數據占比 第一排序
+    Page Should Contain Element   //table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 娱乐厅 数据占比 ')]
     ${hallValueA}=  Get Text  //table[@id='comparisonArea']/tbody/tr[35]/td[3]    
     ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${hallValueA}
     ${hallValueB}=  Get Text  //table[@id='comparisonArea']/tbody/tr[35]/td[5]    
     ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${hallValueB}
     # 存款 線上存款金額 次數
-    ${saveValueA}=  Get Text   //table[@id='comparisonArea']/tbody/tr[51]/td[3]
+    Page Should Contain Element    //table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存款占比 ')]
+    ${saveValueA}=  Get Text   //table[@id='comparisonArea']/tbody/tr[52]/td[3]
     ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${value}
-    ${saveValueB}=  Get Text   //table[@id='comparisonArea']/tbody/tr[57]/td[3]
+    ${saveValueB}=  Get Text   //table[@id='comparisonArea']/tbody/tr[58]/td[3]
     ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${value}
     # 取款 線上存款金額 次數
-    ${withdrawalValueA}=  Get Text  //table[@id='comparisonArea']/tbody/tr[64]/td[3]
-    ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${withdrawalValueA}
-    ${withdrawalValueB}=  Get Text  //table[@id='comparisonArea']/tbody/tr[63]/td[5]
-    ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${withdrawalValueB}
+    Page Should Contain Element    //table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 取款占比 ')]
+    # ${withdrawalValueA}=  Get Text  //table[@id='comparisonArea']/tbody/tr[64]/td[3]
+    # ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${withdrawalValueA}
+    # ${withdrawalValueB}=  Get Text  //table[@id='comparisonArea']/tbody/tr[63]/td[5]
+    # ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${withdrawalValueB}
     # 存提差 首存總額
-    ${fistSave}=  Get Text    //table[@id='comparisonArea']/tbody/tr[73]/td[2]
-    ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${fistSave}
+    Page Should Contain Element    //table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存提差比较 ')]
+    # ${fistSave}=  Get Text    //table[@id='comparisonArea']/tbody/tr[73]/td[2]
+    # ${result}=  Run Keyword And Return Status  Should Not Be Empty  ${fistSave}

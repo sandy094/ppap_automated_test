@@ -46,7 +46,7 @@ Click Quick Search In Year
 Search In Datetime 
     Sleep  5s
     ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年3月  1: 2019年2月  2: 2019年1月  3: 2018年12月  4: 2018年11月  5: 2018年10月  6: 2018年9月  7: 2018年8月  
+    @{mounths}    Set Variable    0: 2019年4月  1: 2019年3月  2: 2019年2月  3: 2019年1月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    10s
@@ -148,12 +148,12 @@ New Field
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Sleep    4s
-    Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b0'][contains(.,'推荐排序')]
-    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b0'][contains(.,'推荐排序')]
+    Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b6'][contains(.,'推荐排序')]
+    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b6'][contains(.,'推荐排序')]
     Sleep    5s
     Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a4'][contains(.,' 游戏人次')]
     Sleep    5s
-    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a7'][contains(.,' 流失率')]
+    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a9'][contains(.,' 流失率')]
     Sleep    40s
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']

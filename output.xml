@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1 (Python 3.6.5 on win32)" generated="20190327 11:23:00.891" rpa="false">
-<suite id="s1" name="Test Site Comparison Page" source="C:\unit_test\web\test_site_comparison_page.robot">
+<robot generator="Robot 3.1 (Python 3.6.5 on win32)" generated="20190408 11:09:08.036" rpa="false">
+<suite id="s1" name="Test Site Comparison Mobile" source="C:\unit_test\mobile\test_site_comparison_mobile.robot">
 <kw name="SuiteSetup" type="setup">
-<kw name="Open Browser" library="Selenium2Library">
-<doc>Opens a new browser instance to the given ``url``.</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
 <arguments>
-<arg>${LOGIN URL}</arg>
-<arg>${BROWSER}</arg>
+<arg>deviceName=iPhone X</arg>
 </arguments>
-<msg timestamp="20190327 11:23:01.032" level="INFO">Opening browser 'Chrome' to base url 'https://ppap.pmzoe.com/login/'.</msg>
-<status status="PASS" starttime="20190327 11:23:01.032" endtime="20190327 11:23:09.170"></status>
+<assign>
+<var>${devname}</var>
+</assign>
+<msg timestamp="20190408 11:09:08.184" level="INFO">${devname} = {'deviceName': 'iPhone X'}</msg>
+<status status="PASS" starttime="20190408 11:09:08.184" endtime="20190408 11:09:08.184"></status>
 </kw>
-<kw name="Maximize Browser Window" library="Selenium2Library">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20190327 11:23:09.170" endtime="20190327 11:23:10.282"></status>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>mobileEmulation=${devname}</arg>
+</arguments>
+<assign>
+<var>${mobile_emulation}</var>
+</assign>
+<msg timestamp="20190408 11:09:08.185" level="INFO">${mobile_emulation} = {'mobileEmulation': {'deviceName': 'iPhone X'}}</msg>
+<status status="PASS" starttime="20190408 11:09:08.184" endtime="20190408 11:09:08.185"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver.chrome.options'].Options()</arg>
+<arg>sys, selenium.webdriver.chrome.options</arg>
+</arguments>
+<assign>
+<var>${chromeoptions}</var>
+</assign>
+<msg timestamp="20190408 11:09:08.185" level="INFO">${chromeoptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000018D98EEF080&gt;</msg>
+<status status="PASS" starttime="20190408 11:09:08.185" endtime="20190408 11:09:08.185"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${mobile_emulation}</arg>
+</arguments>
+<assign>
+<var>${chromeoptions_experimental_options}</var>
+</assign>
+<msg timestamp="20190408 11:09:08.185" level="INFO">${chromeoptions_experimental_options} = {'mobileEmulation': {'deviceName': 'iPhone X'}}</msg>
+<status status="PASS" starttime="20190408 11:09:08.185" endtime="20190408 11:09:08.185"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chromeoptions}</arg>
+<arg>add_experimental_option</arg>
+<arg>mobileEmulation</arg>
+<arg>${devname}</arg>
+</arguments>
+<status status="PASS" starttime="20190408 11:09:08.185" endtime="20190408 11:09:08.186"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chromeoptions}</arg>
+</arguments>
+<msg timestamp="20190408 11:09:08.186" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20190408 11:09:08.186" endtime="20190408 11:09:12.588"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>https://ppap.pmzoe.com/login</arg>
+</arguments>
+<msg timestamp="20190408 11:09:12.588" level="INFO">Opening url 'https://ppap.pmzoe.com/login'</msg>
+<status status="PASS" starttime="20190408 11:09:12.588" endtime="20190408 11:09:14.268"></status>
 </kw>
 <kw name="Login Page" library="keyword_common">
 <arguments>
@@ -25,8 +84,8 @@
 <arguments>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190327 11:23:10.283" level="INFO">TEST1234</msg>
-<status status="PASS" starttime="20190327 11:23:10.283" endtime="20190327 11:23:10.283"></status>
+<msg timestamp="20190408 11:09:14.268" level="INFO">TEST1234</msg>
+<status status="PASS" starttime="20190408 11:09:14.268" endtime="20190408 11:09:14.268"></status>
 </kw>
 <kw name="Input Account" library="keyword_common">
 <arguments>
@@ -37,7 +96,7 @@
 <arguments>
 <arg>//input[@id="inputEmail3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.283" endtime="20190327 11:23:10.293"></status>
+<status status="PASS" starttime="20190408 11:09:14.269" endtime="20190408 11:09:14.294"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -45,10 +104,10 @@
 <arg>//input[@id="inputEmail3"]</arg>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190327 11:23:10.294" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
-<status status="PASS" starttime="20190327 11:23:10.294" endtime="20190327 11:23:10.364"></status>
+<msg timestamp="20190408 11:09:14.294" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
+<status status="PASS" starttime="20190408 11:09:14.294" endtime="20190408 11:09:14.491"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:10.283" endtime="20190327 11:23:10.364"></status>
+<status status="PASS" starttime="20190408 11:09:14.269" endtime="20190408 11:09:14.492"></status>
 </kw>
 <kw name="Input Password" library="keyword_common">
 <arguments>
@@ -59,7 +118,7 @@
 <arguments>
 <arg>//input[@id="inputPassword3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.365" endtime="20190327 11:23:10.374"></status>
+<status status="PASS" starttime="20190408 11:09:14.492" endtime="20190408 11:09:14.502"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -67,10 +126,10 @@
 <arg>//input[@id="inputPassword3"]</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20190327 11:23:10.374" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
-<status status="PASS" starttime="20190327 11:23:10.374" endtime="20190327 11:23:10.435"></status>
+<msg timestamp="20190408 11:09:14.502" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
+<status status="PASS" starttime="20190408 11:09:14.502" endtime="20190408 11:09:14.559"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:10.365" endtime="20190327 11:23:10.435"></status>
+<status status="PASS" starttime="20190408 11:09:14.492" endtime="20190408 11:09:14.559"></status>
 </kw>
 <kw name="Press Key" library="Selenium2Library">
 <doc>Simulates user pressing key on element identified by ``locator``.</doc>
@@ -78,18 +137,11 @@
 <arg>//input[@id="inputPassword3"]</arg>
 <arg>\\13</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.435" endtime="20190327 11:23:10.462"></status>
+<status status="PASS" starttime="20190408 11:09:14.559" endtime="20190408 11:09:14.583"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:10.282" endtime="20190327 11:23:10.462"></status>
+<status status="PASS" starttime="20190408 11:09:14.268" endtime="20190408 11:09:14.584"></status>
 </kw>
-<kw name="Set Browser Implicit Wait" library="Selenium2Library">
-<doc>Sets the implicit wait value used by Selenium.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:23:10.462" endtime="20190327 11:23:10.464"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:23:01.032" endtime="20190327 11:23:10.464"></status>
+<status status="PASS" starttime="20190408 11:09:08.184" endtime="20190408 11:09:14.584"></status>
 </kw>
 <test id="s1-t1" name="Check login">
 <kw name="Login Page" library="keyword_common">
@@ -102,8 +154,8 @@
 <arguments>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190327 11:23:10.465" level="INFO">TEST1234</msg>
-<status status="PASS" starttime="20190327 11:23:10.465" endtime="20190327 11:23:10.465"></status>
+<msg timestamp="20190408 11:09:14.585" level="INFO">TEST1234</msg>
+<status status="PASS" starttime="20190408 11:09:14.585" endtime="20190408 11:09:14.585"></status>
 </kw>
 <kw name="Input Account" library="keyword_common">
 <arguments>
@@ -114,7 +166,7 @@
 <arguments>
 <arg>//input[@id="inputEmail3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.466" endtime="20190327 11:23:10.472"></status>
+<status status="PASS" starttime="20190408 11:09:14.585" endtime="20190408 11:09:14.592"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -122,10 +174,10 @@
 <arg>//input[@id="inputEmail3"]</arg>
 <arg>${account}</arg>
 </arguments>
-<msg timestamp="20190327 11:23:10.473" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
-<status status="PASS" starttime="20190327 11:23:10.472" endtime="20190327 11:23:10.539"></status>
+<msg timestamp="20190408 11:09:14.593" level="INFO">Typing text 'TEST1234' into text field '//input[@id="inputEmail3"]'.</msg>
+<status status="PASS" starttime="20190408 11:09:14.592" endtime="20190408 11:09:14.657"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:10.465" endtime="20190327 11:23:10.539"></status>
+<status status="PASS" starttime="20190408 11:09:14.585" endtime="20190408 11:09:14.657"></status>
 </kw>
 <kw name="Input Password" library="keyword_common">
 <arguments>
@@ -136,7 +188,7 @@
 <arguments>
 <arg>//input[@id="inputPassword3"]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.539" endtime="20190327 11:23:10.546"></status>
+<status status="PASS" starttime="20190408 11:09:14.658" endtime="20190408 11:09:14.665"></status>
 </kw>
 <kw name="Input Text" library="Selenium2Library">
 <doc>Types the given ``text`` into text field identified by ``locator``.</doc>
@@ -144,10 +196,10 @@
 <arg>//input[@id="inputPassword3"]</arg>
 <arg>${password}</arg>
 </arguments>
-<msg timestamp="20190327 11:23:10.546" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
-<status status="PASS" starttime="20190327 11:23:10.546" endtime="20190327 11:23:10.602"></status>
+<msg timestamp="20190408 11:09:14.665" level="INFO">Typing text '123456' into text field '//input[@id="inputPassword3"]'.</msg>
+<status status="PASS" starttime="20190408 11:09:14.665" endtime="20190408 11:09:14.719"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:10.539" endtime="20190327 11:23:10.602"></status>
+<status status="PASS" starttime="20190408 11:09:14.658" endtime="20190408 11:09:14.719"></status>
 </kw>
 <kw name="Press Key" library="Selenium2Library">
 <doc>Simulates user pressing key on element identified by ``locator``.</doc>
@@ -155,14 +207,14 @@
 <arg>//input[@id="inputPassword3"]</arg>
 <arg>\\13</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.602" endtime="20190327 11:23:10.623"></status>
+<status status="PASS" starttime="20190408 11:09:14.719" endtime="20190408 11:09:14.740"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:10.465" endtime="20190327 11:23:10.623"></status>
+<status status="PASS" starttime="20190408 11:09:14.584" endtime="20190408 11:09:14.740"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="PASS" starttime="20190327 11:23:10.464" endtime="20190327 11:23:10.623" critical="yes"></status>
+<status status="PASS" starttime="20190408 11:09:14.584" endtime="20190408 11:09:14.741" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Check sidebar link Game Information navigation is correct">
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
@@ -170,22 +222,45 @@
 <arguments>
 <arg>//div[@class='container bg-white boss-know-panel']//button[1]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:10.625" endtime="20190327 11:23:14.173"></status>
+<status status="PASS" starttime="20190408 11:09:14.742" endtime="20190408 11:09:16.148"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@class='container bg-white boss-know-panel']//button[1]</arg>
 </arguments>
-<msg timestamp="20190327 11:23:14.173" level="INFO">Clicking element '//div[@class='container bg-white boss-know-panel']//button[1]'.</msg>
-<status status="PASS" starttime="20190327 11:23:14.173" endtime="20190327 11:23:14.244"></status>
+<msg timestamp="20190408 11:09:16.149" level="INFO">Clicking element '//div[@class='container bg-white boss-know-panel']//button[1]'.</msg>
+<status status="PASS" starttime="20190408 11:09:16.148" endtime="20190408 11:09:16.192"></status>
 </kw>
 <kw name="Set Browser Implicit Wait" library="Selenium2Library">
 <doc>Sets the implicit wait value used by Selenium.</doc>
 <arguments>
 <arg>10s</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:14.245" endtime="20190327 11:23:14.247"></status>
+<status status="PASS" starttime="20190408 11:09:16.193" endtime="20190408 11:09:16.194"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20190408 11:09:19.196" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190408 11:09:16.194" endtime="20190408 11:09:19.196"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>//a[@class='collapse-menu-link ion-navicon']</arg>
+</arguments>
+<status status="PASS" starttime="20190408 11:09:19.196" endtime="20190408 11:09:19.207"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//a[@class='collapse-menu-link ion-navicon']</arg>
+</arguments>
+<msg timestamp="20190408 11:09:19.208" level="INFO">Clicking element '//a[@class='collapse-menu-link ion-navicon']'.</msg>
+<status status="PASS" starttime="20190408 11:09:19.208" endtime="20190408 11:09:19.245"></status>
 </kw>
 <kw name="Click Sidebar Link" library="keyword_common">
 <arguments>
@@ -196,30 +271,30 @@
 <arguments>
 <arg>30s</arg>
 </arguments>
-<msg timestamp="20190327 11:23:44.250" level="INFO">Slept 30 seconds</msg>
-<status status="PASS" starttime="20190327 11:23:14.248" endtime="20190327 11:23:44.250"></status>
+<msg timestamp="20190408 11:09:49.247" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20190408 11:09:19.246" endtime="20190408 11:09:49.247"></status>
 </kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
 <arg>//li[@title="${title}"]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:44.250" endtime="20190327 11:23:44.261"></status>
+<status status="PASS" starttime="20190408 11:09:49.247" endtime="20190408 11:09:49.257"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//li[@title="${title}"]</arg>
 </arguments>
-<msg timestamp="20190327 11:23:44.262" level="INFO">Clicking element '//li[@title="站台比较"]'.</msg>
-<status status="PASS" starttime="20190327 11:23:44.261" endtime="20190327 11:23:44.324"></status>
+<msg timestamp="20190408 11:09:49.258" level="INFO">Clicking element '//li[@title="站台比较"]'.</msg>
+<status status="PASS" starttime="20190408 11:09:49.257" endtime="20190408 11:09:49.303"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:14.248" endtime="20190327 11:23:44.325"></status>
+<status status="PASS" starttime="20190408 11:09:19.245" endtime="20190408 11:09:49.303"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="PASS" starttime="20190327 11:23:10.624" endtime="20190327 11:23:44.325" critical="yes"></status>
+<status status="PASS" starttime="20190408 11:09:14.742" endtime="20190408 11:09:49.304" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Search In Condition">
 <kw name="Sleep" library="BuiltIn">
@@ -227,143 +302,183 @@
 <arguments>
 <arg>10s</arg>
 </arguments>
-<msg timestamp="20190327 11:23:54.328" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:23:44.327" endtime="20190327 11:23:54.328"></status>
+<msg timestamp="20190408 11:09:59.307" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20190408 11:09:49.306" endtime="20190408 11:09:59.307"></status>
 </kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
-<arg>//site-filter/div</arg>
+<arg>//div[@class='mobile_btn_area_pos show_991']/div/button</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:54.328" endtime="20190327 11:23:54.340"></status>
+<status status="PASS" starttime="20190408 11:09:59.307" endtime="20190408 11:09:59.318"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
-<arg>//site-filter/div</arg>
+<arg>//div[@class='mobile_btn_area_pos show_991']/div/button</arg>
 </arguments>
-<msg timestamp="20190327 11:23:54.341" level="INFO">Clicking element '//site-filter/div'.</msg>
-<status status="PASS" starttime="20190327 11:23:54.341" endtime="20190327 11:23:54.410"></status>
+<msg timestamp="20190408 11:09:59.319" level="INFO">Clicking element '//div[@class='mobile_btn_area_pos show_991']/div/button'.</msg>
+<status status="PASS" starttime="20190408 11:09:59.319" endtime="20190408 11:09:59.380"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190408 11:10:04.382" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190408 11:09:59.381" endtime="20190408 11:10:04.382"></status>
 </kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
 <arg>//div[@id='unselectTable']/table/tbody/tr[1]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:54.410" endtime="20190327 11:23:54.422"></status>
+<status status="PASS" starttime="20190408 11:10:04.382" endtime="20190408 11:10:04.392"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@id='unselectTable']/table/tbody/tr[1]</arg>
 </arguments>
-<msg timestamp="20190327 11:23:54.423" level="INFO">Clicking element '//div[@id='unselectTable']/table/tbody/tr[1]'.</msg>
-<status status="PASS" starttime="20190327 11:23:54.423" endtime="20190327 11:23:54.488"></status>
+<msg timestamp="20190408 11:10:04.393" level="INFO">Clicking element '//div[@id='unselectTable']/table/tbody/tr[1]'.</msg>
+<status status="PASS" starttime="20190408 11:10:04.393" endtime="20190408 11:10:04.433"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@id='unselectTable']/table/tbody/tr[2]</arg>
 </arguments>
-<msg timestamp="20190327 11:23:54.489" level="INFO">Clicking element '//div[@id='unselectTable']/table/tbody/tr[2]'.</msg>
-<status status="PASS" starttime="20190327 11:23:54.488" endtime="20190327 11:23:54.553"></status>
+<msg timestamp="20190408 11:10:04.434" level="INFO">Clicking element '//div[@id='unselectTable']/table/tbody/tr[2]'.</msg>
+<status status="PASS" starttime="20190408 11:10:04.433" endtime="20190408 11:10:04.478"></status>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <doc>Pauses the test executed for the given time.</doc>
 <arguments>
 <arg>5s</arg>
 </arguments>
-<msg timestamp="20190327 11:23:59.555" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20190327 11:23:54.553" endtime="20190327 11:23:59.555"></status>
+<msg timestamp="20190408 11:10:09.480" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:04.479" endtime="20190408 11:10:09.480"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@class='drop-panel']/select-site/div/div/button</arg>
 </arguments>
-<msg timestamp="20190327 11:23:59.556" level="INFO">Clicking element '//div[@class='drop-panel']/select-site/div/div/button'.</msg>
-<status status="PASS" starttime="20190327 11:23:59.556" endtime="20190327 11:23:59.663"></status>
+<msg timestamp="20190408 11:10:09.481" level="INFO">Clicking element '//div[@class='drop-panel']/select-site/div/div/button'.</msg>
+<status status="PASS" starttime="20190408 11:10:09.481" endtime="20190408 11:10:09.572"></status>
 </kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
 <arg>//div[@class='fast-Apply']/div[2]</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:23:59.663" endtime="20190327 11:23:59.674"></status>
+<status status="PASS" starttime="20190408 11:10:09.573" endtime="20190408 11:10:09.587"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@class='fast-Apply']/div[2]</arg>
 </arguments>
-<msg timestamp="20190327 11:23:59.675" level="INFO">Clicking element '//div[@class='fast-Apply']/div[2]'.</msg>
-<status status="PASS" starttime="20190327 11:23:59.675" endtime="20190327 11:23:59.741"></status>
+<msg timestamp="20190408 11:10:09.588" level="INFO">Clicking element '//div[@class='fast-Apply']/div[2]'.</msg>
+<status status="PASS" starttime="20190408 11:10:09.588" endtime="20190408 11:10:09.638"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20190408 11:10:12.640" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:09.639" endtime="20190408 11:10:12.640"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 500;</arg>
+</arguments>
+<msg timestamp="20190408 11:10:12.640" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 500;</msg>
+<status status="PASS" starttime="20190408 11:10:12.640" endtime="20190408 11:10:12.645"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>//div[@id='conditionSetting']//div/button[contains(.,' 开始比较 ')]</arg>
+</arguments>
+<status status="PASS" starttime="20190408 11:10:12.645" endtime="20190408 11:10:12.667"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
-<arg>//ba-card[@id='settings']//div/button[contains(.,' 开始比较 ')]</arg>
+<arg>//div[@id='conditionSetting']//div/button[contains(.,' 开始比较 ')]</arg>
 </arguments>
-<msg timestamp="20190327 11:23:59.743" level="INFO">Clicking element '//ba-card[@id='settings']//div/button[contains(.,' 开始比较 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:23:59.743" endtime="20190327 11:23:59.830"></status>
+<msg timestamp="20190408 11:10:12.667" level="INFO">Clicking element '//div[@id='conditionSetting']//div/button[contains(.,' 开始比较 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:12.667" endtime="20190408 11:10:12.754"></status>
 </kw>
-<kw name="Check Search Condition Is correct" library="keyword_site_comparison">
 <kw name="Sleep" library="BuiltIn">
 <doc>Pauses the test executed for the given time.</doc>
 <arguments>
 <arg>5s</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.832" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20190327 11:23:59.831" endtime="20190327 11:24:04.832"></status>
+<msg timestamp="20190408 11:10:17.756" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:12.755" endtime="20190408 11:10:17.756"></status>
+</kw>
+<kw name="Check Search Condition Is correct" library="keyword_site_comparison_mobile">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190408 11:10:22.758" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:17.756" endtime="20190408 11:10:22.758"></status>
 </kw>
 <kw name="Execute Javascript" library="Selenium2Library">
 <doc>Executes the given JavaScript code.</doc>
 <arguments>
 <arg>window.document.documentElement.scrollTop = 330;</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.832" level="INFO">Executing JavaScript:
+<msg timestamp="20190408 11:10:22.758" level="INFO">Executing JavaScript:
 window.document.documentElement.scrollTop = 330;</msg>
-<status status="PASS" starttime="20190327 11:24:04.832" endtime="20190327 11:24:04.837"></status>
+<status status="PASS" starttime="20190408 11:10:22.758" endtime="20190408 11:10:22.762"></status>
 </kw>
 <kw name="Page Should Contain Element" library="Selenium2Library">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 活跃会员-留失率 ')]</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.863" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 活跃会员-留失率 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:04.837" endtime="20190327 11:24:04.863"></status>
+<msg timestamp="20190408 11:10:22.780" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 活跃会员-留失率 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:22.762" endtime="20190408 11:10:22.780"></status>
 </kw>
 <kw name="Page Should Contain Element" library="Selenium2Library">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 优惠 ')]</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.875" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 优惠 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:04.863" endtime="20190327 11:24:04.876"></status>
+<msg timestamp="20190408 11:10:22.795" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 优惠 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:22.780" endtime="20190408 11:10:22.795"></status>
 </kw>
 <kw name="Page Should Contain Element" library="Selenium2Library">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上存款-金额 ')]</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.888" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上存款-金额 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:04.876" endtime="20190327 11:24:04.888"></status>
+<msg timestamp="20190408 11:10:22.807" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上存款-金额 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:22.795" endtime="20190408 11:10:22.807"></status>
 </kw>
 <kw name="Page Should Contain Element" library="Selenium2Library">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上取款-金额 ')]</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.901" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上取款-金额 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:04.888" endtime="20190327 11:24:04.901"></status>
+<msg timestamp="20190408 11:10:22.821" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上取款-金额 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:22.808" endtime="20190408 11:10:22.821"></status>
 </kw>
 <kw name="Page Should Contain Element" library="Selenium2Library">
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
 <arguments>
 <arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 首存总额 ')]</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.913" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 首存总额 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:04.901" endtime="20190327 11:24:04.913"></status>
+<msg timestamp="20190408 11:10:22.831" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 首存总额 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:22.821" endtime="20190408 11:10:22.831"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -373,8 +488,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${totalValueA}</var>
 </assign>
-<msg timestamp="20190327 11:24:04.936" level="INFO">${totalValueA} = 12,074,559</msg>
-<status status="PASS" starttime="20190327 11:24:04.913" endtime="20190327 11:24:04.936"></status>
+<msg timestamp="20190408 11:10:22.857" level="INFO">${totalValueA} = 11,391,500</msg>
+<status status="PASS" starttime="20190408 11:10:22.832" endtime="20190408 11:10:22.857"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -390,11 +505,11 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${totalValueA}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.937" level="INFO">Length is 10</msg>
-<status status="PASS" starttime="20190327 11:24:04.937" endtime="20190327 11:24:04.937"></status>
+<msg timestamp="20190408 11:10:22.858" level="INFO">Length is 10</msg>
+<status status="PASS" starttime="20190408 11:10:22.858" endtime="20190408 11:10:22.858"></status>
 </kw>
-<msg timestamp="20190327 11:24:04.937" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:04.936" endtime="20190327 11:24:04.937"></status>
+<msg timestamp="20190408 11:10:22.858" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:22.857" endtime="20190408 11:10:22.858"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -404,8 +519,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${totalValueB}</var>
 </assign>
-<msg timestamp="20190327 11:24:04.960" level="INFO">${totalValueB} = 1,686,387</msg>
-<status status="PASS" starttime="20190327 11:24:04.937" endtime="20190327 11:24:04.960"></status>
+<msg timestamp="20190408 11:10:22.881" level="INFO">${totalValueB} = 799,804</msg>
+<status status="PASS" starttime="20190408 11:10:22.858" endtime="20190408 11:10:22.881"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -421,11 +536,36 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${totalValueB}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.961" level="INFO">Length is 9</msg>
-<status status="PASS" starttime="20190327 11:24:04.961" endtime="20190327 11:24:04.961"></status>
+<msg timestamp="20190408 11:10:22.881" level="INFO">Length is 7</msg>
+<status status="PASS" starttime="20190408 11:10:22.881" endtime="20190408 11:10:22.882"></status>
 </kw>
-<msg timestamp="20190327 11:24:04.961" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:04.961" endtime="20190327 11:24:04.961"></status>
+<msg timestamp="20190408 11:10:22.882" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:22.881" endtime="20190408 11:10:22.882"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190408 11:10:27.883" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:22.882" endtime="20190408 11:10:27.883"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 1300;</arg>
+</arguments>
+<msg timestamp="20190408 11:10:27.883" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 1300;</msg>
+<status status="PASS" starttime="20190408 11:10:27.883" endtime="20190408 11:10:27.888"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 种类 数据占比 ')]</arg>
+</arguments>
+<msg timestamp="20190408 11:10:27.905" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 种类 数据占比 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:27.888" endtime="20190408 11:10:27.905"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -435,8 +575,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${categoryValueA}</var>
 </assign>
-<msg timestamp="20190327 11:24:04.984" level="INFO">${categoryValueA} = 95,915</msg>
-<status status="PASS" starttime="20190327 11:24:04.961" endtime="20190327 11:24:04.984"></status>
+<msg timestamp="20190408 11:10:27.944" level="INFO">${categoryValueA} = 284,188</msg>
+<status status="PASS" starttime="20190408 11:10:27.905" endtime="20190408 11:10:27.944"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -452,11 +592,11 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${categoryValueA}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:04.985" level="INFO">Length is 6</msg>
-<status status="PASS" starttime="20190327 11:24:04.985" endtime="20190327 11:24:04.985"></status>
+<msg timestamp="20190408 11:10:27.944" level="INFO">Length is 7</msg>
+<status status="PASS" starttime="20190408 11:10:27.944" endtime="20190408 11:10:27.944"></status>
 </kw>
-<msg timestamp="20190327 11:24:04.985" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:04.984" endtime="20190327 11:24:04.985"></status>
+<msg timestamp="20190408 11:10:27.944" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:27.944" endtime="20190408 11:10:27.944"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -466,8 +606,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${categoryValueB}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.007" level="INFO">${categoryValueB} = 13,326</msg>
-<status status="PASS" starttime="20190327 11:24:04.985" endtime="20190327 11:24:05.007"></status>
+<msg timestamp="20190408 11:10:27.973" level="INFO">${categoryValueB} = 44,665</msg>
+<status status="PASS" starttime="20190408 11:10:27.944" endtime="20190408 11:10:27.973"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -483,11 +623,19 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${categoryValueB}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.008" level="INFO">Length is 6</msg>
-<status status="PASS" starttime="20190327 11:24:05.007" endtime="20190327 11:24:05.008"></status>
+<msg timestamp="20190408 11:10:27.974" level="INFO">Length is 6</msg>
+<status status="PASS" starttime="20190408 11:10:27.974" endtime="20190408 11:10:27.974"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.008" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:05.007" endtime="20190327 11:24:05.008"></status>
+<msg timestamp="20190408 11:10:27.974" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:27.974" endtime="20190408 11:10:27.974"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 娱乐厅 数据占比 ')]</arg>
+</arguments>
+<msg timestamp="20190408 11:10:27.988" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 娱乐厅 数据占比 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:27.974" endtime="20190408 11:10:27.988"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -497,8 +645,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${hallValueA}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.031" level="INFO">${hallValueA} = -59,664</msg>
-<status status="PASS" starttime="20190327 11:24:05.008" endtime="20190327 11:24:05.031"></status>
+<msg timestamp="20190408 11:10:28.014" level="INFO">${hallValueA} = 1,631</msg>
+<status status="PASS" starttime="20190408 11:10:27.988" endtime="20190408 11:10:28.014"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -514,11 +662,11 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${hallValueA}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.032" level="INFO">Length is 7</msg>
-<status status="PASS" starttime="20190327 11:24:05.032" endtime="20190327 11:24:05.032"></status>
+<msg timestamp="20190408 11:10:28.015" level="INFO">Length is 5</msg>
+<status status="PASS" starttime="20190408 11:10:28.015" endtime="20190408 11:10:28.015"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.032" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:05.031" endtime="20190327 11:24:05.032"></status>
+<msg timestamp="20190408 11:10:28.015" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:28.014" endtime="20190408 11:10:28.015"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -528,8 +676,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${hallValueB}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.054" level="INFO">${hallValueB} = -459</msg>
-<status status="PASS" starttime="20190327 11:24:05.032" endtime="20190327 11:24:05.054"></status>
+<msg timestamp="20190408 11:10:28.039" level="INFO">${hallValueB} = -583</msg>
+<status status="PASS" starttime="20190408 11:10:28.015" endtime="20190408 11:10:28.039"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -545,11 +693,28 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${hallValueB}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.055" level="INFO">Length is 4</msg>
-<status status="PASS" starttime="20190327 11:24:05.055" endtime="20190327 11:24:05.055"></status>
+<msg timestamp="20190408 11:10:28.040" level="INFO">Length is 4</msg>
+<status status="PASS" starttime="20190408 11:10:28.039" endtime="20190408 11:10:28.040"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.055" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:05.054" endtime="20190327 11:24:05.055"></status>
+<msg timestamp="20190408 11:10:28.040" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:28.039" endtime="20190408 11:10:28.040"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 2500;</arg>
+</arguments>
+<msg timestamp="20190408 11:10:28.040" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 2500;</msg>
+<status status="PASS" starttime="20190408 11:10:28.040" endtime="20190408 11:10:28.044"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存款占比 ')]</arg>
+</arguments>
+<msg timestamp="20190408 11:10:28.064" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存款占比 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:28.044" endtime="20190408 11:10:28.064"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -559,8 +724,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${saveValueA}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.078" level="INFO">${saveValueA} = 1,025,724</msg>
-<status status="PASS" starttime="20190327 11:24:05.055" endtime="20190327 11:24:05.078"></status>
+<msg timestamp="20190408 11:10:28.089" level="INFO">${saveValueA} = 1,084,461</msg>
+<status status="PASS" starttime="20190408 11:10:28.064" endtime="20190408 11:10:28.089"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -576,15 +741,15 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${value}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.079" level="FAIL">Variable '${value}' not found. Did you mean:
+<msg timestamp="20190408 11:10:28.090" level="FAIL">Variable '${value}' not found. Did you mean:
     ${VALID_USER}
     ${saveValueA}
     ${hallValueB}
     ${hallValueA}</msg>
-<status status="FAIL" starttime="20190327 11:24:05.079" endtime="20190327 11:24:05.079"></status>
+<status status="FAIL" starttime="20190408 11:10:28.089" endtime="20190408 11:10:28.090"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.079" level="INFO">${result} = False</msg>
-<status status="PASS" starttime="20190327 11:24:05.078" endtime="20190327 11:24:05.079"></status>
+<msg timestamp="20190408 11:10:28.090" level="INFO">${result} = False</msg>
+<status status="PASS" starttime="20190408 11:10:28.089" endtime="20190408 11:10:28.090"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
@@ -594,8 +759,8 @@ window.document.documentElement.scrollTop = 330;</msg>
 <assign>
 <var>${saveValueB}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.102" level="INFO">${saveValueB} = 1,589</msg>
-<status status="PASS" starttime="20190327 11:24:05.079" endtime="20190327 11:24:05.102"></status>
+<msg timestamp="20190408 11:10:28.119" level="INFO">${saveValueB} = 1,611</msg>
+<status status="PASS" starttime="20190408 11:10:28.090" endtime="20190408 11:10:28.119"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -611,27 +776,35 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${value}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.103" level="FAIL">Variable '${value}' not found. Did you mean:
+<msg timestamp="20190408 11:10:28.120" level="FAIL">Variable '${value}' not found. Did you mean:
     ${VALID_USER}
     ${saveValueB}
     ${saveValueA}
     ${hallValueB}
     ${hallValueA}</msg>
-<status status="FAIL" starttime="20190327 11:24:05.103" endtime="20190327 11:24:05.103"></status>
+<status status="FAIL" starttime="20190408 11:10:28.119" endtime="20190408 11:10:28.120"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.103" level="INFO">${result} = False</msg>
-<status status="PASS" starttime="20190327 11:24:05.102" endtime="20190327 11:24:05.103"></status>
+<msg timestamp="20190408 11:10:28.120" level="INFO">${result} = False</msg>
+<status status="PASS" starttime="20190408 11:10:28.119" endtime="20190408 11:10:28.120"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 取款占比 ')]</arg>
+</arguments>
+<msg timestamp="20190408 11:10:28.130" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 取款占比 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:28.120" endtime="20190408 11:10:28.130"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
 <arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[64]/td[3]</arg>
+<arg>//table[@id='comparisonArea']/tbody/tr[65]/td[3]</arg>
 </arguments>
 <assign>
 <var>${withdrawalValueA}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.127" level="INFO">${withdrawalValueA} = 1,265,251</msg>
-<status status="PASS" starttime="20190327 11:24:05.104" endtime="20190327 11:24:05.127"></status>
+<msg timestamp="20190408 11:10:28.155" level="INFO">${withdrawalValueA} = 0</msg>
+<status status="PASS" starttime="20190408 11:10:28.130" endtime="20190408 11:10:28.155"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -647,22 +820,22 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${withdrawalValueA}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.128" level="INFO">Length is 9</msg>
-<status status="PASS" starttime="20190327 11:24:05.128" endtime="20190327 11:24:05.128"></status>
+<msg timestamp="20190408 11:10:28.156" level="INFO">Length is 1</msg>
+<status status="PASS" starttime="20190408 11:10:28.156" endtime="20190408 11:10:28.156"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.128" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:05.128" endtime="20190327 11:24:05.128"></status>
+<msg timestamp="20190408 11:10:28.156" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:28.155" endtime="20190408 11:10:28.156"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
 <arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[63]/td[5]</arg>
+<arg>//table[@id='comparisonArea']/tbody/tr[65]/td[5]</arg>
 </arguments>
 <assign>
 <var>${withdrawalValueB}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.151" level="INFO">${withdrawalValueB} = 数值</msg>
-<status status="PASS" starttime="20190327 11:24:05.128" endtime="20190327 11:24:05.151"></status>
+<msg timestamp="20190408 11:10:28.178" level="INFO">${withdrawalValueB} = 0</msg>
+<status status="PASS" starttime="20190408 11:10:28.156" endtime="20190408 11:10:28.178"></status>
 </kw>
 <kw name="Run Keyword And Return Status" library="BuiltIn">
 <doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
@@ -678,1573 +851,117 @@ window.document.documentElement.scrollTop = 330;</msg>
 <arguments>
 <arg>${withdrawalValueB}</arg>
 </arguments>
-<msg timestamp="20190327 11:24:05.151" level="INFO">Length is 2</msg>
-<status status="PASS" starttime="20190327 11:24:05.151" endtime="20190327 11:24:05.151"></status>
+<msg timestamp="20190408 11:10:28.179" level="INFO">Length is 1</msg>
+<status status="PASS" starttime="20190408 11:10:28.179" endtime="20190408 11:10:28.179"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.152" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:05.151" endtime="20190327 11:24:05.152"></status>
+<msg timestamp="20190408 11:10:28.179" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20190408 11:10:28.178" endtime="20190408 11:10:28.179"></status>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>window.document.documentElement.scrollTop = 3200;</arg>
+</arguments>
+<msg timestamp="20190408 11:10:28.179" level="INFO">Executing JavaScript:
+window.document.documentElement.scrollTop = 3200;</msg>
+<status status="PASS" starttime="20190408 11:10:28.179" endtime="20190408 11:10:28.186"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存提差比较 ')]</arg>
+</arguments>
+<msg timestamp="20190408 11:10:28.194" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存提差比较 ')]'.</msg>
+<status status="PASS" starttime="20190408 11:10:28.186" endtime="20190408 11:10:28.194"></status>
 </kw>
 <kw name="Get Text" library="Selenium2Library">
 <doc>Returns the text value of element identified by ``locator``.</doc>
 <arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[73]/td[2]</arg>
+<arg>//table[@id='comparisonArea']/tbody/tr[74]/td[2]</arg>
 </arguments>
 <assign>
 <var>${fistSave}</var>
 </assign>
-<msg timestamp="20190327 11:24:05.188" level="INFO">${fistSave} = 8,084,570</msg>
-<status status="PASS" starttime="20190327 11:24:05.152" endtime="20190327 11:24:05.188"></status>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190408 11:10:38.891" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-188.png"&gt;&lt;img src="selenium-screenshot-188.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190408 11:10:38.226" endtime="20190408 11:10:38.891"></status>
 </kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Be Empty</arg>
-<arg>${fistSave}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Be Empty" library="BuiltIn">
-<doc>Verifies that the given item is not empty.</doc>
-<arguments>
-<arg>${fistSave}</arg>
-</arguments>
-<msg timestamp="20190327 11:24:05.189" level="INFO">Length is 9</msg>
-<status status="PASS" starttime="20190327 11:24:05.189" endtime="20190327 11:24:05.189"></status>
+<msg timestamp="20190408 11:10:38.919" level="FAIL">Element with locator '//table[@id='comparisonArea']/tbody/tr[74]/td[2]' not found.</msg>
+<status status="FAIL" starttime="20190408 11:10:28.194" endtime="20190408 11:10:38.919"></status>
 </kw>
-<msg timestamp="20190327 11:24:05.189" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:05.189" endtime="20190327 11:24:05.189"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:23:59.831" endtime="20190327 11:24:05.189"></status>
+<status status="FAIL" starttime="20190408 11:10:17.756" endtime="20190408 11:10:38.919"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="PASS" starttime="20190327 11:23:44.326" endtime="20190327 11:24:05.190" critical="yes"></status>
+<status status="FAIL" starttime="20190408 11:09:49.305" endtime="20190408 11:10:38.920" critical="yes">Element with locator '//table[@id='comparisonArea']/tbody/tr[74]/td[2]' not found.</status>
 </test>
-<test id="s1-t4" name="Quick Search Time">
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>0</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:24:05.192" level="INFO">${checkValueA} = 0</msg>
-<status status="PASS" starttime="20190327 11:24:05.191" endtime="20190327 11:24:05.192"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>0</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:24:05.192" level="INFO">${checkValueC} = 0</msg>
-<status status="PASS" starttime="20190327 11:24:05.192" endtime="20190327 11:24:05.192"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>上周</arg>
-<arg>本月</arg>
-<arg>上月</arg>
-</arguments>
-<assign>
-<var>@{days}</var>
-</assign>
-<msg timestamp="20190327 11:24:05.193" level="INFO">@{days} = [ 上周 | 本月 | 上月 ]</msg>
-<status status="PASS" starttime="20190327 11:24:05.192" endtime="20190327 11:24:05.193"></status>
-</kw>
-<kw name="${day} IN [ @{days} ]" type="for">
-<kw name="${day} = 上周" type="foritem">
-<kw name="Quick Search botton" library="keyword_common">
-<doc>Click Time Search In Quick Search To Search</doc>
-<arguments>
-<arg>${day}</arg>
-</arguments>
-<kw name="Wait Until Element Is Visible" library="Selenium2Library">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:05.194" endtime="20190327 11:24:05.215"></status>
-</kw>
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:05.216" level="INFO">Clicking link '//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上周')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:05.216" endtime="20190327 11:24:05.305"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:24:15.306" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:24:05.305" endtime="20190327 11:24:15.306"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:05.193" endtime="20190327 11:24:15.306"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:24:15.329" level="INFO">${checkValueB} = 1,952,699</msg>
-<status status="PASS" starttime="20190327 11:24:15.306" endtime="20190327 11:24:15.329"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:15.329" endtime="20190327 11:24:15.330"></status>
-</kw>
-<msg timestamp="20190327 11:24:15.330" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:15.329" endtime="20190327 11:24:15.330"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:24:15.330" level="INFO">${checkValueA} = 1,952,699</msg>
-<status status="PASS" starttime="20190327 11:24:15.330" endtime="20190327 11:24:15.330"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:24:15.351" level="INFO">${checkValueD} = 291,283</msg>
-<status status="PASS" starttime="20190327 11:24:15.330" endtime="20190327 11:24:15.351"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:15.351" endtime="20190327 11:24:15.352"></status>
-</kw>
-<msg timestamp="20190327 11:24:15.352" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:15.351" endtime="20190327 11:24:15.352"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:24:15.352" level="INFO">${checkValueC} = 291,283</msg>
-<status status="PASS" starttime="20190327 11:24:15.352" endtime="20190327 11:24:15.352"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:05.193" endtime="20190327 11:24:15.352"></status>
-</kw>
-<kw name="${day} = 本月" type="foritem">
-<kw name="Quick Search botton" library="keyword_common">
-<doc>Click Time Search In Quick Search To Search</doc>
-<arguments>
-<arg>${day}</arg>
-</arguments>
-<kw name="Wait Until Element Is Visible" library="Selenium2Library">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:15.353" endtime="20190327 11:24:15.373"></status>
-</kw>
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:15.374" level="INFO">Clicking link '//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'本月')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:15.373" endtime="20190327 11:24:15.438"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:24:25.440" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:24:15.438" endtime="20190327 11:24:25.440"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:15.352" endtime="20190327 11:24:25.440"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:24:25.460" level="INFO">${checkValueB} = 7,869,680</msg>
-<status status="PASS" starttime="20190327 11:24:25.440" endtime="20190327 11:24:25.460"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:25.460" endtime="20190327 11:24:25.461"></status>
-</kw>
-<msg timestamp="20190327 11:24:25.461" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:25.460" endtime="20190327 11:24:25.461"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:24:25.461" level="INFO">${checkValueA} = 7,869,680</msg>
-<status status="PASS" starttime="20190327 11:24:25.461" endtime="20190327 11:24:25.461"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:24:25.479" level="INFO">${checkValueD} = 1,261,590</msg>
-<status status="PASS" starttime="20190327 11:24:25.461" endtime="20190327 11:24:25.479"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:25.480" endtime="20190327 11:24:25.480"></status>
-</kw>
-<msg timestamp="20190327 11:24:25.480" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:25.480" endtime="20190327 11:24:25.480"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:24:25.481" level="INFO">${checkValueC} = 1,261,590</msg>
-<status status="PASS" starttime="20190327 11:24:25.481" endtime="20190327 11:24:25.481"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:15.352" endtime="20190327 11:24:25.481"></status>
-</kw>
-<kw name="${day} = 上月" type="foritem">
-<kw name="Quick Search botton" library="keyword_common">
-<doc>Click Time Search In Quick Search To Search</doc>
-<arguments>
-<arg>${day}</arg>
-</arguments>
-<kw name="Wait Until Element Is Visible" library="Selenium2Library">
-<doc>Waits until element ``locator`` is visible.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:25.481" endtime="20190327 11:24:25.502"></status>
-</kw>
-<kw name="Click Link" library="Selenium2Library">
-<doc>Clicks a link identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:25.502" level="INFO">Clicking link '//div[@class="baDateform btn-group hidden_991"]/a[contains(.,'上月')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:25.502" endtime="20190327 11:24:25.571"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:24:35.572" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:24:25.571" endtime="20190327 11:24:35.572"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:25.481" endtime="20190327 11:24:35.572"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:24:35.591" level="INFO">${checkValueB} = 8,297,647</msg>
-<status status="PASS" starttime="20190327 11:24:35.572" endtime="20190327 11:24:35.591"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:35.592" endtime="20190327 11:24:35.593"></status>
-</kw>
-<msg timestamp="20190327 11:24:35.593" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:35.592" endtime="20190327 11:24:35.593"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:24:35.593" level="INFO">${checkValueA} = 8,297,647</msg>
-<status status="PASS" starttime="20190327 11:24:35.593" endtime="20190327 11:24:35.593"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:24:35.612" level="INFO">${checkValueD} = 1,195,770</msg>
-<status status="PASS" starttime="20190327 11:24:35.593" endtime="20190327 11:24:35.612"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:35.612" endtime="20190327 11:24:35.612"></status>
-</kw>
-<msg timestamp="20190327 11:24:35.612" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:35.612" endtime="20190327 11:24:35.612"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:24:35.613" level="INFO">${checkValueC} = 1,195,770</msg>
-<status status="PASS" starttime="20190327 11:24:35.612" endtime="20190327 11:24:35.613"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:25.481" endtime="20190327 11:24:35.613"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:05.193" endtime="20190327 11:24:35.613"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>本年</arg>
-<arg>去年</arg>
-<arg>本季</arg>
-<arg>上季</arg>
-</arguments>
-<assign>
-<var>@{years}</var>
-</assign>
-<msg timestamp="20190327 11:24:35.614" level="INFO">@{years} = [ 本年 | 去年 | 本季 | 上季 ]</msg>
-<status status="PASS" starttime="20190327 11:24:35.614" endtime="20190327 11:24:35.614"></status>
-</kw>
-<kw name="${year} IN [ @{years} ]" type="for">
-<kw name="${year} = 本年" type="foritem">
-<kw name="Quick Search In year and season" library="keyword_common">
-<arguments>
-<arg>${year}</arg>
-</arguments>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:35.624" level="INFO">Current page contains element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:24:35.614" endtime="20190327 11:24:35.624"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:35.624" level="INFO">Simulating Mouse Over on element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:24:35.624" endtime="20190327 11:24:35.649"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:35.649" endtime="20190327 11:24:35.660"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:35.661" level="INFO">Clicking element '//div[@id="pick"]/ul/li[contains(.,'本年')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:35.661" endtime="20190327 11:24:35.741"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:24:45.743" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:24:35.742" endtime="20190327 11:24:45.743"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:35.614" endtime="20190327 11:24:45.743"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:24:45.763" level="INFO">${checkValueB} = 28,948,917</msg>
-<status status="PASS" starttime="20190327 11:24:45.743" endtime="20190327 11:24:45.763"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:45.763" endtime="20190327 11:24:45.764"></status>
-</kw>
-<msg timestamp="20190327 11:24:45.764" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:45.763" endtime="20190327 11:24:45.764"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:24:45.764" level="INFO">${checkValueA} = 28,948,917</msg>
-<status status="PASS" starttime="20190327 11:24:45.764" endtime="20190327 11:24:45.764"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:24:45.781" level="INFO">${checkValueD} = 4,288,485</msg>
-<status status="PASS" starttime="20190327 11:24:45.764" endtime="20190327 11:24:45.781"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:45.782" endtime="20190327 11:24:45.782"></status>
-</kw>
-<msg timestamp="20190327 11:24:45.782" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:45.781" endtime="20190327 11:24:45.782"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:24:45.782" level="INFO">${checkValueC} = 4,288,485</msg>
-<status status="PASS" starttime="20190327 11:24:45.782" endtime="20190327 11:24:45.782"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:35.614" endtime="20190327 11:24:45.782"></status>
-</kw>
-<kw name="${year} = 去年" type="foritem">
-<kw name="Quick Search In year and season" library="keyword_common">
-<arguments>
-<arg>${year}</arg>
-</arguments>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:45.789" level="INFO">Current page contains element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:24:45.783" endtime="20190327 11:24:45.790"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:45.790" level="INFO">Simulating Mouse Over on element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:24:45.790" endtime="20190327 11:24:45.817"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:45.817" endtime="20190327 11:24:45.830"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:45.830" level="INFO">Clicking element '//div[@id="pick"]/ul/li[contains(.,'去年')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:45.830" endtime="20190327 11:24:45.904"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:24:55.905" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:24:45.904" endtime="20190327 11:24:55.905"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:45.783" endtime="20190327 11:24:55.905"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:24:55.925" level="INFO">${checkValueB} = 38,339,651</msg>
-<status status="PASS" starttime="20190327 11:24:55.905" endtime="20190327 11:24:55.925"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:55.925" endtime="20190327 11:24:55.926"></status>
-</kw>
-<msg timestamp="20190327 11:24:55.926" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:55.925" endtime="20190327 11:24:55.926"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:24:55.926" level="INFO">${checkValueA} = 38,339,651</msg>
-<status status="PASS" starttime="20190327 11:24:55.926" endtime="20190327 11:24:55.926"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:24:55.944" level="INFO">${checkValueD} = 9,437,972</msg>
-<status status="PASS" starttime="20190327 11:24:55.926" endtime="20190327 11:24:55.944"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:55.944" endtime="20190327 11:24:55.945"></status>
-</kw>
-<msg timestamp="20190327 11:24:55.945" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:24:55.944" endtime="20190327 11:24:55.945"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:24:55.945" level="INFO">${checkValueC} = 9,437,972</msg>
-<status status="PASS" starttime="20190327 11:24:55.945" endtime="20190327 11:24:55.945"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:45.782" endtime="20190327 11:24:55.945"></status>
-</kw>
-<kw name="${year} = 本季" type="foritem">
-<kw name="Quick Search In year and season" library="keyword_common">
-<arguments>
-<arg>${year}</arg>
-</arguments>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:55.953" level="INFO">Current page contains element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:24:55.946" endtime="20190327 11:24:55.953"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:55.953" level="INFO">Simulating Mouse Over on element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:24:55.953" endtime="20190327 11:24:55.981"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:24:55.982" endtime="20190327 11:24:55.993"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:24:55.994" level="INFO">Clicking element '//div[@id="pick"]/ul/li[contains(.,'本季')]'.</msg>
-<status status="PASS" starttime="20190327 11:24:55.993" endtime="20190327 11:24:56.049"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:06.051" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:24:56.049" endtime="20190327 11:25:06.051"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:55.945" endtime="20190327 11:25:06.051"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:25:06.068" level="INFO">${checkValueB} = 28,948,917</msg>
-<status status="PASS" starttime="20190327 11:25:06.051" endtime="20190327 11:25:06.068"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:06.069" endtime="20190327 11:25:06.069"></status>
-</kw>
-<msg timestamp="20190327 11:25:06.069" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:06.069" endtime="20190327 11:25:06.069"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:25:06.069" level="INFO">${checkValueA} = 28,948,917</msg>
-<status status="PASS" starttime="20190327 11:25:06.069" endtime="20190327 11:25:06.069"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:25:06.095" level="INFO">${checkValueD} = 4,288,485</msg>
-<status status="PASS" starttime="20190327 11:25:06.070" endtime="20190327 11:25:06.095"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:06.096" endtime="20190327 11:25:06.096"></status>
-</kw>
-<msg timestamp="20190327 11:25:06.096" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:06.095" endtime="20190327 11:25:06.096"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:25:06.096" level="INFO">${checkValueC} = 4,288,485</msg>
-<status status="PASS" starttime="20190327 11:25:06.096" endtime="20190327 11:25:06.096"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:55.945" endtime="20190327 11:25:06.096"></status>
-</kw>
-<kw name="${year} = 上季" type="foritem">
-<kw name="Quick Search In year and season" library="keyword_common">
-<arguments>
-<arg>${year}</arg>
-</arguments>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:06.106" level="INFO">Current page contains element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:25:06.097" endtime="20190327 11:25:06.106"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@class="Interval_type mt-2"]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:06.106" level="INFO">Simulating Mouse Over on element '//div[@class="Interval_type mt-2"]'.</msg>
-<status status="PASS" starttime="20190327 11:25:06.106" endtime="20190327 11:25:06.132"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:06.132" endtime="20190327 11:25:06.145"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id="pick"]/ul/li[contains(.,'${title}')]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:06.145" level="INFO">Clicking element '//div[@id="pick"]/ul/li[contains(.,'上季')]'.</msg>
-<status status="PASS" starttime="20190327 11:25:06.145" endtime="20190327 11:25:06.203"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>10s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:16.204" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:06.203" endtime="20190327 11:25:16.204"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:06.096" endtime="20190327 11:25:16.204"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:25:16.223" level="INFO">${checkValueB} = 32,313,482</msg>
-<status status="PASS" starttime="20190327 11:25:16.204" endtime="20190327 11:25:16.223"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:16.224" endtime="20190327 11:25:16.224"></status>
-</kw>
-<msg timestamp="20190327 11:25:16.224" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:16.224" endtime="20190327 11:25:16.224"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:25:16.225" level="INFO">${checkValueA} = 32,313,482</msg>
-<status status="PASS" starttime="20190327 11:25:16.224" endtime="20190327 11:25:16.225"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:25:16.242" level="INFO">${checkValueD} = 3,942,422</msg>
-<status status="PASS" starttime="20190327 11:25:16.225" endtime="20190327 11:25:16.242"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:16.243" endtime="20190327 11:25:16.243"></status>
-</kw>
-<msg timestamp="20190327 11:25:16.243" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:16.242" endtime="20190327 11:25:16.243"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:25:16.244" level="INFO">${checkValueC} = 3,942,422</msg>
-<status status="PASS" starttime="20190327 11:25:16.243" endtime="20190327 11:25:16.244"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:06.096" endtime="20190327 11:25:16.244"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:24:35.614" endtime="20190327 11:25:16.244"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>0: 2019年3月</arg>
-<arg>1: 2019年2月</arg>
-</arguments>
-<assign>
-<var>@{months}</var>
-</assign>
-<msg timestamp="20190327 11:25:16.244" level="INFO">@{months} = [ 0: 2019年3月 | 1: 2019年2月 ]</msg>
-<status status="PASS" starttime="20190327 11:25:16.244" endtime="20190327 11:25:16.244"></status>
-</kw>
-<kw name="${month} IN [ @{months} ]" type="for">
-<kw name="${month} = 0: 2019年3月" type="foritem">
-<kw name="Search In Month" library="keyword_common">
-<arguments>
-<arg>${month}</arg>
-</arguments>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@class='hove_hourset']</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:16.245" endtime="20190327 11:25:16.255"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@class='hove_hourset']</arg>
-</arguments>
-<msg timestamp="20190327 11:25:16.255" level="INFO">Simulating Mouse Over on element '//div[@class='hove_hourset']'.</msg>
-<status status="PASS" starttime="20190327 11:25:16.255" endtime="20190327 11:25:16.286"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@class='select_month']/select</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:16.286" endtime="20190327 11:25:16.298"></status>
-</kw>
-<kw name="Select From List By Value" library="Selenium2Library">
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<arguments>
-<arg>//div[@class='select_month']/select</arg>
-<arg>${title}</arg>
-</arguments>
-<msg timestamp="20190327 11:25:16.299" level="INFO">Selecting options from selection list '//div[@class='select_month']/select' by value 0: 2019年3月.</msg>
-<status status="PASS" starttime="20190327 11:25:16.299" endtime="20190327 11:25:16.381"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>5s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:21.382" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:16.381" endtime="20190327 11:25:21.382"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@class='content-top clearfix']</arg>
-</arguments>
-<msg timestamp="20190327 11:25:21.382" level="INFO">Clicking element '//div[@class='content-top clearfix']'.</msg>
-<status status="PASS" starttime="20190327 11:25:21.382" endtime="20190327 11:25:21.441"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:16.245" endtime="20190327 11:25:21.441"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:25:21.463" level="INFO">${checkValueB} = 8,295,480</msg>
-<status status="PASS" starttime="20190327 11:25:21.441" endtime="20190327 11:25:21.463"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:21.463" endtime="20190327 11:25:21.463"></status>
-</kw>
-<msg timestamp="20190327 11:25:21.463" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:21.463" endtime="20190327 11:25:21.463"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:25:21.464" level="INFO">${checkValueA} = 8,295,480</msg>
-<status status="PASS" starttime="20190327 11:25:21.464" endtime="20190327 11:25:21.464"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:25:21.482" level="INFO">${checkValueD} = 1,274,461</msg>
-<status status="PASS" starttime="20190327 11:25:21.464" endtime="20190327 11:25:21.482"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:21.482" endtime="20190327 11:25:21.482"></status>
-</kw>
-<msg timestamp="20190327 11:25:21.483" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:21.482" endtime="20190327 11:25:21.483"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:25:21.483" level="INFO">${checkValueC} = 1,274,461</msg>
-<status status="PASS" starttime="20190327 11:25:21.483" endtime="20190327 11:25:21.483"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:16.245" endtime="20190327 11:25:21.483"></status>
-</kw>
-<kw name="${month} = 1: 2019年2月" type="foritem">
-<kw name="Search In Month" library="keyword_common">
-<arguments>
-<arg>${month}</arg>
-</arguments>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@class='hove_hourset']</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:21.483" endtime="20190327 11:25:21.490"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@class='hove_hourset']</arg>
-</arguments>
-<msg timestamp="20190327 11:25:21.490" level="INFO">Simulating Mouse Over on element '//div[@class='hove_hourset']'.</msg>
-<status status="PASS" starttime="20190327 11:25:21.490" endtime="20190327 11:25:21.516"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@class='select_month']/select</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:21.516" endtime="20190327 11:25:21.522"></status>
-</kw>
-<kw name="Select From List By Value" library="Selenium2Library">
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<arguments>
-<arg>//div[@class='select_month']/select</arg>
-<arg>${title}</arg>
-</arguments>
-<msg timestamp="20190327 11:25:21.523" level="INFO">Selecting options from selection list '//div[@class='select_month']/select' by value 1: 2019年2月.</msg>
-<status status="PASS" starttime="20190327 11:25:21.522" endtime="20190327 11:25:21.598"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>5s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:26.600" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:21.598" endtime="20190327 11:25:26.600"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@class='content-top clearfix']</arg>
-</arguments>
-<msg timestamp="20190327 11:25:26.600" level="INFO">Clicking element '//div[@class='content-top clearfix']'.</msg>
-<status status="PASS" starttime="20190327 11:25:26.600" endtime="20190327 11:25:26.641"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:21.483" endtime="20190327 11:25:26.641"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[2]</arg>
-</arguments>
-<assign>
-<var>${checkValueB}</var>
-</assign>
-<msg timestamp="20190327 11:25:26.662" level="INFO">${checkValueB} = 8,297,647</msg>
-<status status="PASS" starttime="20190327 11:25:26.642" endtime="20190327 11:25:26.662"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueA}</arg>
-<arg>${checkValueB}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:26.662" endtime="20190327 11:25:26.663"></status>
-</kw>
-<msg timestamp="20190327 11:25:26.663" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:26.662" endtime="20190327 11:25:26.663"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueB}</arg>
-</arguments>
-<assign>
-<var>${checkValueA}</var>
-</assign>
-<msg timestamp="20190327 11:25:26.663" level="INFO">${checkValueA} = 8,297,647</msg>
-<status status="PASS" starttime="20190327 11:25:26.663" endtime="20190327 11:25:26.663"></status>
-</kw>
-<kw name="Get Text" library="Selenium2Library">
-<doc>Returns the text value of element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[3]/td[3]</arg>
-</arguments>
-<assign>
-<var>${checkValueD}</var>
-</assign>
-<msg timestamp="20190327 11:25:26.681" level="INFO">${checkValueD} = 1,195,770</msg>
-<status status="PASS" starttime="20190327 11:25:26.663" endtime="20190327 11:25:26.681"></status>
-</kw>
-<kw name="Run Keyword And Return Status" library="BuiltIn">
-<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
-<arguments>
-<arg>Should Not Match</arg>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${result}</var>
-</assign>
-<kw name="Should Not Match" library="BuiltIn">
-<doc>Fails if the given ``string`` matches the given ``pattern``.</doc>
-<arguments>
-<arg>${checkValueC}</arg>
-<arg>${checkValueD}</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:26.681" endtime="20190327 11:25:26.681"></status>
-</kw>
-<msg timestamp="20190327 11:25:26.681" level="INFO">${result} = True</msg>
-<status status="PASS" starttime="20190327 11:25:26.681" endtime="20190327 11:25:26.681"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${checkValueD}</arg>
-</arguments>
-<assign>
-<var>${checkValueC}</var>
-</assign>
-<msg timestamp="20190327 11:25:26.682" level="INFO">${checkValueC} = 1,195,770</msg>
-<status status="PASS" starttime="20190327 11:25:26.682" endtime="20190327 11:25:26.682"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:21.483" endtime="20190327 11:25:26.682"></status>
-</kw>
-<status status="PASS" starttime="20190327 11:25:16.245" endtime="20190327 11:25:26.682"></status>
-</kw>
-<tags>
-<tag>Login</tag>
-</tags>
-<status status="PASS" starttime="20190327 11:24:05.191" endtime="20190327 11:25:26.682" critical="yes"></status>
-</test>
-<test id="s1-t5" name="Search Another Condition">
+<test id="s1-t4" name="Search Another Condition">
 <kw name="Execute Javascript" library="Selenium2Library">
 <doc>Executes the given JavaScript code.</doc>
 <arguments>
 <arg>window.document.documentElement.scrollTop = 0;</arg>
 </arguments>
-<msg timestamp="20190327 11:25:26.684" level="INFO">Executing JavaScript:
+<msg timestamp="20190408 11:10:38.922" level="INFO">Executing JavaScript:
 window.document.documentElement.scrollTop = 0;</msg>
-<status status="PASS" starttime="20190327 11:25:26.683" endtime="20190327 11:25:26.688"></status>
+<status status="PASS" starttime="20190408 11:10:38.922" endtime="20190408 11:10:38.927"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg timestamp="20190408 11:10:48.929" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:38.928" endtime="20190408 11:10:48.929"></status>
 </kw>
 <kw name="Wait Until Page Contains Element" library="Selenium2Library">
 <doc>Waits until element ``locator`` appears on current page.</doc>
 <arguments>
-<arg>//div[@class='sitecomparison-table-out']/div/button</arg>
+<arg>//div[@class='site-comparison-panel']/div/div/button</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:25:26.688" endtime="20190327 11:25:26.709"></status>
+<status status="PASS" starttime="20190408 11:10:48.930" endtime="20190408 11:10:48.940"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
-<arg>//div[@class='sitecomparison-table-out']/div/button</arg>
+<arg>//div[@class='site-comparison-panel']/div/div/button</arg>
 </arguments>
-<msg timestamp="20190327 11:25:26.711" level="INFO">Clicking element '//div[@class='sitecomparison-table-out']/div/button'.</msg>
-<status status="PASS" starttime="20190327 11:25:26.710" endtime="20190327 11:25:26.802"></status>
+<msg timestamp="20190408 11:10:48.941" level="INFO">Clicking element '//div[@class='site-comparison-panel']/div/div/button'.</msg>
+<status status="PASS" starttime="20190408 11:10:48.941" endtime="20190408 11:10:49.018"></status>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <doc>Pauses the test executed for the given time.</doc>
 <arguments>
 <arg>2s</arg>
 </arguments>
-<msg timestamp="20190327 11:25:28.802" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:26.802" endtime="20190327 11:25:28.802"></status>
+<msg timestamp="20190408 11:10:51.019" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190408 11:10:49.018" endtime="20190408 11:10:51.019"></status>
 </kw>
 <kw name="Click Element" library="Selenium2Library">
 <doc>Click element identified by ``locator``.</doc>
 <arguments>
 <arg>//div[@id='settingSection']/div/span[contains(.,'存提差 (总额)')]</arg>
 </arguments>
-<msg timestamp="20190327 11:25:28.803" level="INFO">Clicking element '//div[@id='settingSection']/div/span[contains(.,'存提差 (总额)')]'.</msg>
-<status status="PASS" starttime="20190327 11:25:28.803" endtime="20190327 11:25:28.856"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>2s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:30.856" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:28.856" endtime="20190327 11:25:30.856"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id='settingSection']/div/div/span[contains(.,'线上存款-金额')]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:30.856" level="INFO">Clicking element '//div[@id='settingSection']/div/div/span[contains(.,'线上存款-金额')]'.</msg>
-<status status="PASS" starttime="20190327 11:25:30.856" endtime="20190327 11:25:30.907"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>2s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:32.909" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:30.908" endtime="20190327 11:25:32.909"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//ba-card[@id='settings']//div/button[contains(.,' 开始比较 ')]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:32.910" level="INFO">Clicking element '//ba-card[@id='settings']//div/button[contains(.,' 开始比较 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:25:32.910" endtime="20190327 11:25:33.008"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>5s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:38.012" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:33.009" endtime="20190327 11:25:38.012"></status>
-</kw>
-<kw name="Page Should Not Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上存款-金额 ')]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:48.034" level="INFO">Current page does not contain element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 线上存款-金额 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:25:38.012" endtime="20190327 11:25:48.034"></status>
-</kw>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存提差 ')]</arg>
-</arguments>
-<msg timestamp="20190327 11:25:48.045" level="INFO">Current page contains element '//table[@id='comparisonArea']/tbody/tr/td[1][contains(.,' 存提差 ')]'.</msg>
-<status status="PASS" starttime="20190327 11:25:48.034" endtime="20190327 11:25:48.046"></status>
-</kw>
-<kw name="Execute Javascript" library="Selenium2Library">
-<doc>Executes the given JavaScript code.</doc>
-<arguments>
-<arg>window.document.documentElement.scrollTop = 720;</arg>
-</arguments>
-<msg timestamp="20190327 11:25:48.046" level="INFO">Executing JavaScript:
-window.document.documentElement.scrollTop = 720;</msg>
-<status status="PASS" starttime="20190327 11:25:48.046" endtime="20190327 11:25:48.051"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@id='category']/div/div/div[@ngbtooltip='趋势详细']</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:48.051" endtime="20190327 11:25:48.074"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id='category']/div/div/div[@ngbtooltip='趋势详细']</arg>
-</arguments>
-<msg timestamp="20190327 11:25:48.076" level="INFO">Clicking element '//div[@id='category']/div/div/div[@ngbtooltip='趋势详细']'.</msg>
-<status status="PASS" starttime="20190327 11:25:48.075" endtime="20190327 11:25:48.168"></status>
-</kw>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@id='categoryChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:25:52.677" level="INFO">Current page contains element '//div[@id='categoryChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:25:48.169" endtime="20190327 11:25:52.677"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@id='categoryChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:25:52.678" level="INFO">Simulating Mouse Over on element '//div[@id='categoryChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:25:52.677" endtime="20190327 11:25:52.738"></status>
-</kw>
+<msg timestamp="20190408 11:10:51.019" level="INFO">Clicking element '//div[@id='settingSection']/div/span[contains(.,'存提差 (总额)')]'.</msg>
 <kw name="Capture Page Screenshot" library="Selenium2Library">
 <doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190327 11:25:53.073" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-65.png"&gt;&lt;img src="selenium-screenshot-65.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190327 11:25:52.739" endtime="20190327 11:25:53.073"></status>
+<msg timestamp="20190408 11:10:51.650" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-189.png"&gt;&lt;img src="selenium-screenshot-189.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190408 11:10:51.068" endtime="20190408 11:10:51.650"></status>
 </kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[30]/td[1]/span/i</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:53.074" endtime="20190327 11:25:53.086"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[30]/td[1]/span/i</arg>
-</arguments>
-<msg timestamp="20190327 11:25:53.086" level="INFO">Clicking element '//table[@id='comparisonArea']/tbody/tr[30]/td[1]/span/i'.</msg>
-<status status="PASS" starttime="20190327 11:25:53.086" endtime="20190327 11:25:53.160"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>2s</arg>
-</arguments>
-<msg timestamp="20190327 11:25:55.163" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:53.161" endtime="20190327 11:25:55.163"></status>
-</kw>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@id='categoryChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:25:55.170" level="INFO">Current page contains element '//div[@id='categoryChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:25:55.163" endtime="20190327 11:25:55.170"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@id='categoryChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:25:55.170" level="INFO">Simulating Mouse Over on element '//div[@id='categoryChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:25:55.170" endtime="20190327 11:25:55.195"></status>
-</kw>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190327 11:25:55.525" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-66.png"&gt;&lt;img src="selenium-screenshot-66.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190327 11:25:55.195" endtime="20190327 11:25:55.525"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//div[@id='gamehall']/div/div/div[@ngbtooltip='趋势详细']</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:55.526" endtime="20190327 11:25:55.536"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//div[@id='gamehall']/div/div/div[@ngbtooltip='趋势详细']</arg>
-</arguments>
-<msg timestamp="20190327 11:25:55.537" level="INFO">Clicking element '//div[@id='gamehall']/div/div/div[@ngbtooltip='趋势详细']'.</msg>
-<status status="PASS" starttime="20190327 11:25:55.537" endtime="20190327 11:25:55.606"></status>
-</kw>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@id='hallChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:25:57.933" level="INFO">Current page contains element '//div[@id='hallChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:25:55.607" endtime="20190327 11:25:57.933"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@id='hallChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:25:57.934" level="INFO">Simulating Mouse Over on element '//div[@id='hallChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:25:57.933" endtime="20190327 11:25:58.005"></status>
-</kw>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190327 11:25:58.349" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-67.png"&gt;&lt;img src="selenium-screenshot-67.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190327 11:25:58.006" endtime="20190327 11:25:58.349"></status>
-</kw>
-<kw name="Wait Until Page Contains Element" library="Selenium2Library">
-<doc>Waits until element ``locator`` appears on current page.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[40]/td[1]/span/i</arg>
-</arguments>
-<status status="PASS" starttime="20190327 11:25:58.350" endtime="20190327 11:25:58.365"></status>
-</kw>
-<kw name="Click Element" library="Selenium2Library">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>//table[@id='comparisonArea']/tbody/tr[40]/td[1]/span/i</arg>
-</arguments>
-<msg timestamp="20190327 11:25:58.366" level="INFO">Clicking element '//table[@id='comparisonArea']/tbody/tr[40]/td[1]/span/i'.</msg>
-<status status="PASS" starttime="20190327 11:25:58.366" endtime="20190327 11:25:58.457"></status>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>2s</arg>
-</arguments>
-<msg timestamp="20190327 11:26:00.459" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20190327 11:25:58.457" endtime="20190327 11:26:00.459"></status>
-</kw>
-<kw name="Page Should Contain Element" library="Selenium2Library">
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<arguments>
-<arg>//div[@id='hallChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:26:00.469" level="INFO">Current page contains element '//div[@id='hallChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:26:00.459" endtime="20190327 11:26:00.469"></status>
-</kw>
-<kw name="Mouse Over" library="Selenium2Library">
-<doc>Simulates hovering mouse over the element ``locator``.</doc>
-<arguments>
-<arg>//div[@id='hallChart']/echarts-ng2/div/div/canvas</arg>
-</arguments>
-<msg timestamp="20190327 11:26:00.470" level="INFO">Simulating Mouse Over on element '//div[@id='hallChart']/echarts-ng2/div/div/canvas'.</msg>
-<status status="PASS" starttime="20190327 11:26:00.470" endtime="20190327 11:26:00.503"></status>
-</kw>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190327 11:26:00.842" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-68.png"&gt;&lt;img src="selenium-screenshot-68.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190327 11:26:00.504" endtime="20190327 11:26:00.842"></status>
+<msg timestamp="20190408 11:10:51.676" level="FAIL">WebDriverException: Message: unknown error: Element &lt;span _ngcontent-c13="" onselectstart="return false;"&gt;...&lt;/span&gt; is not clickable at point (200, 803). Other element would receive the click: &lt;button _ngcontent-c13="" class="btn btn-primary btn-with-icon"&gt;...&lt;/button&gt;
+  (Session info: chrome=73.0.3683.86)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64)
+</msg>
+<status status="FAIL" starttime="20190408 11:10:51.019" endtime="20190408 11:10:51.676"></status>
 </kw>
 <tags>
 <tag>Login</tag>
 </tags>
-<status status="PASS" starttime="20190327 11:25:26.683" endtime="20190327 11:26:00.842" critical="yes"></status>
+<status status="FAIL" starttime="20190408 11:10:38.922" endtime="20190408 11:10:51.677" critical="yes">WebDriverException: Message: unknown error: Element &lt;span _ngcontent-c13="" onselectstart="return false;"&gt;...&lt;/span&gt; is not clickable at point (200, 803). Other element would receive the click: &lt;button _ngcontent-c13="" class="btn btn-primary btn-with-icon"&gt;...&lt;/button&gt;
+  (Session info: chrome=73.0.3683.86)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17763 x86_64)
+</status>
 </test>
 <kw name="SuiteTeardown" type="teardown">
 <kw name="Run Keyword If Any Tests Failed" library="BuiltIn">
@@ -2252,26 +969,31 @@ window.document.documentElement.scrollTop = 720;</msg>
 <arguments>
 <arg>Capture Page Screenshot</arg>
 </arguments>
-<status status="PASS" starttime="20190327 11:26:00.845" endtime="20190327 11:26:00.845"></status>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190408 11:10:52.235" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-190.png"&gt;&lt;img src="selenium-screenshot-190.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190408 11:10:51.680" endtime="20190408 11:10:52.235"></status>
+</kw>
+<status status="PASS" starttime="20190408 11:10:51.679" endtime="20190408 11:10:52.235"></status>
 </kw>
 <kw name="Close Browser" library="Selenium2Library">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20190327 11:26:00.845" endtime="20190327 11:26:03.906"></status>
+<status status="PASS" starttime="20190408 11:10:52.235" endtime="20190408 11:10:55.284"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:26:00.845" endtime="20190327 11:26:03.906"></status>
+<status status="PASS" starttime="20190408 11:10:51.679" endtime="20190408 11:10:55.284"></status>
 </kw>
-<status status="PASS" starttime="20190327 11:23:00.893" endtime="20190327 11:26:03.906"></status>
+<status status="FAIL" starttime="20190408 11:09:08.038" endtime="20190408 11:10:55.284"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0">Critical Tests</stat>
-<stat pass="5" fail="0">All Tests</stat>
+<stat pass="2" fail="2">Critical Tests</stat>
+<stat pass="2" fail="2">All Tests</stat>
 </total>
 <tag>
-<stat pass="5" fail="0">Login</stat>
+<stat pass="2" fail="2">Login</stat>
 </tag>
 <suite>
-<stat pass="5" fail="0" id="s1" name="Test Site Comparison Page">Test Site Comparison Page</stat>
+<stat pass="2" fail="2" id="s1" name="Test Site Comparison Mobile">Test Site Comparison Mobile</stat>
 </suite>
 </statistics>
 <errors>

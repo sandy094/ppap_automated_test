@@ -22,8 +22,8 @@ Check Value Is Active
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[5][contains(.,'活跃会员')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'游戏人次')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[7][contains(.,'营收比')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
+    Page Should Contain Element    //div[@id='gameListTable'][contains(.,'游戏种类')]
+    Page Should Contain Element    //div[@id='dailyListTable'][contains(.,'逐日列表')]
 
 Check the time if choose game 
     # Execute JavaScript    window.document.documentElement.scrollTop = 0;
@@ -52,7 +52,7 @@ Check the time if choose game
 
     Execute JavaScript    window.document.documentElement.scrollTop = 0;
 
-    Search In Month    0: 2019年3月 
+    Search In Month    0: 2019年4月 
     Sleep  10s
     Run Keyword If    '${Count}'=='6'   Check Field Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]
@@ -68,8 +68,8 @@ Check Field Is Active Without Memeber
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[4][contains(.,'投注单量')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[5][contains(.,'游戏人次')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'营收比')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏名称')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
+    Page Should Contain Element    //div[@id='gameListTable'][contains(.,'游戏列表')]
+    Page Should Contain Element    //div[@id='dailyListTable'][contains(.,'逐日列表')]
 
 Verify Page Title Is Correct
     [Documentation]    Verify page title is match sidebar link and match
