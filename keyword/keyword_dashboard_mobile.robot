@@ -106,6 +106,7 @@ Chart Change
     Wait Until Page Contains Element    //div[@class='icon-Circles-pane']//div/i[@class='ion ion-android-open']
     Click Element    //div[@class='icon-Circles-pane']//div/i[@class='ion ion-android-open']
     Sleep    1s
+    Mouse Over    //div[@id='chart']//div[@class='col-12 clearfix']
     Capture Page Screenshot
     Click Element    //div[@class='modal-content']//div[@class='close_btn']
 
@@ -133,3 +134,4 @@ Search In Seven Day
     Sleep    2s
     Click Element    //div[@id='rankChartData']
     Capture Page Screenshot
+

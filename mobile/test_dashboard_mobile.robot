@@ -168,6 +168,7 @@ Check Five Chart Is Synchronize
     \  Chart Change
 
 Chart   
+# 展開娛樂城
     # Increase Field
     # Modularization In Chart
     Sleep    5s
@@ -193,6 +194,8 @@ Check Five Chart In Category
     \  Sleep    2s
     \  ${result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@class='card-header clearfix']/h3[contains(.,'${name}')]
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
+    \  Chart Change
+    \  Modularization In Chart
     \  Execute JavaScript    window.document.documentElement.scrollTop = 430;
 
 Check Five Chart In Classification  
@@ -219,6 +222,8 @@ Check Five Chart In Classification
        \  Sleep    2s
        \  ${result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@class='card-header clearfix']/h3[contains(.,'${name}')]
        \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
+       \  Chart Change
+       \  Modularization In Chart
 
 
 
