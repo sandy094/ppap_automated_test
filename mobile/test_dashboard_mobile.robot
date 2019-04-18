@@ -15,7 +15,7 @@ Check sidebar link Dashboard navigation is correct
     Sleep    5s
     Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
     Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
-    Sleep    3s
+    Sleep    5s
     Wait Until Page Contains Element    //a[@class='collapse-menu-link ion-navicon']
     Click Element    //a[@class='collapse-menu-link ion-navicon']
     Click Sidebar Link    运营看板
@@ -169,12 +169,25 @@ Check Five Chart Is Synchronize
 
 Chart   
 # 展開娛樂城
-    # Increase Field
+    Execute JavaScript     window.document.documentElement.scrollTop = 850;
+    Increase Field
     # Modularization In Chart
     Sleep    5s
     Execute JavaScript     window.document.documentElement.scrollTop = 700;
     Wait Until Page Contains Element    //tr[@id='tr-2']/td[3]
     Click Element    //tr[@id='tr-2']/td[3]
+    Sleep    2s
+    Capture Page Screenshot
+    # 排行榜展開下拉選單
+    Execute JavaScript     window.document.documentElement.scrollTop = 1000;
+    # 點選下拉選單圖示
+    Wait Until Page Contains Element    //tr[@id='tr-'][2]/td/div
+    Click Element    //tr[@id='tr-'][2]/td/div
+    Sleep     2s
+    Wait Until Page Contains Element    //dashboss-dropdown-selector/div[@class='btn-group dropdown']//button
+    Click Element    //dashboss-dropdown-selector/div[@class='btn-group dropdown']//button
+    Wait Until Page Contains Element    //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
+    Click Element    //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
     Sleep    2s
     Capture Page Screenshot
 
@@ -184,7 +197,43 @@ Check Five Chart In Category
     @{className}  Set Variable       体育    视讯    
     # 机率    彩票    捕鱼    棋牌
     :FOR  ${name}  IN  @{className}
+    \  Sleep    5s
+    \  Execute JavaScript     window.document.documentElement.scrollTop = 420;
     \  Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
+    \  Click Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
+    \  Sleep    2s
+    \  Wait Until Page Contains Element   //div[@class='accordion']//label[contains(.,'${name}')]/div
+    \  Click Element    //div[@class='accordion']//label[contains(.,'${name}')]/div
+    \  Click Element    //div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
+    \  Execute JavaScript    window.document.documentElement.scrollTop = 500;
+    \  Sleep    2s
+    \  ${result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@class='card-header clearfix']/h3[contains(.,'${name}')]
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
+    \  Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[2]/td[4]
+    \  Chart Change
+    \  Modularization In Chart
+    \  Increase Field
+
+
+Check Five Chart In Classification  
+    #    查全部娛樂城
+    Sleep    5s
+    Execute JavaScript     window.document.documentElement.scrollTop = 430;
+    Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
+    Click Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
+    Sleep    2s
+    Click Element    //div[@class='text-center mobile_btn_area2']/a[contains(.,'娱乐城查询')]
+    Click Element    //div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
+    Sleep    2s
+    Page Should Contain Element    //div[@class='card-header clearfix']/h3[contains(.,'娱乐城')]
+    Execute JavaScript    window.document.documentElement.scrollTop = 560;
+    Capture Page Screenshot
+    Increase Field
+    #  查單一娛樂城
+    @{hallName}  Set Variable    3Sing  AE  AG
+    :FOR  ${name}  IN  @{hallName}
+    \  Sleep    5s
+    \  Execute JavaScript    window.document.documentElement.scrollTop = 430;
     \  Click Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
     \  Sleep    2s
     \  Wait Until Page Contains Element   //div[@class='accordion']//label[contains(.,'${name}')]/div
@@ -196,35 +245,32 @@ Check Five Chart In Category
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
     \  Chart Change
     \  Modularization In Chart
-    \  Execute JavaScript    window.document.documentElement.scrollTop = 430;
+    \  Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[2]/td[4]
+    \  Increase Field
 
-Check Five Chart In Classification  
-    #    查全部娛樂城
-       Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
-       Click Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
-       Sleep    2s
-       Click Element    //div[@class='text-center mobile_btn_area2']/a[contains(.,'娱乐城查询')]
-       Click Element    //div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
-       Sleep    2s
-       Page Should Contain Element    //div[@class='card-header clearfix']/h3[contains(.,'娱乐城')]
-       Execute JavaScript    window.document.documentElement.scrollTop = 560;
-       Capture Page Screenshot
-    #  查單一娛樂城
-       @{hallName}  Set Variable    3Sing  AE  AG
-       :FOR  ${name}  IN  @{hallName}
-       \  Execute JavaScript    window.document.documentElement.scrollTop = 430;
-       \  Click Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
-       \  Sleep    2s
-       \  Wait Until Page Contains Element   //div[@class='accordion']//label[contains(.,'${name}')]/div
-       \  Click Element    //div[@class='accordion']//label[contains(.,'${name}')]/div
-       \  Click Element    //div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
-       \  Execute JavaScript    window.document.documentElement.scrollTop = 500;
-       \  Sleep    2s
-       \  ${result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@class='card-header clearfix']/h3[contains(.,'${name}')]
-       \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    NO Operation
-       \  Chart Change
-       \  Modularization In Chart
-
+Check Five Chart In Collection
+    # 查收藏集
+    Execute JavaScript     window.document.documentElement.scrollTop = 430;
+    Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
+    Click Element    //div[@class='mobile_btn_area_pos']/div/button[contains(.,'游戏选单')]
+    Sleep    5
+    Wait Until Page Contains Element     //div[@class='text-center mobile_btn_area2']/a[contains(.,' 收藏集 ')]
+    Click Element     //div[@class='text-center mobile_btn_area2']/a[contains(.,' 收藏集 ')]
+    Wait Until Page Contains Element     //div[@class='accordion']/div[2]/label/div/div/label
+    Click Element    //div[@class='accordion']/div[2]/label/div/div/label
+    Click Element    //div[@class='bamenu_btn_area']/button[contains(.,'查询')]
+    Sleep    5s
+    Page Should Contain Element    //div[@class='card-body card-box']/div/a[contains(.,'收藏集')]
+    Capture Page Screenshot
+    Chart Change
+    Increase Field For Collection
+    Modularization In Chart
+    Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[2]/td[4]
+    Wait Until Page Contains Element    //div[@class='click-count-content']/label[contains(.,' PK點擊數 ')]
+    Click Element    //div[@class='click-count-content']/label[contains(.,' PK點擊數 ')]
+    Sleep  5s
+    Mouse Over    //div[@class='linechart']/echarts-ng2/div/div/canvas
+    Capture Page Screenshot
 
 
 *** Keywords ***

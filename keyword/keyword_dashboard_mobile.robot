@@ -83,7 +83,7 @@ Count In A Day For months Mobile
 
 Increase Field
 # 新增欄位
-    Execute JavaScript     window.document.documentElement.scrollTop = 600;
+    Execute JavaScript     window.document.documentElement.scrollTop = 850;
     Sleep    2s
     Wait Until Page Contains Element    //div[@class='add-new-field']/span
     Click Element    //div[@class='add-new-field']/span
@@ -95,7 +95,28 @@ Increase Field
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr[1]/td[contains(.,'投注单量')]
     Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[1]/td[5]
     Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[1]/td[6]
+    Sleep    5s
+    Click Element    //div[@class='add-new-field']/span
+    Click Element    //div[@class='add-new-field']//div/label[contains(.,'有效投注')]
+    Click Element    //div[@class='add-new-field']//div/label[contains(.,'投注单量')]
+    Click Element    //div[@class='add-new-field']/span
     
+Increase Field For Collection
+# 新增欄位 收藏集
+    Execute JavaScript     window.document.documentElement.scrollTop = 1000;
+    Sleep    2s
+    @{fieldName}  Set Variable    推荐排序    推荐点击数    热门排序    热门点击数     一般排序     一般点击数    流失率     留存率     黏着度    评比 
+    :FOR  ${name}  IN  @{fieldName}
+    \  Sleep    5s
+    \  Wait Until Page Contains Element    //div[@class='add-new-field']/span
+    \  Click Element    //div[@class='add-new-field']/span
+    \  Wait Until Page Contains Element    //div[@class='add-new-field']//div/label[contains(.,'${name}')]
+    \   Click Element    //div[@class='add-new-field']//div/label[contains(.,'${name}')]
+    \  Click Element    //div[@class='add-new-field']/span
+    \  Page Should Contain Element    //div[@id='tableData']/table/thead/tr[1]/td[contains(.,'${name}')]
+    \  Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[2]/td[5]
+    
+
 Chart Change
 # 長條圖.趨勢圖放大
     Wait Until Page Contains Element    //div[@class='icon-Circles-pane']//div/i[@class='fa fa-bar-chart']
@@ -112,7 +133,7 @@ Chart Change
 
 Modularization In Chart
 # 排行榜展開下拉選單
-    Execute JavaScript     window.document.documentElement.scrollTop = 800;
+    Execute JavaScript     window.document.documentElement.scrollTop = 1000;
     # 點選下拉選單圖示
     Wait Until Page Contains Element    //tr[@id='tr-1']/td/div
     Click Element    //tr[@id='tr-1']/td/div

@@ -110,14 +110,14 @@ Quick Search In Mobile
     Sleep    5s
 
 Quick Search For Year And Season In Mobile
-    #本年.本季快搜
+    #本年.本季快搜 新版
     [Arguments]    ${title}
     Sleep    10s
     Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
     Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Wait Until Page Contains Element    //div[@class="type_pick_pop"]/ul/li[contains(.,'本年')]
+    Wait Until Page Contains Element    //div[@class="type_pick_pop"]/ul/li[contains(.,'${title}')]
     Sleep    5s
-    Click Element    //div[@class="type_pick_pop"]/ul/li[contains(.,'本年')]
+    Click Element    //div[@class="type_pick_pop"]/ul/li[contains(.,'${title}')]
     Sleep    10s
     Capture Page Screenshot
 

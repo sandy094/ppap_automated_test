@@ -5,16 +5,7 @@ Check Account Page
     Input Account    ${account}
     Input Password    ${password}
 
-Check Operational Information Link
-    [Documentation]    Click operational information link to check link is correct 
-    [Arguments]    ${title}    
-    Click Sidebar Link    ${title}
- 
-Check Topbar Link
-    [Arguments]    ${title}
-    Click Element    //li/a[contains(.,'${title}')]
-
-Check Value Is Active
+Check Value Is Active 
     [Documentation]    Check value in table
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[2][contains(.,'损益')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[3][contains(.,'有效投注')]
@@ -22,8 +13,8 @@ Check Value Is Active
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[5][contains(.,'活跃会员')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[6][contains(.,'游戏人次')]
     Page Should Contain Element    //table[@id='TrendInfoTable']/thead/tr[1]/th[7][contains(.,'营收比')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'游戏种类')]
-    Page Should Contain Element    //div[@class='card-body'][contains(.,'时间')]
+    Page Should Contain Element    //div[@id='gameListTable']//h3[contains(.,'游戏')]
+    Page Should Contain Element    //div[@id='dailyListTable']//h3[contains(.,'逐日列表')]
 
 Verify Page Title Is Correct
     [Documentation]    Verify page title is match sidebar link and match
@@ -39,27 +30,22 @@ Quick Search botton In Mobile
     Click Link    //div[@class="baDateform btn-group"]/a[contains(.,'${title}')] 
     Sleep    7s
 
-Quick Search For Year And Season In Mobile
-    #本年.本季快搜
-    [Arguments]    ${title}
+Check the time if choose game 
+    # 驗證數值
+    Sleep    5s
+    ${valueA}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
+    # 本周
+    Quick Search botton In Mobile    上周
+    ${valueB}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    ${valueA}=  Set Variable    ${valueB}
+    Quick Search For Year And Season In Mobile    本年
     Sleep    10s
-    Page Should Contain Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick_mobile"]/i
-    Wait Until Page Contains Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
-    Sleep    5s
-    Click Element    //div[@class="row mobile_fill_height"]//div[@class="type_pick"]/ul/li[contains(.,'${title}')]
+    ${valueB}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    ${valueA}=  Set Variable    ${valueB}
+    Search In Mounth For Mobile    0: 2019年4月
     Sleep    10s
-    Click Element    //div[@class='type_bgcolor']
-    Capture Page Screenshot
-
-Search In Mounth For Mobile 
-    #月份比較 
-    [Arguments]    ${title}
-    Wait Until Page Contains Element  //div[@class='card-body']/h5
-    Click Element     //div[@class='card-body']/h5
-    Sleep    5s
-    Mouse Over    //div[@class='selectDate_Click']
-    Wait Until Page Contains Element    //div[@class='select_month']/select
-    Select From List By Value    //div[@class='select_month']/select    ${title}
-    Sleep    5s
-    Capture Page Screenshot
+    ${valueB}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
+    ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
+    ${valueA}=  Set Variable    ${valueB}
