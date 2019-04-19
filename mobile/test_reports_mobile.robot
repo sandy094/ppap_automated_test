@@ -62,7 +62,7 @@ Search In Datetime
 
 Search In Category
     Reload Page  
-    種類
+    # 種類
     Sleep    5s
     ${valueA}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
     Wait Until Page Contains Element    //div[@class='mobile_btn_area_pos show_991']/div/button[contains(.,'游戏选单')]
@@ -141,7 +141,7 @@ Search In Game
     Wait Until Page Contains Element    //div[@class='drop-panel']/div/a[contains(.,'游戏查询')]
     Click Element    //div[@class='drop-panel']/div/a[contains(.,'游戏查询')]
     Input Text    //app-game-select-tab/div/div/input    劈鱼来了
-    Sleep    2s
+    Sleep    10s
     Wait Until Page Contains Element    //button[@id='ngb-typeahead-0-0']
     Click Element    //button[@id='ngb-typeahead-0-0']
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
