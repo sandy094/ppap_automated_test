@@ -11,10 +11,7 @@ Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
 
 Check sidebar link Operational navigation is correct
-    # 關掉公告訊息提示
-    # Sleep    5s
-    # Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    # Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Close Announcement 
     Sleep    5s
     Wait Until Page Contains Element    //a[@class='collapse-menu-link ion-navicon']
     Click Element    //a[@class='collapse-menu-link ion-navicon']

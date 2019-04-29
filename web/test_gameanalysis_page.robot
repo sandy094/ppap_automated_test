@@ -11,57 +11,55 @@ Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
 
 Check sidebar link Game Information navigation is correct
-     # 關掉公告訊息提示
-    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Close Announcement 
     Click Sidebar Link    运营看板
-    Set Browser Implicit Wait    10s
+    Sleep    10s
     Check Game Information Link    游戏解析
 
-Click Quick Search
-    Sleep    10s
-    ${valueB}    Set Variable    0
-    @{days}  Set Variable      昨日  上周  本月  上月
-    :FOR  ${day}  IN  @{days}
-    \  Quick Search botton    ${day}
-    \  Sleep  5s
-    \  Check Values
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]   #投注單量
-    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    \  ${valueB}  Set Variable    ${valueA}
+# Click Quick Search
+#     Sleep    10s
+#     ${valueB}    Set Variable    0
+#     @{days}  Set Variable      昨日  上周  本月  上月
+#     :FOR  ${day}  IN  @{days}
+#     \  Quick Search botton    ${day}
+#     \  Sleep  5s
+#     \  Check Values
+#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]   #投注單量
+#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+#     \  ${valueB}  Set Variable    ${valueA}
    
-Click Quick Search In Year 
-    ${valueB}    Set Variable    0
-    @{seasons}  Set Variable  本年  去年  本季  上季
-    :FOR  ${season}  IN  @{seasons}
-    \  Quick Search In year and season    ${season}
-    \  Sleep  30s
-    \  Check Values
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
-    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    \  ${valueB}  Set Variable    ${valueA}
+# Click Quick Search In Year 
+#     ${valueB}    Set Variable    0
+#     @{seasons}  Set Variable  本年  去年  本季  上季
+#     :FOR  ${season}  IN  @{seasons}
+#     \  Quick Search In year and season    ${season}
+#     \  Sleep  30s
+#     \  Check Values
+#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
+#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+#     \  ${valueB}  Set Variable    ${valueA}
 
-Search In Datetime 
-    Sleep  5s
-    ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年4月  1: 2019年3月  2: 2019年2月  3: 2019年1月
-    :FOR    ${month}  IN  @{mounths}
-    \  Search In Month    ${month}
-    \  Sleep    10s
-    \  Check Values
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
-    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    \  ${valueB}  Set Variable    ${valueA}
+# Search In Datetime 
+#     Sleep  5s
+#     ${valueB}    Set Variable    0
+#     @{mounths}    Set Variable    0: 2019年4月  1: 2019年3月  2: 2019年2月  3: 2019年1月
+#     :FOR    ${month}  IN  @{mounths}
+#     \  Search In Month    ${month}
+#     \  Sleep    10s
+#     \  Check Values
+#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
+#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+#     \  ${valueB}  Set Variable    ${valueA}
 
 Search In Category
-    Reload Page
+    # Reload Page
     Sleep    10s
     #投注單量
     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[5] 
-    @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
+    @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-42  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
     \  Sleep  5s
     \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]

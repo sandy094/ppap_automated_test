@@ -87,19 +87,19 @@ Increase Field
     Sleep    2s
     Wait Until Page Contains Element    //div[@class='add-new-field']/span
     Click Element    //div[@class='add-new-field']/span
-    Wait Until Page Contains Element    //div[@class='add-new-field']//div/label[contains(.,'有效投注')]
-    Click Element    //div[@class='add-new-field']//div/label[contains(.,'有效投注')]
-    Click Element    //div[@class='add-new-field']//div/label[contains(.,'投注单量')]
-    Click Element    //div[@class='add-new-field']/span
+    Wait Until Page Contains Element    //div[@class='custom_field_add_panel']//div[@class='custom_field_fast_column']//span[contains(.,' 有效投注')]
+    Click Element    //div[@class='custom_field_add_panel']//div[@class='custom_field_fast_column']//span[contains(.,' 有效投注')]
+    Click Element    //div[@class='custom_field_add_panel']//div[@class='custom_field_fast_column']//span[contains(.,' 投注单量')]
+    Click Element    //div[@class='custom_field_card']//div[@class='custom_field_save-wrp text-center']/button[contains(.,' 確定 ')]
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr[1]/td[contains(.,'有效投注')]
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr[1]/td[contains(.,'投注单量')]
     Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[1]/td[5]
     Should Not Be Empty    //div[@id='tableData']/table/tbody/tr[1]/td[6]
     Sleep    5s
     Click Element    //div[@class='add-new-field']/span
-    Click Element    //div[@class='add-new-field']//div/label[contains(.,'有效投注')]
-    Click Element    //div[@class='add-new-field']//div/label[contains(.,'投注单量')]
-    Click Element    //div[@class='add-new-field']/span
+    Click Element    //div[@class='custom_field_add_panel']//div[@class='custom_field_fast_column']//span[contains(.,' 有效投注')]
+    Click Element    //div[@class='custom_field_add_panel']//div[@class='custom_field_fast_column']//span[contains(.,' 投注单量')]
+    Click Element    //div[@class='custom_field_card']//div[@class='custom_field_save-wrp text-center']/button[contains(.,' 確定 ')]
     
 Increase Field For Collection
 # 新增欄位 收藏集

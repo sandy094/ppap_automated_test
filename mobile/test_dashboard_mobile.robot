@@ -11,10 +11,7 @@ Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
    
 Check sidebar link Dashboard navigation is correct
-    # 關掉公告訊息提示
-    Sleep    5s
-    Wait Until Page Contains Element    //div[@class='container bg-white boss-know-panel']//button[1]
-    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]
+    Close Announcement 
     Sleep    5s
     Wait Until Page Contains Element    //a[@class='collapse-menu-link ion-navicon']
     Click Element    //a[@class='collapse-menu-link ion-navicon']
@@ -258,6 +255,8 @@ Check Five Chart In Collection
     Click Element     //div[@class='text-center mobile_btn_area2']/a[contains(.,' 收藏集 ')]
     Wait Until Page Contains Element     //div[@class='accordion']/div[2]/label/div/div/label
     Click Element    //div[@class='accordion']/div[2]/label/div/div/label
+    Sleep    5s
+    Wait Until Page Contains Element    //div[@class='bamenu_btn_area']/button[contains(.,'查询')]
     Click Element    //div[@class='bamenu_btn_area']/button[contains(.,'查询')]
     Sleep    5s
     Page Should Contain Element    //div[@class='card-body card-box']/div/a[contains(.,'收藏集')]

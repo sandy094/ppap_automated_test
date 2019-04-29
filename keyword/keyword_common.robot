@@ -1,10 +1,10 @@
 *** Keywords ***
-# Check Sidebar Link And Verify Page Title
-#     [Arguments]    ${title}
-#     Wait Until Page Contains Element    //li[@title='${title}']
-#     Click Element    //li[@title='${title}']
-#     Wait Until Page Contains    //div[@class='${title}']
-
+Close Announcement  
+    # 關掉公告訊息提示
+    Sleep    8s
+    ${Result}=    Run Keyword And Return Status    Page Should Contain Element    //div[@class='container bg-white boss-know-panel']//button[1]
+    Run Keyword If    '${Result}'=='True'    Click Element  //div[@class='container bg-white boss-know-panel']//button[1]    ELSE    No Operation
+    
 Chart Transform
     # 長條圖/趨勢圖轉換
     Page Should Contain Element    //div[@class='CHART-AREA']/echarts-ng2/div/div/canvas    limit=2
