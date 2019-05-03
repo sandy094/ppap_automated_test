@@ -16,30 +16,30 @@ Check sidebar link Game Information navigation is correct
     Sleep    10s
     Check Game Information Link    游戏解析
 
-# Click Quick Search
-#     Sleep    10s
-#     ${valueB}    Set Variable    0
-#     @{days}  Set Variable      昨日  上周  本月  上月
-#     :FOR  ${day}  IN  @{days}
-#     \  Quick Search botton    ${day}
-#     \  Sleep  5s
-#     \  Check Values
-#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]   #投注單量
-#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-#     \  ${valueB}  Set Variable    ${valueA}
+Click Quick Search
+    Sleep    10s
+    ${valueB}    Set Variable    0
+    @{days}  Set Variable      昨日  上周  本月  上月
+    :FOR  ${day}  IN  @{days}
+    \  Quick Search botton    ${day}
+    \  Sleep  5s
+    \  Check Values
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]   #投注單量
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  ${valueB}  Set Variable    ${valueA}
    
-# Click Quick Search In Year 
-#     ${valueB}    Set Variable    0
-#     @{seasons}  Set Variable  本年  去年  本季  上季
-#     :FOR  ${season}  IN  @{seasons}
-#     \  Quick Search In year and season    ${season}
-#     \  Sleep  30s
-#     \  Check Values
-#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
-#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-#     \  ${valueB}  Set Variable    ${valueA}
+Click Quick Search In Year 
+    ${valueB}    Set Variable    0
+    @{seasons}  Set Variable  本年  去年  本季  上季
+    :FOR  ${season}  IN  @{seasons}
+    \  Quick Search In year and season    ${season}
+    \  Sleep  30s
+    \  Check Values
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  ${valueB}  Set Variable    ${valueA}
 
 Search In Datetime 
     Sleep  5s
