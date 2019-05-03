@@ -44,7 +44,7 @@ Check the time if choose game
     ${valueB}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
     ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
     ${valueA}=  Set Variable    ${valueB}
-    Search In Mounth For Mobile    0: 2019年4月
+    Search In Mounth For Mobile    0: 2019年5月
     Sleep    10s
     ${valueB}=  Get Text     //div[@id='hottestInfoTable']//tbody/tr[1]/td[2]
     ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}

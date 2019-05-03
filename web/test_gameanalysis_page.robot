@@ -41,21 +41,21 @@ Check sidebar link Game Information navigation is correct
 #     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
 #     \  ${valueB}  Set Variable    ${valueA}
 
-# Search In Datetime 
-#     Sleep  5s
-#     ${valueB}    Set Variable    0
-#     @{mounths}    Set Variable    0: 2019年4月  1: 2019年3月  2: 2019年2月  3: 2019年1月
-#     :FOR    ${month}  IN  @{mounths}
-#     \  Search In Month    ${month}
-#     \  Sleep    10s
-#     \  Check Values
-#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
-#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-#     \  ${valueB}  Set Variable    ${valueA}
+Search In Datetime 
+    Sleep  5s
+    ${valueB}    Set Variable    0
+    @{mounths}    Set Variable    0: 2019年5月  1: 2019年4月  2: 2019年3月  3: 2019年2月
+    :FOR    ${month}  IN  @{mounths}
+    \  Search In Month    ${month}
+    \  Sleep    10s
+    \  Check Values
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  ${valueB}  Set Variable    ${valueA}
 
 Search In Category
-    # Reload Page
+    Reload Page
     Sleep    10s
     #投注單量
     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[5] 
@@ -146,14 +146,14 @@ New Field
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Sleep    4s
-    Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b6'][contains(.,'推荐排序')]
-    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='b6'][contains(.,'推荐排序')]
+    Wait Until Page Contains Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 推荐排序')]
+    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 推荐排序')]
     Sleep    5s
-    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a4'][contains(.,' 游戏人次')]
+    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 游戏人次')]
     Sleep    5s
-    Click Element    //ba-card[@id='analysis-main-panel']//div[@class='add-field-item']/label[@for='a9'][contains(.,' 流失率')]
+    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 流失率')]
     Sleep    40s
-    Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
+    Click Element    //div[@class='custom_field_save-wrp text-center']/button[contains(.,' 確定 ')]
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']
     Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='trend-td']
     Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='percentage-td']

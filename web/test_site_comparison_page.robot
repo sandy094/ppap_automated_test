@@ -30,41 +30,41 @@ Search In Condition
     Click Element    //ba-card[@id='settings']//div/button[contains(.,' 开始比较 ')]
     Check Search Condition Is correct
 
-# Quick Search Time
-#     ${checkValueA}  Set Variable    0
-#     ${checkValueC}  Set Variable    0
-#     @{days}  Set Variable    上周  本月  上月
-#     :FOR  ${day}  IN  @{days}
-#     \    Quick Search botton    ${day}
-#     # 驗證數值
-#     \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
-#     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}
-#     \    ${checkValueA}  Set Variable  ${checkValueB}
-#     \    ${checkValueD}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[3]
-#     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
-#     \    ${checkValueC}  Set Variable  ${checkValueD}
+Quick Search Time
+    ${checkValueA}  Set Variable    0
+    ${checkValueC}  Set Variable    0
+    @{days}  Set Variable    上周  本月  上月
+    :FOR  ${day}  IN  @{days}
+    \    Quick Search botton    ${day}
+    # 驗證數值
+    \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
+    \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}
+    \    ${checkValueA}  Set Variable  ${checkValueB}
+    \    ${checkValueD}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[3]
+    \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
+    \    ${checkValueC}  Set Variable  ${checkValueD}
 
-#     @{years}  Set Variable    本年  去年  本季  上季
-#     :FOR  ${year}  IN  @{years}
-#     \    Quick Search In year and season    ${year}
-#     # 驗證數值
-#     \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
-#     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}
-#     \    ${checkValueA}  Set Variable  ${checkValueB}
-#     \    ${checkValueD}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[3]
-#     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
-#     \    ${checkValueC}  Set Variable  ${checkValueD}
+    @{years}  Set Variable    本年  去年  本季  上季
+    :FOR  ${year}  IN  @{years}
+    \    Quick Search In year and season    ${year}
+    # 驗證數值
+    \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
+    \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}
+    \    ${checkValueA}  Set Variable  ${checkValueB}
+    \    ${checkValueD}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[3]
+    \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
+    \    ${checkValueC}  Set Variable  ${checkValueD}
 
-#     @{months}  Set Variable    0: 2019年4月  1: 2019年3月 
-#     :FOR  ${month}  IN  @{months}
-#     \    Search In Month    ${month}
-#     # 驗證數值
-#     \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
-#     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}
-#     \    ${checkValueA}  Set Variable  ${checkValueB}
-#     \    ${checkValueD}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[3]
-#     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
-#     \    ${checkValueC}  Set Variable  ${checkValueD}
+    @{months}  Set Variable    0: 2019年5月  1: 2019年4月   
+    :FOR  ${month}  IN  @{months}
+    \    Search In Month    ${month}
+    # 驗證數值
+    \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
+    \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}
+    \    ${checkValueA}  Set Variable  ${checkValueB}
+    \    ${checkValueD}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[3]
+    \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
+    \    ${checkValueC}  Set Variable  ${checkValueD}
 
 Search Another Condition
     # 改變搜尋條件
