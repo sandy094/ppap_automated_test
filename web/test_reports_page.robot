@@ -58,7 +58,7 @@ Search In Category
     Reload Page
     Sleep    10s
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[4]
-    @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-36  p棋牌-44
+    @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-42  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
     \  Reload Page
     \  Sleep  5s
@@ -103,6 +103,7 @@ Search In Game
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
 
     Input Text    //app-game-select-tab/div/div/input    1
+    Sleep    5s
     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-2']
     Click Element    //button[@id='ngb-typeahead-0-2']
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='game-search-panel']//button[@class='btn btn-primary']
@@ -111,7 +112,7 @@ Search In Game
     Check the time if choose game 
 
 Search In Collection
-    Reload Page
+    # Reload Page
     Sleep    10s
     Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
@@ -123,8 +124,9 @@ Search In Collection
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
     Sleep    5s
     Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
-    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
-    Click Element    //app-game-select-tab//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
+    Sleep    5s
+    Wait Until Page Contains Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
+    Click Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    4s
     Capture Page Screenshot
     Execute JavaScript  window.document.documentElement.scrollTop = 550;

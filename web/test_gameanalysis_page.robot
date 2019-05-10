@@ -81,9 +81,9 @@ Search In Category
 
 Search In Classification
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    Reload Page
+    # Reload Page
     Sleep    10s
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[2]
+    ${valueB}=  Get Text    //div[@id="tableData"] //tbody/tr[2]/td[5]
     @{gameHalls}  Set variable    p3Sing-13  pAB-17  
     :FOR  ${gameHall}  IN  @{gameHalls}
     \  Reload Page
@@ -95,7 +95,7 @@ Search In Classification
     \  Click Element    //label[@for='${gameHall}']/div
     \  Click Element    //app-game-hall-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
     \  Sleep  5s
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  Check the time if choose game
@@ -103,7 +103,7 @@ Search In Classification
 Search In Game 
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
     Sleep    10s
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[4]   #驗證數值
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[5]   #驗證損益數值
     Wait Until Page Contains Element    //div[@class="filter-type"]/div
     Click Element    //div[@class="filter-type"]/div
     Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
@@ -116,11 +116,12 @@ Search In Game
     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-1']
     Click Element  //button[@id='ngb-typeahead-0-1']
     Click Element  //div[@class='game-search-panel']//button[contains(.,'查询')]
-    Sleep  5s
-    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Sleep  40s
+    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    Check the time if choose game
+    # 搜尋時間過長
+    # Check the time if choose game
 
 Search In Collection
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
@@ -135,12 +136,15 @@ Search In Collection
     Sleep    5s
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
     Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
-    Click Element    //div[@class='loveList-search-panel active']//button[contains(.,'查询')]
+    Sleep    5s
+    Wait Until Page Contains Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
+    Click Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    5s
     # 確認收藏集是否有變更
     Page Should Contain Element    //div[@class='col-lg-12 col-12 text-center mobile_btn_area2 pl-0 pr-0']/a[1][contains(.,' 收藏集游戏查询 ')]
     Sleep    5s
-    Check the time if choose game
+    # 搜尋時間過長
+    # Check the time if choose game
 
 New Field
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
