@@ -71,7 +71,7 @@ Check the time if choose game
     ${valueA}  Set Variable    ${valueB}
     Capture Page Screenshot 
 
-    Search In Month    0: 2019年5月 
+    Search In Month    0: 2019年6月 
     Sleep  20s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值

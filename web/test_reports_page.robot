@@ -44,7 +44,7 @@ Click Search
 
 Search In Datetime 
     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[4]
-    @{mounths}    Set Variable    0: 2019年5月  1: 2019年4月  2: 2019年3月  3: 2019年2月  
+    @{mounths}    Set Variable    0: 2019年6月  1: 2019年5月  2: 2019年4月  3: 2019年3月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    50s
@@ -102,7 +102,7 @@ Search In Game
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
 
-    Input Text    //app-game-select-tab/div/div/input    1
+    Input Text    //app-game-select-tab/div/div/input    104
     Sleep    5s
     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-2']
     Click Element    //button[@id='ngb-typeahead-0-2']
@@ -112,7 +112,7 @@ Search In Game
     Check the time if choose game 
 
 Search In Collection
-    # Reload Page
+    Reload Page
     Sleep    10s
     Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
