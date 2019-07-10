@@ -52,7 +52,7 @@ Check the time if choose game
 
     Execute JavaScript    window.document.documentElement.scrollTop = 0;
 
-    Search In Month    0: 2019年6月 
+    Search In Month    0: 2019年7月 
     Sleep  10s
     Run Keyword If    '${Count}'=='6'   Check Field Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]

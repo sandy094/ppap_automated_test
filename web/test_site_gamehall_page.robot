@@ -9,20 +9,17 @@ Resource    ../keyword/keyword_gamehall.robot
 *** Test Cases ***
 Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
-    Wait Until Page Contains Element    //div[@class='auth-block']/form/div/div/button[contains(.,'E-mail ')]
-    Click Element    //div[@class='auth-block']/form/div/div/button[contains(.,'E-mail ')]
-    Sleep    1.5m
+    # Wait Until Page Contains Element    //div[@class='auth-block']/form/div/div/button[contains(.,'E-mail ')]
+    # Click Element    //div[@class='auth-block']/form/div/div/button[contains(.,'E-mail ')]
+    # Sleep    1.5m
 
 Check sidebar link Game Information navigation is correct
     # 關掉公告訊息提示
     Close Announcement 
-    Click Sidebar Link    对帐资讯
+    Click Sidebar Link    业务对帐
     Sleep   2s
-    Wait Until Page Contains Element    //li[@title="站台"] /a[contains(.,'站台')]
-    Click Element    //li[@title="站台"] /a[contains(.,'站台')]
-    Sleep  2s
-    Wait Until Page Contains Element    //li[@title="站台"] /ul//li[contains(.,'对帐查询')]
-    Click Element    //li[@title="站台"] /ul//li[contains(.,'对帐查询')]
+    Wait Until Page Contains Element    //li[@title="对帐查询"] /a[contains(.,'对帐查询')]
+    Click Element    //li[@title="对帐查询"] /a[contains(.,'对帐查询')]
     Sleep  5s
     Capture Page Screenshot
 

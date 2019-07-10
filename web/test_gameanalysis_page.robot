@@ -12,9 +12,7 @@ Check login
 
 Check sidebar link Game Information navigation is correct
     Close Announcement 
-    Click Sidebar Link    运营看板
-    Sleep    10s
-    Check Game Information Link    游戏解析
+    Click Sidebar Link    游戏解析
 
 Click Quick Search
     Sleep    10s
@@ -44,7 +42,7 @@ Click Quick Search In Year
 Search In Datetime 
     Sleep  5s
     ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年6月  1: 2019年5月  2: 2019年4月  3: 2019年3月
+    @{mounths}    Set Variable    0: 2019年7月  1: 2019年6月  2: 2019年5月  3: 2019年4月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    10s
