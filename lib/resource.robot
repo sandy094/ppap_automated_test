@@ -6,7 +6,7 @@ Library    String
 
 
 *** Variables ***
-${SERVER}    ppap-stage.pmzoe.com/login
+${SERVER}    ppap.pmzoe.com/login
 ${BROWSER}    Chrome
 ${DELAY}    0
 ${VALID_USER}    brdemos    

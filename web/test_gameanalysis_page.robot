@@ -79,7 +79,7 @@ Search In Category
 
 Search In Classification
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    # Reload Page
+    Reload Page
     Sleep    10s
     ${valueB}=  Get Text    //div[@id="tableData"] //tbody/tr[2]/td[5]
     @{gameHalls}  Set variable    p3Sing-13  pAB-17  
@@ -118,8 +118,8 @@ Search In Game
     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    # 搜尋時間過長
-    # Check the time if choose game
+    搜尋時間過長
+    Check the time if choose game
 
 Search In Collection
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
@@ -132,9 +132,10 @@ Search In Collection
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     
     Sleep    5s
-    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
-    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[4]
+    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[4]
     Sleep    5s
+
     Wait Until Page Contains Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Click Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
     Sleep    5s
@@ -147,19 +148,36 @@ Search In Collection
 New Field
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
-    Sleep    4s
+    Sleep    5s
+
+    # 有效投注
+    Wait Until Page Contains Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 有效投注')]
+    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 有效投注')]
+    ${checkEffectpay}=  Run Keyword And Return Status    Page Should Contain Element      //div[@class='custom_field_fast_column_item']/div[@class='item active']/span[contains(.,' 有效投注')]
+
+    # 推薦排序
     Wait Until Page Contains Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 推荐排序')]
     Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 推荐排序')]
-    Sleep    5s
-    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 游戏人次')]
-    Sleep    5s
-    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 流失率')]
-    Sleep    40s
-    Click Element    //div[@class='custom_field_save-wrp text-center']/button[contains(.,' 確定 ')]
-    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']
-    Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='trend-td']
-    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='percentage-td']
+    ${checkRecomand}=  Run Keyword And Return Status    Page Should Contain Element      //div[@class='custom_field_fast_column_item']/div[@class='item active']/span[contains(.,' 推荐排序')]
 
+    # 熱門排序
+    Wait Until Page Contains Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 热门排序')]
+    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 热门排序')]
+    ${checkHotRandom}=  Run Keyword And Return Status    Page Should Contain Element      //div[@class='custom_field_fast_column_item']/div[@class='item active']/span[contains(.,' 热门排序')]
+
+    # 點擊數
+    Wait Until Page Contains Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 点击数')]
+    Click Element    //div[@class='custom_field_fast_column_item']/div/span[contains(.,' 点击数')]
+    ${checkClickRandom}=  Run Keyword And Return Status    Page Should Contain Element      //div[@class='custom_field_fast_column_item']/div[@class='item active']/span[contains(.,' 点击数')]
+    
+    Click Element    //div[@class='custom_field_save-wrp text-center']/button[contains(.,' 確定 ')]
+    Sleep    30s
+    Run Keyword If    '${checkEffectpay}'=='True'    Run Keyword And Return Status   Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='effectpay-td']    ELSE    Run Keyword And Return Status   Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='effectpay-td']
+    Run Keyword If    '${checkRecomand}'=='True'    Run Keyword And Return Status   Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']    ELSE    Run Keyword And Return Status   Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='hotrank-td']
+    Run Keyword If    '${checkHotRandom}'=='True'    Run Keyword And Return Status   Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='baserank-td']    ELSE    Run Keyword And Return Status   Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='baserank-td']
+    Run Keyword If    '${checkClickRandom}'=='True'    Run Keyword And Return Status   Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']    ELSE    Run Keyword And Return Status   Page Should Not Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']
+    
+    Capture Page Screenshot
 Modularization
     # 展開圖表
     Sleep    10s
@@ -193,17 +211,19 @@ Modularization
     Sleep  5s
     Capture Page Screenshot
 
-Check Number Of Clicks
-    Quick Search botton    上周
-    Sleep    2s
-    Wait Until Page Contains Element    //div[@id='tableData']/table/tbody/tr[2]/td[10]/a/span[1]
-    Click Element    //div[@id='tableData']/table/tbody/tr[2]/td[10]/a/span[1]
-    Sleep    2s
-    Page Should Contain Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
-    Click Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
-    Sleep   5s
-    Capture Page Screenshot
-    Page Should Contain Element    //div[@id="tableData"]//table/tbody/tr[1]/td[@class='clicksum-td'][1]
+# Check Number Of Clicks
+#     # Quick Search botton    上周
+#     Sleep    5s
+#     ${CheckClickTitle}=    Run Keyword And Return Status    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']
+#     Run Keyword If    '${CheckClickTitle}'=='False'    Exit For Loop       ELSE    Click Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
+#     Click Element    //div[@id='tableData']/table/tbody/tr[2]/td[10]/a/span[1]
+#     Sleep    2s
+#     Page Should Contain Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
+#     Click Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
+#     Sleep   5s
+#     Capture Page Screenshot
+#     Page Should Contain Element    //div[@id="tableData"]//table/tbody/tr[1]/td[@class='clicksum-td'][1]
+
     
 
 
