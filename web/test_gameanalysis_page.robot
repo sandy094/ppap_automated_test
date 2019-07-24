@@ -211,18 +211,14 @@ Modularization
     Sleep  5s
     Capture Page Screenshot
 
-# Check Number Of Clicks
-#     # Quick Search botton    上周
-#     Sleep    5s
-#     ${CheckClickTitle}=    Run Keyword And Return Status    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']
-#     Run Keyword If    '${CheckClickTitle}'=='False'    Exit For Loop       ELSE    Click Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
-#     Click Element    //div[@id='tableData']/table/tbody/tr[2]/td[10]/a/span[1]
-#     Sleep    2s
-#     Page Should Contain Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
-#     Click Element    //div[@class='detail-clickcount__title']/span[contains(.,'点击数')]
-#     Sleep   5s
-#     Capture Page Screenshot
-#     Page Should Contain Element    //div[@id="tableData"]//table/tbody/tr[1]/td[@class='clicksum-td'][1]
+Check Number Of Clicks
+    # Quick Search botton    上周
+    Sleep    5s
+    ${CheckClickTitle}=    Run Keyword And Return Status    Page Should Contain Element    //div[@id='tableData']/table/thead/tr/td[@class='click-td']
+    Run Keyword If    '${CheckClickTitle}'=='False'    Exit For Loop       ELSE    Click Element    //div[@id='tableData']/table/tbody/tr[2]/td[@class='click-td']/a  
+    Sleep   5s
+    Page Should Contain Element    //div[@id="tableData"]//table/tbody/tr[1]/td[@class='clicksum-td'][1]
+    Capture Page Screenshot
 
     
 
@@ -231,7 +227,6 @@ Modularization
 SuiteSetup
     Open Browser    ${LOGIN URL}    ${BROWSER}
     Maximize Browser Window
-    # Set Window Size    1920    1080
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
     Set Browser Implicit Wait    10s
     
