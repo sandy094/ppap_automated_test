@@ -98,26 +98,26 @@ Search In Classification
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  Check the time if choose game
  
-Search In Game 
-    [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    Sleep    10s
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[5]   #驗證損益數值
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div
-    Click Element    //div[@class="filter-type"]/div
-    Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
-    Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+# Search In Game 
+#     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
+#     Sleep    10s
+#     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[5]   #驗證損益數值
+#     Wait Until Page Contains Element    //div[@class="filter-type"]/div
+#     Click Element    //div[@class="filter-type"]/div
+#     Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
+#     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
 
-    Wait Until Page Contains Element    //app-game-select-tab/div/div/div[contains(.,'依游戏查询')]
-    Click Element    //app-game-select-tab/div/div/div[contains(.,'依游戏查询')]
-    Input Text  //input[@id="searchKey"]    104
-    Sleep  10s
-    Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-1']
-    Click Element  //button[@id='ngb-typeahead-0-1']
-    Click Element  //div[@class='game-search-panel']//button[contains(.,'查询')]
-    Sleep  40s
-    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
-    ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-    Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+#     Wait Until Page Contains Element    //app-game-select-tab/div/div/div[contains(.,'依游戏查询')]
+#     Click Element    //app-game-select-tab/div/div/div[contains(.,'依游戏查询')]
+#     Input Text  //input[@id="searchKey"]    104
+#     Sleep  10s
+#     Wait Until Page Contains Element  //button[@id='ngb-typeahead-0-1']
+#     Click Element  //button[@id='ngb-typeahead-0-1']
+#     Click Element  //div[@class='game-search-panel']//button[contains(.,'查询')]
+#     Sleep  40s
+#     ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
+#     ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+#     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     # 搜尋時間過長
     # Check the time if choose game
 
