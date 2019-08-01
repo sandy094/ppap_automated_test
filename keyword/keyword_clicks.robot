@@ -8,7 +8,7 @@ Check Account Page
 Check Game Information Link
     [Documentation]    Click operational information link to check link is correct 
     [Arguments]    ${title}    
-    Click Topbar Link    ${title}
+    Click Sidebar Link    ${title}
  
 Check Topbar Link
     [Arguments]    ${title}
@@ -16,10 +16,12 @@ Check Topbar Link
 
 Check Values
 # 寫IF判斷
-    @{cols}  Set Variable  3  4  5  6   
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[6]
+    Should Not Be Empty    //div[@id="tableData"] //tbody/tr[2]/td[6]
+    @{cols}  Set Variable  3  6  7  8  9   
     :FOR  ${col}  IN  @{cols}
     \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[${col}]
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[${col}]
     \  Should Not Be Empty  ${valueA}  
 
 Short
@@ -51,10 +53,10 @@ Short
     \  Run Keyword If    '${request}'=='False'    Capture Page Screenshot    ELSE    No Operation
 
 Check the time if choose game 
-    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]
+    ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]
     Quick Search botton   上周
-    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[3]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
     Should Not Be Empty  ${valueB} 
     ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
@@ -63,22 +65,23 @@ Check the time if choose game
 # 本季搜尋時間過長 待改善
     Quick Search In year and season    本季
     Sleep  20s
-    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[3]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
     Should Not Be Empty  ${valueB}
     ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     ${valueA}  Set Variable    ${valueB}
     Capture Page Screenshot 
 
-    Search In Month    0: 2019年8月  
+    Search In Month    0: 2019年8月 
     Sleep  20s
-    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
-    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
+    Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[3]
+    ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
     Should Not Be Empty  ${valueB}
     ${result}=  Run Keyword And Return Status    Should Not Match    ${valueA}  ${valueB}
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
 
+    
 
 
 
