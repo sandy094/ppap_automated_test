@@ -6,7 +6,7 @@ Library    String
 
 
 *** Variables ***
-${SERVER}    ppap-stage.pmzoe.com/login
+${SERVER}    aaqgg.com
 ${BROWSER}    Chrome
 ${DELAY}    0
 ${VALID_USER}    brdemos    
@@ -18,7 +18,7 @@ ${ERROR URL}    https://${SERVER}/error.html
 
 
 
-
+# aaqgg.com
 # ppap.pmzoe.com/login
 # brdemos
 # 111116

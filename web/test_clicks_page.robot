@@ -20,21 +20,21 @@ Check sidebar link Game Information navigation is correct
     Wait Until Page Contains Element    //a[@class='borderr_1px active'][contains(.,'游戏解析')]/div/span[contains(.,' 点击资讯 ')]
     Click Element    //a[@class='borderr_1px active'][contains(.,'游戏解析')]/div/span[contains(.,' 点击资讯 ')]
 
-# Click Quick Search
-#     Sleep    10s
-#     ${valueB}    Set Variable    0
-#     @{days}  Set Variable    上周  本月  上月  昨日
-#     :FOR  ${day}  IN  @{days}
-#     \  Quick Search botton    ${day}
-#     \  Sleep    30s
-#     # 暫時改成30s
-#     \  Check Values
-#     \  ${valueA}=  Get Text    //div[@id="tableData"] //tbody/tr[2]/td[@class='totalClickCounts-td']   #點擊數
-#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-#     \  ${valueB}  Set Variable    ${valueA}
+Click Quick Search
+    Sleep    10s
+    ${valueB}    Set Variable    0
+    @{days}  Set Variable    上周  本月  上月  昨日
+    :FOR  ${day}  IN  @{days}
+    \  Quick Search botton    ${day}
+    \  Sleep    30s
+    # 暫時改成30s
+    \  Check Values
+    \  ${valueA}=  Get Text    //div[@id="tableData"] //tbody/tr[2]/td[@class='totalClickCounts-td']   #點擊數
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  ${valueB}  Set Variable    ${valueA}
    
-# 本季.本年暫沒有資料暫時PASS
+# # 本季.本年暫沒有資料暫時PASS
 # Click Quick Search In Year 
 #     ${valueB}    Set Variable    0
 #     @{seasons}  Set Variable  本年  本季  
@@ -47,30 +47,30 @@ Check sidebar link Game Information navigation is correct
 #     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
 #     \  ${valueB}  Set Variable    ${valueA}
 
-# Search In Datetime 
-#     Sleep  5s
-#     ${valueB}    Set Variable    0
-#     @{mounths}    Set Variable    0: 2019年8月  1: 2019年7月  
-#     :FOR    ${month}  IN  @{mounths}
-#     \  Search In Month    ${month}
-#     \  Sleep    30s
-#     # 暫時改成30s
-#     \  Check Values
-#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[@class='totalClickCounts-td']   #點擊數
-#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-#     \  ${valueB}  Set Variable    ${valueA}
+Search In Datetime 
+    Sleep  5s
+    ${valueB}    Set Variable    0
+    @{mounths}    Set Variable    0: 2019年8月  1: 2019年7月  
+    :FOR    ${month}  IN  @{mounths}
+    \  Search In Month    ${month}
+    \  Sleep    30s
+    # 暫時改成30s
+    \  Check Values
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[@class='totalClickCounts-td']   #點擊數
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  ${valueB}  Set Variable    ${valueA}
 
 Quick Search
 # 快搜
-    Quick Search botton    本周
-    # Wait Until Page Contains Element    //input[@id='sch__input']
-    # Input Text   //input[@id='sch__input']    g
+    Quick Search botton    上周
+    Wait Until Page Contains Element    //input[@id='sch__input']
+    Input Text   //input[@id='sch__input']    g
     Wait Until Page Contains Element    //div[@id='tableData']/table/tbody/tr[2]/td[3]/span
     ${searchValue}=  Get Text    //div[@id='tableData']/table/tbody/tr[2]/td[3]/span
 
 New Field
-    # Quick Search botton    本周
+    Quick Search botton    昨日
     Wait Until Page Contains Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Click Element    //ba-card[@id='analysis-main-panel']//div/span[@class='add-field-border']/i
     Sleep    4s
@@ -92,18 +92,29 @@ New Field
 
 Field
 # 點擊數連結
-    ${getCnTitle}=  Get Text    //div[@id='tableData']/table/tbody/tr[2]/td[@class='nameCn-td']
+    ${getCnTitle}=  Get Text    //div[@id='tableData']/table/tbody/tr[3]/td[@class='nameCn-td']
     
-    ${getClickCountsValue}=  Get Text    //div[@id='tableData']/table/tbody/tr[2]/td[@class='totalClickCounts-td']/a
-    
-    Click Element    //div[@id='tableData']/table/tbody/tr[2]/td[@class='totalClickCounts-td']/a
+    ${getClickCountsValue}=  Get Text    //div[@id='tableData']/table/tbody/tr[3]/td[@class='totalClickCounts-td']/a
+    ${getClickCountsValue}=  Convert To Integer    ${getClickCountsValue}
+    Click Element    //div[@id='tableData']/table/tbody/tr[3]/td[@class='totalClickCounts-td']/a
     Sleep    5s
-
     ${getSiteTitle}=  Get Text    //div[@class='detail-clickcount__title']/span
     # 站台名稱要相同
-    Run Keyword And Return Status    Should Match    ${getCnTitle}  ${getSiteTitle}  
+    Run Keyword And Return Status    Should Match    ${getCnTitle}  ${getSiteTitle}
+
+    # 點擊數分幾類
+    ${getElementCount}=  Get Element Count    //div[@id='tableData']/table/tbody/tr
+    ${getElementCount}=  Convert To Integer    ${getElementCount}
+    # ${getElementCount}=  Evaluate  ${getElementCount}+1
+    ${totalClick}  Set Variable  0
+    :FOR  ${element}  IN  1  ${getElementCount}
+    \    ${getClicksCounts}=  Get Text  //div[@id='tableData']/table/tbody/tr[${element}]/td[3]/a
+    \    ${totalClick}=    Evaluate  ${totalClick} + ${getClicksCounts}
+
+    Should Be Equal  ${totalClick}  ${getClickCountsValue}
 
 
+      
 
 
 *** Keywords ***
