@@ -34,23 +34,23 @@ Click Quick Search
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  ${valueB}  Set Variable    ${valueA}
    
-# # 本季.本年暫沒有資料暫時PASS
-# Click Quick Search In Year 
-#     ${valueB}    Set Variable    0
-#     @{seasons}  Set Variable  本年  本季  
-#     :FOR  ${season}  IN  @{seasons}
-#     \  Quick Search In year and season    ${season}
-#     \  Sleep  30s
-#     \  Check Values
-#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]
-#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-#     \  ${valueB}  Set Variable    ${valueA}
+# 本季.本年暫沒有資料暫時PASS
+Click Quick Search In Year 
+    ${valueB}    Set Variable    0
+    @{seasons}  Set Variable  本年  本季  
+    :FOR  ${season}  IN  @{seasons}
+    \  Quick Search In year and season    ${season}
+    \  Sleep  30s
+    \  Check Values
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  ${valueB}  Set Variable    ${valueA}
 
 Search In Datetime 
     Sleep  5s
     ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年8月  1: 2019年7月  
+    @{mounths}    Set Variable    0: 2019年9月  1: 2019年8月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    30s
@@ -100,7 +100,7 @@ Field
     Sleep    5s
     ${getSiteTitle}=  Get Text    //div[@class='detail-clickcount__title']/span
     # 站台名稱要相同
-    Run Keyword And Return Status    Should Match    ${getCnTitle}  ${getSiteTitle}
+    ${result}=  Run Keyword And Return Status    Should Match    ${getCnTitle}  ${getSiteTitle}
 
     # 點擊數分幾類
     ${getElementCount}=  Get Element Count    //div[@id='tableData']/table/tbody/tr
@@ -110,6 +110,7 @@ Field
     :FOR  ${element}  IN  1  ${getElementCount}
     \    ${getClicksCounts}=  Get Text  //div[@id='tableData']/table/tbody/tr[${element}]/td[3]/a
     \    ${totalClick}=    Evaluate  ${totalClick} + ${getClicksCounts}
+    \    Run Keyword If  '${getElementCount}'==1  Exit For Loop    Else    No Operation
 
     Should Be Equal  ${totalClick}  ${getClickCountsValue}
 
