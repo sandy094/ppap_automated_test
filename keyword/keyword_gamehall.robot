@@ -22,7 +22,7 @@ Search In Year
     ${tableValueA}    Set Variable    0
     @{seasons}  Set Variable  本年  去年  本季  上季
     :FOR  ${season}  IN  @{seasons}
-    \  Quick Search In year and season    ${season}
+    \  Quick Search botton    ${season}
     \  Sleep  20s
     \  ${tableValueB}=  Get Text  //ng2-smart-table[@class='gamehall__tb']//tbody/tr/td[2]
     \  Run Keyword If    '${tableValueB}'=='0'    Capture Page Screenshot    ELSE    No Operation

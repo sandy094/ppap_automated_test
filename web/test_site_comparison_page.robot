@@ -46,7 +46,7 @@ Quick Search Time
 
     @{years}  Set Variable    本年  去年  本季  上季
     :FOR  ${year}  IN  @{years}
-    \    Quick Search In year and season    ${year}
+    \    Quick Search botton    ${year}
     # 驗證數值
     \    ${checkValueB}=  Get Text    //table[@id='comparisonArea']/tbody/tr[3]/td[2]
     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueA}  ${checkValueB}

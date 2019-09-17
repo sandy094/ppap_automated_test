@@ -1,25 +1,11 @@
 *** Keyword ***
-Check Account Page 
-    [Documentation]    Check Account Page
-    [Arguments]    ${account}    ${password}
-    Input Account    ${account}
-    Input Password    ${password}
-
-Check Game Information Link
-    [Documentation]    Click operational information link to check link is correct 
-    [Arguments]    ${title}    
-    Click Topbar Link    ${title}
- 
-Check Topbar Link
-    [Arguments]    ${title}
-    Click Element    //li/a[contains(.,'${title}')]
-
 Check Values
 # 寫IF判斷
-    @{cols}  Set Variable  3  4  5  6   
-    :FOR  ${col}  IN  @{cols}
-    \  Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[${col}]
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[${col}]
+    ${getElements}=   Get Element Count    //table[@class='arbitrage_anal__Table table-striped']/tbody/tr
+    # @{cols}  Set Variable  3  4  5   
+    :FOR  ${col}  IN  2  ${getElements}  1
+    \  Wait Until Page Contains Element    //table[@class='arbitrage_anal__Table table-striped']/tbody/tr[2]/td[${col}]
+    \  ${valueA}=  Get Text    //table[@class='arbitrage_anal__Table table-striped']/tbody/tr[2]/td[${col}]
     \  Should Not Be Empty  ${valueA}  
 
 Short

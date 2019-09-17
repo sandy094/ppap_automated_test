@@ -34,18 +34,18 @@ Click Quick Search
     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
     \  ${valueB}  Set Variable    ${valueA}
    
-# 本季.本年暫沒有資料暫時PASS
-Click Quick Search In Year 
-    ${valueB}    Set Variable    0
-    @{seasons}  Set Variable  本年  本季  
-    :FOR  ${season}  IN  @{seasons}
-    \  Quick Search In year and season    ${season}
-    \  Sleep  30s
-    \  Check Values
-    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]
-    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    \  ${valueB}  Set Variable    ${valueA}
+# 本季.本年搜尋時間太長暫時PASS
+# Click Quick Search In Year 
+#     ${valueB}    Set Variable    0
+#     @{seasons}  Set Variable  本年  本季  
+#     :FOR  ${season}  IN  @{seasons}
+#     \  Quick Search botton    ${season}
+#     \  Sleep  30s
+#     \  Check Values
+#     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]
+#     \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+#     \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+#     \  ${valueB}  Set Variable    ${valueA}
 
 Search In Datetime 
     Sleep  5s

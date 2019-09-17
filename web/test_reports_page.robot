@@ -31,7 +31,7 @@ Click Search
     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[2]  #驗證數值
     @{years}  Set Variable  本年  去年  本季  上季
     :FOR  ${year}  IN  @{years}
-    \  Quick Search In Year And Season    ${year}
+    \  Quick Search botton    ${year}
     \  Check Value Is Active
     \  Sleep    1m
     \  ${CheckValueB}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[4]  #驗證數值
@@ -61,7 +61,7 @@ Search In Category
     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-42  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
     \  Reload Page
-    \  Sleep  5s
+    \  Sleep  10s
     \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
     \  sleep  5s

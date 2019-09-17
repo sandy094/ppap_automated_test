@@ -41,7 +41,7 @@ Check the time if choose game
 
     Execute JavaScript    window.document.documentElement.scrollTop = 0;
 
-    Quick Search In year and season    本季
+    Quick Search botton    本季
     Sleep  20s
     Run Keyword If    '${Count}'=='6'   Check Field Is Active Without Memeber    ELSE    Check Value Is Active
     ${valueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[2]

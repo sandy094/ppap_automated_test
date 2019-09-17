@@ -1,10 +1,4 @@
 *** Keyword ***
-Check Account Page 
-    [Documentation]    Check Account Page
-    [Arguments]    ${account}    ${password}
-    Input Account    ${account}
-    Input Password    ${password}
-
 Check Game Information Link
     [Documentation]    Click operational information link to check link is correct 
     [Arguments]    ${title}    
@@ -63,7 +57,7 @@ Check the time if choose game
     ${valueA}  Set Variable    ${valueB}   
     Capture Page Screenshot
 # 本季搜尋時間過長 待改善
-    Quick Search In year and season    本季
+    Quick Search botton    本季
     Sleep  20s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[3]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值

@@ -31,7 +31,7 @@ Click Quick Search In Year
     ${valueB}    Set Variable    0
     @{seasons}  Set Variable  本年  去年  本季  上季
     :FOR  ${season}  IN  @{seasons}
-    \  Quick Search In year and season    ${season}
+    \  Quick Search botton    ${season}
     \  Sleep  30s
     \  Check Values
     \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[1]/td[5]
@@ -134,8 +134,8 @@ Search In Collection
     Click Element    //div[@class="game-search-panel"]/div/div[contains(.,'依收藏集查询')]
     
     Sleep    5s
-    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[4]
-    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[4]
+    Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
+    Click Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]
     Sleep    5s
 
     Wait Until Page Contains Element    //div[@class="app-div-panel"]//div[@class='loveList-search-panel active']//button[contains(.,'查询')]
