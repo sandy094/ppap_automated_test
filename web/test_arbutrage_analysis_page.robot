@@ -17,15 +17,15 @@ Check sidebar link Game Information navigation is correct
 
 Click Quick Search
     Sleep    10s
-    ${valueB}    Set Variable    0
-    @{days}  Set Variable    上周  本月  上月 
-    :FOR  ${day}  IN  @{days}
-    \  Quick Search botton    ${day}
-    \  Sleep    10s
-    \  Check Values
-    \  Check Trend
-    \  Click Element    //div[@id='arbitrage_anal_rank']//div/a[@class='nor_tabs mt-0']
-    \  Check Values
+    # ${valueB}    Set Variable    0
+    # @{days}  Set Variable    上周  本月  上月 
+    # :FOR  ${day}  IN  @{days}
+    # \  Quick Search botton    ${day}
+    # \  Sleep    10s
+    # \  Check Values
+    # \  Check Trend
+    # \  Click Element    //div[@id='arbitrage_anal_rank']//div/a[@class='nor_tabs mt-0']
+    # \  Check Values
 
 Check Arbutrage Detial By Site 
     Quick Search botton    本月   
@@ -44,6 +44,19 @@ Check Arbutrage Detial By Game
     Check Detial value
     Capture Page Screenshot
     Game Detial Short
+
+Ckeck Trend Picture
+    Reload Page
+    Sleep    10s
+    Quick Search botton    本月 
+    :FOR  ${num}  IN  6  8  10
+    \  Wait Until Page Contains Element    //div[@id='arbitrage_anal_rank']//table/tbody/tr[2]/td[${num}]/span
+    \  Click Element    //div[@id='arbitrage_anal_rank']//table/tbody/tr[2]/td[${num}]/span
+    \  Sleep    5s
+    \  Wait Until Page Contains Element    //*[@id="growth"]/echarts-ng2/div/div[1]/canvas
+    \  Mouse Over    //*[@id="growth"]/echarts-ng2/div/div[1]/canvas
+    \  Capture Page Screenshot
+    \  Click Element    //div[@class='modal-dialog modal-lg']//div[@class="close_btn"]/i
 
 
 *** Keywords ***
