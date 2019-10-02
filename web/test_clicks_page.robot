@@ -50,7 +50,7 @@ Click Quick Search
 Search In Datetime 
     Sleep  5s
     ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年9月  1: 2019年8月  
+    @{mounths}    Set Variable    0: 2019年10月  1: 2019年9月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    30s
