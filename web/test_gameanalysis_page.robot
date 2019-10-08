@@ -79,7 +79,7 @@ Search In Category
 
 Search In Classification
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    Reload Page
+    # Reload Page
     Sleep    10s
     ${valueB}=  Get Text    //div[@id="tableData"] //tbody/tr[2]/td[5]
     @{gameHalls}  Set variable    p3Sing-13  pAB-17  
@@ -100,7 +100,7 @@ Search In Classification
  
 Search In Game 
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    Sleep    10s
+    Sleep    15s
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[5]   #驗證損益數值
     Wait Until Page Contains Element    //div[@class="filter-type"]/div
     Click Element    //div[@class="filter-type"]/div
@@ -125,13 +125,13 @@ Search In Game
 
 Search In Collection
     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot
-    Sleep  10s
+    Sleep  15s
     Wait Until Page Contains Element    //div[@class="filter-type"]/div
     Click Element    //div[@class="filter-type"]/div
     Wait Until Page Contains Element  //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
-    Wait Until Page Contains Element    //div[@class="game-search-panel"]/div/div[contains(.,'依收藏集查询')]
-    Click Element    //div[@class="game-search-panel"]/div/div[contains(.,'依收藏集查询')]
+    # Wait Until Page Contains Element    //div[@class="game-search-panel"]/div/div[contains(.,'依收藏集查询')]
+    # Click Element    //div[@class="game-search-panel"]/div/div[contains(.,'依收藏集查询')]
     
     Sleep    5s
     Wait Until Page Contains Element    //app-game-select-tab//div[@class='loveList__select__wrp']/button[2]

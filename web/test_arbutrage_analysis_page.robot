@@ -17,15 +17,15 @@ Check sidebar link Game Information navigation is correct
 
 Click Quick Search
     Sleep    10s
-    # ${valueB}    Set Variable    0
-    # @{days}  Set Variable    上周  本月  上月 
-    # :FOR  ${day}  IN  @{days}
-    # \  Quick Search botton    ${day}
-    # \  Sleep    10s
-    # \  Check Values
-    # \  Check Trend
-    # \  Click Element    //div[@id='arbitrage_anal_rank']//div/a[@class='nor_tabs mt-0']
-    # \  Check Values
+    ${valueB}    Set Variable    0
+    @{days}  Set Variable    上周  本月  上月 
+    :FOR  ${day}  IN  @{days}
+    \  Quick Search botton    ${day}
+    \  Sleep    10s
+    \  Check Values
+    \  Check Trend
+    \  Click Element    //div[@id='arbitrage_anal_rank']//div/a[@class='nor_tabs mt-0']
+    \  Check Values
 
 Check Arbutrage Detial By Site 
     Quick Search botton    本月   
