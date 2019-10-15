@@ -24,6 +24,7 @@ Click Quick Search
     \  Sleep    10s
     \  Check Values
     \  Check Trend
+    # 切換遊戲套利解析
     \  Click Element    //div[@id='arbitrage_anal_rank']//div/a[@class='nor_tabs mt-0']
     \  Check Values
 

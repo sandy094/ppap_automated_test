@@ -193,18 +193,18 @@ Modularization
     Click Element  //div[@class='slidechart']//div[@class='btn-group dropdown']/button[contains(.,'损益')]
     Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
     Click Element  //div[@class='slidechart']//ul/li[contains(.,'有效投注')]
-    Sleep  5s
+    Sleep  10s
     Capture Page Screenshot
     Click Element  //div[@class='slidechart']//button[contains(.,'有效投注')]
     Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'投注单量')]
     Click Element  //div[@class='slidechart']//ul/li[contains(.,'投注单量')]
-    Sleep  5s
+    Sleep  10s
     Capture Page Screenshot
 
     Click Element  //div[@class='slidechart']//button[contains(.,'投注单量')]
     Wait Until Page Contains Element  //div[@class='slidechart']//ul/li[contains(.,'游戏人次')]
     Click Element  //div[@class='slidechart']//ul/li[contains(.,'游戏人次')]
-    Sleep  5s
+    Sleep  10s
     Capture Page Screenshot
 
     Click Element  //div[@class='slidechart']//button[contains(.,'游戏人次')]

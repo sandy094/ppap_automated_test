@@ -24,6 +24,7 @@ Check Trend
     Capture Page Screenshot
     
 Check Detial value
+# 查詢該站台/遊戲詳細頁
      ${getDetialTrCounts}=  Get Element Count    //table[@class="arbitrage_anal__Table arbitrage_anal__Table__detail table-striped"]/tbody/tr
      ${getDetialTrCounts}  Evaluate    ${getDetialTrCounts}+1
      :FOR  ${tr}  IN RANGE  2  ${getDetialTrCounts}  1
