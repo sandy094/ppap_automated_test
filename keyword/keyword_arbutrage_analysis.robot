@@ -63,6 +63,7 @@ Site Detial Short
     \  Run Keyword If    '${request}'=='False'    Capture Page Screenshot   ELSE    No Operation
 
 Game Detial Short
+# 站台套利排序
     Sleep  5s
     @{number}  Set variable  3  6  8    
     :FOR  ${num}  IN  @{number}
