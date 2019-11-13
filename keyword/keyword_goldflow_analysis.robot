@@ -1,30 +1,21 @@
 *** Keyword ***
 Check Values
 # 寫IF判斷
-    ${getTrCounts}=   Get Element Count    //table[@class='arbitrage_anal__Table table-striped']/tbody/tr
+    Wait Until Page Contains Element    //div[@class='table-responsive']//tbody/tr
+    ${getTrCounts}=   Get Element Count    //div[@class='table-responsive']//tbody/tr
     ${getTrCounts}  Evaluate   ${getTrCounts}+1   
     :FOR  ${col}  IN RANGE  2  ${getTrCounts}  1
-    \  Wait Until Page Contains Element    //table[@class='arbitrage_anal__Table table-striped']/tbody/tr[2]/td[${col}]
-    \  ${valueA}=  Get Text    //table[@class='arbitrage_anal__Table table-striped']/tbody/tr[${col}]/td[3]
+    \  Wait Until Page Contains Element    //div[@class='table-responsive']//tbody/tr[${col}]/td[3]
+    \  ${valueA}=  Get Text    //div[@class='table-responsive']//tbody/tr[${col}]/td[3]
     \  Should Not Be Empty  ${valueA}  
 
-Check Trend
-    Wait Until Page Contains Element    //*[@id="swiper-block"]/div[2]/div/div[3]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
-    Mouse Over    //*[@id="swiper-block"]/div[2]/div/div[3]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
-    Capture Page Screenshot
-    Mouse Over    //*[@id="swiper-block"]/div[2]/div/div[4]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
-    Capture Page Screenshot
-    Click Element    //*[@id="swiper-block"]/div[3]/i
-    Sleep    5s
-    Wait Until Page Contains Element     //*[@id="swiper-block"]/div[2]/div/div[5]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
-    Mouse Over    //*[@id="swiper-block"]/div[2]/div/div[5]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
-    Capture Page Screenshot
-    Wait Until Page Contains Element    //*[@id="swiper-block"]/div[2]/div/div[6]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
-    Mouse Over    //*[@id="swiper-block"]/div[2]/div/div[6]/div/div[2]/div[4]/div/echarts-ng2/div/div[1]/canvas
+Check Detial For Each Day
+    Wait Until Page Contains Element    //*[@id="goldflow"]/ba-card/div/div/div[2]/div[2]/div[2]/table/tbody/tr[2]/td[2]
+    Click Element    //*[@id="goldflow"]/ba-card/div/div/div[2]/div[2]/div[2]/table/tbody/tr[2]/td[2]
     Capture Page Screenshot
     
+
 Check Detial value
-# 查詢該站台/遊戲詳細頁
      ${getDetialTrCounts}=  Get Element Count    //table[@class="arbitrage_anal__Table arbitrage_anal__Table__detail table-striped"]/tbody/tr
      ${getDetialTrCounts}  Evaluate    ${getDetialTrCounts}+1
      :FOR  ${tr}  IN RANGE  2  ${getDetialTrCounts}  1
@@ -33,7 +24,6 @@ Check Detial value
      \    Should Not Be Empty    ${gameName}
 
 Site Detial Short
-# 站台套利排行-遊戲套利排序
     Sleep  5s
     @{number}  Set variable  3  6  8    
     :FOR  ${num}  IN  @{number}
@@ -64,7 +54,6 @@ Site Detial Short
     \  Run Keyword If    '${request}'=='False'    Capture Page Screenshot   ELSE    No Operation
 
 Game Detial Short
-# 遊戲套利排行-站台套利排序
     Sleep  5s
     @{number}  Set variable  3  6  8    
     :FOR  ${num}  IN  @{number}
@@ -116,7 +105,7 @@ Check the time if choose game
     ${valueA}  Set Variable    ${valueB}
     Capture Page Screenshot 
 
-    Search In Month    1: 2019年10月  
+    Search In Month    1: 2019年9月  
     Sleep  20s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[7]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[7]   #驗證數值
