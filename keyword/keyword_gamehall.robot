@@ -33,7 +33,7 @@ Search In Year
 Search In Datetime 
     Sleep  5s
     ${tableValueA}    Set Variable    0
-    @{mounths}    Set Variable    0: 2019年12月  1: 2019年11月  2: 2019年10月  3: 2019年9月
+    @{mounths}    Set Variable    0: 2020年2月  1: 2020年1月  2: 2020年12月  3: 2020年11月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    10s

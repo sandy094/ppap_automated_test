@@ -44,7 +44,7 @@ Click Search
 
 Search In Datetime 
     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[4]
-    @{mounths}    Set Variable    0: 2020年1月  1: 2019年12月  2: 2019年11月  3: 2019年10月  
+    @{mounths}    Set Variable    0: 2020年2月  1: 2020年1月  2: 2019年12月  3: 2019年11月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    50s
