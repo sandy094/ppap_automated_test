@@ -42,7 +42,7 @@ Click Quick Search In Year
 Search In Datetime 
     Sleep  5s
     ${valueB}    Set Variable    0
-    @{mounths}    Set Variable    0: 2020年2月  1: 2020年1月   2: 2019年12月  3: 2019年11月
+    @{mounths}    Set Variable    0: 2020年4月  1: 2020年3月   2: 2020年2月  3: 2020年1月
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    10s
@@ -60,8 +60,8 @@ Search In Category
     @{categeories}  Set variable    p体育-1  p视讯-2  p机率-3  p彩票-4  p捕鱼-42  p棋牌-44
     :FOR  ${category}  IN  @{categeories}
     \  Sleep  5s
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
     \  sleep  5s
     \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
@@ -86,8 +86,8 @@ Search In Classification
     Convert To Integer    ${totalValue}
     ${gameHallName}=  Get Text    //div[@id="tableData"] //tbody/tr[3]/td[2]
     Sleep  8s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
     Sleep  5s
     Wait Until Page Contains Element  //label[contains(.,'${gameHallName}')]/div
     Click Element    //label[contains(.,'${gameHallName}')]/div
@@ -111,21 +111,21 @@ Search In Classification
     Check the time if choose game
 
 
-    # @{gameHalls}  Set variable    p3Sing-13  pAB-17  
-    # :FOR  ${gameHall}  IN  @{gameHalls}
-    # \  Reload Page
-    # \  Sleep  5s
-    # \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    # \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    # \  Sleep  5s
-    # \  Wait Until Page Contains Element  //label[@for='${gameHall}']/div
-    # \  Click Element    //label[@for='${gameHall}']/div
-    # \  Click Element    //app-game-hall-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
-    # \  Sleep  5s
-    # \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
-    # \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
-    # \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
-    # \  Check the time if choose game
+    @{gameHalls}  Set variable    p3Sing-13  pAB-17  
+    :FOR  ${gameHall}  IN  @{gameHalls}
+    \  Reload Page
+    \  Sleep  5s
+    \  Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    \  Sleep  5s
+    \  Wait Until Page Contains Element  //label[@for='${gameHall}']/div
+    \  Click Element    //label[@for='${gameHall}']/div
+    \  Click Element    //app-game-hall-tab/div[@class='bamenu_btn_area']/button[contains(.,' 查询 ')]
+    \  Sleep  5s
+    \  ${valueA}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[6]   #驗證數值
+    \  ${result}=  Run Keyword And Return Status   Should Not Match    ${valueA}  ${valueB}
+    \  Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
+    \  Check the time if choose game
  
 # Search In Game 
 #     [Teardown]    Run Keyword If Test Failed    Capture Page Screenshot

@@ -609,3 +609,21 @@
 [1118/135157.941:ERROR:exception_snapshot_win.cc(98)] thread ID 1744 not found in process
 [0204/120535.386:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
 [0204/120535.387:ERROR:exception_snapshot_win.cc(98)] thread ID 15208 not found in process
+[0304/140858.158:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0304/140858.160:ERROR:exception_snapshot_win.cc(98)] thread ID 18696 not found in process
+[0304/140858.180:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0304/140858.180:ERROR:exception_snapshot_win.cc(98)] thread ID 17824 not found in process
+[0505/102327.351:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/102327.352:ERROR:exception_snapshot_win.cc(98)] thread ID 22476 not found in process
+[0505/102327.370:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/102327.370:ERROR:exception_snapshot_win.cc(98)] thread ID 19128 not found in process
+[0505/104042.247:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/104042.248:ERROR:exception_snapshot_win.cc(98)] thread ID 20384 not found in process
+[0505/104042.262:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/104042.262:ERROR:exception_snapshot_win.cc(98)] thread ID 10484 not found in process
+[0505/104534.719:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/104534.720:ERROR:exception_snapshot_win.cc(98)] thread ID 13116 not found in process
+[0505/104534.721:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/104534.721:ERROR:exception_snapshot_win.cc(98)] thread ID 17188 not found in process
+[0505/104534.738:ERROR:process_reader_win.cc(123)] NtOpenThread: {拒絕存取} 程序已請求存取一物件，但未被授與存取權。 (0xc0000022)
+[0505/104534.738:ERROR:exception_snapshot_win.cc(98)] thread ID 14288 not found in process

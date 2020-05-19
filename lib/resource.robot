@@ -6,7 +6,7 @@ Library    String
 
 
 *** Variables ***
-${SERVER}    aaqgg.com
+${SERVER}    aaqgg.com/login
 ${BROWSER}    Chrome
 ${DELAY}    0
 ${VALID_USER}    brdemos    

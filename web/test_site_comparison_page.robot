@@ -55,7 +55,7 @@ Quick Search Time
     \    ${result}=  Runkeyword And Return Status    Should Not Match    ${checkValueC}  ${checkValueD}
     \    ${checkValueC}  Set Variable  ${checkValueD}
 
-    @{months}  Set Variable    0: 2020年2月  1: 2020年1月     
+    @{months}  Set Variable    0: 2020年3月  1: 2020年2月     
     :FOR  ${month}  IN  @{months}
     \    Search In Month    ${month}
     # 驗證數值

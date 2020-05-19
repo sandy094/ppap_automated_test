@@ -20,6 +20,7 @@ Click Search
     ${CheckValueA}=  Get Text  //table[@id='TrendInfoTable']/tbody/tr[1]/td[4]  #驗證數值 投注單量
     @{days}  Set Variable    本周  上周  本月  上月  昨日
     :FOR  ${day}  IN  @{days}
+    \  Execute JavaScript  window.document.documentElement.scrollTo = 0;
     \  Quick Search botton    ${day}
     \  Check Value Is Active
     \  Sleep    5s
@@ -44,7 +45,7 @@ Click Search
 
 Search In Datetime 
     ${CheckValueA}=  Get Text  //table[@id="TrendInfoTable"]//tbody/tr[1]/td[4]
-    @{mounths}    Set Variable    0: 2020年2月  1: 2020年1月  2: 2019年12月  3: 2019年11月  
+    @{mounths}    Set Variable    0: 2020年3月  1: 2020年2月   2: 2020年1月  3: 2019年12月  
     :FOR    ${month}  IN  @{mounths}
     \  Search In Month    ${month}
     \  Sleep    50s
@@ -62,8 +63,8 @@ Search In Category
     :FOR  ${category}  IN  @{categeories}
     \  Reload Page
     \  Sleep  10s
-    \  Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    \  Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    \  Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    \  Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
     \  sleep  5s
     \  Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
     \  Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'种类查询')]
@@ -81,8 +82,8 @@ Search In Category
 Search In Classification
     Reload Page
     Sleep    10s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'娱乐城查询')]
@@ -96,8 +97,8 @@ Search In Classification
 Search In Game
     Reload Page
     Sleep    10s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
@@ -114,8 +115,8 @@ Search In Game
 Search In Collection
     Reload Page
     Sleep    10s
-    Wait Until Page Contains Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
-    Click Element    //div[@class="filter-type"]/div/span[contains(.,'游戏筛选')]
+    Wait Until Page Contains Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
+    Click Element    //div[@class="filter-type-game"]/span[contains(.,'游戏筛选')]
     Sleep    2s
     Wait Until Page Contains Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
     Click Element    //div[@class="text-center mobile_btn_area2"]/a[contains(.,'游戏查询')]
