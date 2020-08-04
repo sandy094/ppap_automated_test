@@ -36,7 +36,7 @@ Check the time if choose game
     ${valueA}  Set Variable    ${valueB}
     Capture Page Screenshot 
 
-    Search In Month    0: 2020年3月  
+    Search In Month    0: 2020年5月  
     Sleep  20s
     Wait Until Page Contains Element    //div[@id="tableData"] //tbody/tr[2]/td[3]
     ${valueB}=  Get Text  //div[@id="tableData"] //tbody/tr[2]/td[3]   #驗證數值
@@ -45,6 +45,7 @@ Check the time if choose game
     Run Keyword If    '${result}'=='False'    Capture Page Screenshot    ELSE    No Operation
 
     
-
-
+Get Input Element  
+   ${inputCounts}=  Get Element Count    //div[@class='accordion']/div[${gamehall}]/div/ul/li/label
+   
 

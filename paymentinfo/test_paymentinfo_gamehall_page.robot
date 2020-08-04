@@ -11,6 +11,7 @@ Check login
     Login Page    ${VALID_USER}    ${VALID_PASSWORD}
 
 Check sidebar link Game Information navigation is correct
+    # 對帳查詢
     Close Announcement 
     Click Sidebar Link    对帐中心
     Sleep    5s
@@ -26,6 +27,9 @@ Click GameHall Search
     :FOR  ${gamehall}  IN RANGE  1    ${elementCounts}  
     \    Wait Until Element Is Visible    //div[@class='accordion']/div[${gamehall}]
     \    Click Element    //div[@class='accordion']/div[${gamehall}]/label/div
+    \    ${inputCounts}=  Get Element Count    //div[@class='accordion']/div[${gamehall}]/div
+    \    ${inputCounts}=  Convert To Integer    ${inputCounts}
+    \    ${inputCounts}=  Evaluate   ${inputCounts}+1
     \    Click Element    //div[@class='col-12 NAVlist']//div/button[contains(.,' 查询 ')]
     \    Sleep    5s
     \    ${hallPayoffsums}=  Get Text   //ng2-smart-table[@class='gamehall__tb']/table/tbody/tr/td[2]
@@ -35,8 +39,8 @@ Click GameHall Search
 
 Click Quick Search
     # 3Sing為例
-    Sleep    10s
     Reload Page
+    Sleep    10s
     Click Element    //div[@class='filter-type filter-type-game']/div/span[contains(.,'娱乐城查询')]
     Wait Until Element Is Visible    //div[@class='accordion']/div[1]
     Click Element    //div[@class='accordion']/div[1]/label/div
